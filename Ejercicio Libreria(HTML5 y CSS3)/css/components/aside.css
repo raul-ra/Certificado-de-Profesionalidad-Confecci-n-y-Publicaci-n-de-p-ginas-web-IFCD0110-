@@ -1,0 +1,46 @@
+.wrapper-most-sold {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.most-sold {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(251, 200, 0, 0.5);
+    padding: 20px;
+    align-items: center;
+}
+
+.most-sold__logo {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.card__content {
+    padding: 10px;
+}
+
+.card__title {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+}
+
+.card__description {
+    font-size: 1em;
+    margin: 0;
+}

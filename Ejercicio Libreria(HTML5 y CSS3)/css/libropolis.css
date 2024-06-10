@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+        "top-sales aside"
+        "news aside";
+    gap: 20px;
+    min-height: 100vh; /* Asegurarse de que el contenedor principal ocupe toda la altura de la ventana */
+}
+
+.wrapper-top-sales {
+    grid-area: top-sales;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.top-sales__logo {
+    width: 150px;
+    margin-bottom: 20px;
+    align-self: flex-start;
+}
+
+.top-sales__title {
+    width: 100%;
+    text-align: left;
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    padding-left: 20px;
+}
+
+.article-horizontal {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 400px; /* Ajustar esta altura según sea necesario */
+}
+
+.article-horizontal__column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    overflow: hidden; /* Para evitar que el contenido se desborde */
+}
+
+.article-horizontal__img {
+    width: 80%;
+    height: auto;
+    max-height: 100%; /* Para asegurarse de que la imagen no se salga de su contenedor */
+    object-fit: contain; /* Contain ajusta la imagen para que quepa dentro del contenedor */
+    align-self: center;
+    margin-top: 10px;
+}
+
+.article-horizontal__description,
+.article-horizontal__note {
+    font-size: 1em;
+    margin: 0;
+    overflow: hidden; /* Para evitar que el texto se desborde */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 15; /* Número de líneas a mostrar antes de cortar el texto */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es demasiado largo */
+    line-height: 1.5; /* Mejorar la legibilidad del texto */
+    height: calc(1.5em * 15); /* Ajustar la altura basada en el número de líneas y el line-height */
+}
+
+.wrapper-news {
+    grid-area: news;
+    padding: 20px;
+}
+
+.wrapper-news__title {
+    margin-bottom: 20px;
+}
+
+.wrapper-news__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.wrapper-news__grid-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    height: 320px; /* Ajusta según sea necesario */
+}
+
+.wrapper-news__image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wrapper-news__info {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.wrapper-news__info-title {
+    margin-top: 0;
+}
+
+.wrapper-news__info-detail {
+    margin: 5px 0;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + label .wrapper-news__image {
+    display: none;
+}
+
+input[type="radio"]:checked + label .wrapper-news__info {
+    display: block;
+}
+
+input[type="radio"]:not(:checked) + label .wrapper-news__info {
+    display: none;
+}
+
+
+/* Estilos para el aside (los más vendidos) */
+.wrapper-most-sold {
+    grid-area: aside;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    height: 100%;
+    padding: 20px;
+}
+
+.most-sold {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(251, 200, 0, 0.5);
+    padding: 20px;
+    align-items: center;
+    height: 100%;
+    width: 100%; /* Asegurar que el aside ocupe todo el ancho disponible */
+}
+
+.most-sold__logo {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.card__content {
+    padding: 10px;
+}
+
+.card__title {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+}
+
+.card__description {
+    font-size: 1em;
+    margin: 0;
+}
+
+/* Estilos para la sección wrapper-soon */
+.wrapper-soon {
+    grid-area: soon;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+}
+
+.wrapper-soon__title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.wrapper-soon__animation {
+    width: 100%;
+    height: 400px; /* Ajustar según sea necesario */
+    position: relative;
+    overflow: hidden;
+}
+
+.wrapper-soon__image {
+    position: absolute;
+    width: 100px; /* Ajustar según sea necesario */
+    height: 100px; /* Ajustar según sea necesario */
+    animation: moveAround 10s infinite alternate;
+}
+
+@keyframes moveAround {
+    0% { top: 0; left: 0; }
+    25% { top: 0; left: calc(100% - 100px); }
+    50% { top: calc(100% - 100px); left: calc(100% - 100px); }
+    75% { top: calc(100% - 100px); left: 0; }
+    100% { top: 0; left: 0; }
+}
+
+/* Añadir esta sección al final para asegurar que la animación ocupe el espacio restante */
+.main-layout {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 
+        "top-sales aside"
+        "news aside"
+        "soon aside";
+    gap: 20px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+    <div class="card">
+        <form class="form" autocomplete="off">
+        
+            <div class="form__group">
+                <label class="form__label" for="nombre">Nombre:</label>
+                <input class="form__input" type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form__group">
+                <label class="form__label" for="apellido">Apellido:</label>
+                <input class="form__input" type="text" id="apellido" name="apellido" required>
+            </div>
+
+            <div class="form__group">
+                <label class="form__label" for="dni">DNI:</label>
+                <input class="form__input" type="text" id="dni" name="dni" required>
+            </div>
+
+            <div class="form__group">
+                <label class="form__label" for="fecha_nacimiento">Fecha de nacimiento:</label>
+                <input class="form__input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            </div>
+
+            <div class="form__group">
+                <label class="form__label" for="tipo_pago">Tipo de pago:&nbsp;</label>
+                <div class="form__inline-group">
+                    <input class="form__radio" type="radio" id="plazos" name="tipo_pago" value="A plazos">
+                    <label class="form__label--inline" for="plazos">A plazos</label>
+                    <input class="form__radio" type="radio" id="integro" name="tipo_pago" value="Integro">
+                    <label class="form__label--inline" for="integro">Integro</label>
+                </div>
+            </div>
+
+            <div class="form__group">
+                <label class="form__label" for="comentarios">Comentarios:</label>
+                <textarea class="form__textarea" id="comentarios" name="comentarios"></textarea>
+            </div>
+
+            <input class="form__submit" type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

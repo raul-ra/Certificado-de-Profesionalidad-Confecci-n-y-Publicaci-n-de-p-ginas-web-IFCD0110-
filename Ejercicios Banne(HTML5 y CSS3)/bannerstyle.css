@@ -1,0 +1,69 @@
+.banner {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-image: url('assets/space.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; 
+}
+
+.banner__title {
+    font-size: 100px;
+    justify-content: space-between;
+    position: relative; 
+    margin: 0; 
+    color: rgb(244, 224, 5); 
+}
+
+.banner__jupiter {
+    height: 200px;
+    animation-name: gira;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    position: relative; 
+}
+
+@keyframes gira {
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.banner__rocket {
+    position: absolute;
+    bottom: 50px;
+    height: 100px;
+    animation: fly 10s linear infinite;
+}
+
+@keyframes fly {
+    from {
+        transform: translateX(-300%);
+    }
+    to {
+        transform: translateX(300%);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(25%, -25%) rotate(45deg);
+    }
+    50% {
+        transform: translate(50%, -50%) rotate(90deg);
+    }
+    75% {
+        transform: translate(75%, -75%) rotate(135deg);
+    }
+    100% {
+        transform: translate(100%, -100%) rotate(180deg);
+    }
+}
