@@ -1,0 +1,50 @@
+.travel-news {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.aside-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    padding: 20px;
+}
+
+.aside-container h2 {
+    font-weight: bold; /* Texto en negrita */
+    margin-bottom: 20px; /* Espacio entre el título y las tarjetas */
+    text-align: center; /* Centrar el texto */
+    font-family: 'Feeling Passionate', cursive;
+    font-size: 25px;
+}
+
+.news-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 250px;
+}
+
+.news-card img {
+    width: 250px;
+    height: 200px;
+    border-radius: 8px 8px 0 0;
+}
+
+.news-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.news-card p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
