@@ -28,6 +28,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
     line-height: 1;
+    font-family: 'Poppins', sans-serif;
 }
 
 ol, ul {
@@ -51,7 +52,37 @@ table {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
     gap: 20px;
+    padding: 20px;
+    grid-template-areas: 
+        "header header"
+        "aside main"
+        "footer footer";
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+header {
+    grid-area: header;
+    width: 100%;
+}
+
+footer {
+    grid-area: footer;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
     padding: 20px;
 }
