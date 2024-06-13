@@ -26,28 +26,16 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-body {
-    line-height: 1;
+html, body {
+    height: 100%;
+    margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-ol, ul {
-    list-style: none;
-}
-
-blockquote, q {
-    quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .grid-container {
@@ -59,19 +47,8 @@ table {
         "header header"
         "aside main"
         "footer footer";
+    flex: 1;
 }
-
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
 
 header {
     grid-area: header;
