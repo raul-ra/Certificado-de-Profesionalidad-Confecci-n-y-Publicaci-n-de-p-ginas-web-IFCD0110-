@@ -1,3 +1,94 @@
+# Exercise 3: Replace Letters and Words
+
+This exercise involves replacing all instances of the letters `t`, `n`, and `p` with the word "curso" in a sentence entered by the user. It also allows reversing the changes to restore the original sentence and clearing the result.
+
+## Project Files
+
+- `reemplazarletrasypalabras.html`
+- `reemplazarletrasypalabras.css`
+- `reemplazarletrasypalabras.js`
+
+## File Descriptions
+
+### HTML File (`reemplazarletrasypalabras.html`)
+
+This file contains the basic structure of the webpage and the elements needed to interact with the user. The main elements include:
+
+- A text input (`input`) for the user to enter a sentence.
+- Buttons to execute the replace, revert, and clear functions.
+- A container (`div`) to display the results.
+- A section with a brief explanation and a code block (`pre` and `code`) showing the JavaScript code used to solve the exercise.
+
+### CSS File (`reemplazarletrasypalabras.css`)
+
+This file contains the CSS styles to format the page. The styles include:
+
+- General font and spacing configuration of the page.
+- Styles for headers (`h1` and `h2`).
+- Styles for buttons, including hover states.
+- Styles for the form and its elements.
+- Styles for the result container.
+- Styles for the code block (`pre` and `code`) to look like in a code editor.
+- Responsive styles to improve display on mobile devices.
+
+### JavaScript File (`reemplazarletrasypalabras.js`)
+
+This file contains the JavaScript code that handles the logic of the exercise. The main functions include:
+
+1. **Add Event Listeners**: Events are added to the "Replace", "Revert", and "Clear" buttons to call the corresponding functions when clicked.
+
+2. **Global Variables**: Two global variables are defined to store the original sentence and the modified sentence.
+
+3. **replaceWords Function**:
+   - Gets the value of the text input.
+   - Replaces all instances of the letters `t`, `n`, and `p` (both uppercase and lowercase) with the word "curso".
+   - Displays the modified sentence in the result container and makes the container visible.
+
+4. **revertWords Function**:
+   - Restores the original sentence in the result container.
+
+5. **clearInputReplace Function**:
+   - Clears the text input value.
+   - Hides the result container.
+
+## Usage Instructions
+
+1. **Replace**:
+   - Enter a sentence in the text input.
+   - Press the "Replace" button.
+   - The result will show the sentence with all instances of the letters `t`, `n`, and `p` replaced with the word "curso".
+
+2. **Revert**:
+   - After replacing the letters, press the "Revert" button.
+   - The result will show the original sentence entered.
+
+3. **Clear**:
+   - Press the "Clear" button to clear the text input and the result.
+
+## Step-by-Step Explanation
+
+1. **Add Event Listeners**:
+   - Used to call the replace, revert, and clear functions when the respective buttons are clicked.
+
+2. **Global Variables**:
+   - Two global variables are defined to store the original sentence and the modified sentence.
+
+3. **replaceWords Function**:
+   - Gets the sentence entered by the user.
+   - Uses a regular expression to find all instances of the letters `t`, `n`, `p` (both uppercase and lowercase) and replaces them with the word "curso".
+   - Displays the modified sentence in the result container and makes the container visible.
+
+4. **revertWords Function**:
+   - Restores the original sentence by displaying the original content in the result container.
+
+5. **clearInputReplace Function**:
+   - Clears the content of the text input.
+   - Hides the result container.
+
+This documentation provides a detailed description of how the exercise works and how to interact with it.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
 # Ejercicio 3: Reemplazar letras y palabras
 
 Este ejercicio consiste en reemplazar todas las letras `t`, `n` y `p` por la palabra "curso" en una frase ingresada por el usuario. También permite revertir los cambios para restaurar la frase original y limpiar el resultado.

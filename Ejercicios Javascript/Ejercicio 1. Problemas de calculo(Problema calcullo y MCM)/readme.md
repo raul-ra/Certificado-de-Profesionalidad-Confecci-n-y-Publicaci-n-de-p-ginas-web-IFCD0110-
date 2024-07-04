@@ -1,3 +1,67 @@
+
+
+# Calculation Problems in Javascript
+
+This project contains two calculation problems implemented in Javascript. The problems are solved using basic Javascript functions and presented in a simple web page. Below are the descriptions of both problems and their solutions.
+
+## Problem 1: LCM in the Barracks
+
+### Problem Statement
+If at a certain moment in a barracks there are fewer than 600 soldiers and they can be grouped in groups of 2, 3, 5, or 10, how many soldiers are in the barracks?
+
+### Solution
+To solve this problem, the Least Common Multiple (LCM) of the numbers 2, 3, 5, and 10 must be calculated. The multiples of this LCM that are less than 600 will be the possible numbers of soldiers in the barracks.
+
+### Implementation
+A function is defined to calculate the LCM of two numbers and another to calculate the GCD (Greatest Common Divisor) of two numbers. Then, a loop is used to find all multiples of the LCM less than 600.
+
+### Step-by-Step
+1. **Define the functions:** Two functions are defined, one to calculate the LCM (Least Common Multiple) and another to calculate the GCD (Greatest Common Divisor) of two numbers.
+2. **Calculate the LCM:** The LCM of the numbers 2, 3, 5, and 10 is calculated using the previously defined functions.
+3. **Define the limit:** The upper limit is set to 600.
+4. **Create an array for the results:** An empty array is initialized to store the multiples of 30 that are less than 600.
+5. **Iterate and find multiples:** A loop is used to find all multiples of 30 less than 600 and add them to the array.
+6. **Display the result:** The result is shown in the console and in the HTML element with id 'resultado'.
+
+## Problem 2: Sum and Average of Numbers
+
+### Problem Statement
+Calculate the sum and average of a group of numbers. The user must enter the number of numbers to calculate and then input the numbers.
+
+### Solution
+The user is asked to enter the number of numbers to calculate. Then, the user is asked to input each number. The sum and average of the entered numbers are calculated.
+
+### Implementation
+A function is defined to ask the user for the numbers, calculate the sum and average of the entered numbers, and display the results.
+
+### Step-by-Step
+1. **How many numbers to calculate:** The value of the input with id 'cantidad' is obtained and converted to an integer using `parseInt`.
+2. **Ask for numbers:** An empty array `numeros` is initialized to store the numbers the user inputs. A `for` loop is used to iterate `cantidad` times and ask the user to input a number in each iteration.
+3. **Calculate the sum of the numbers:** The `reduce` method is used on the `numeros` array to sum all the elements.
+4. **Calculate the average of the entered numbers:** The sum of the numbers is divided by the length of the `numeros` array to get the average.
+5. **Display the result:** The content of the element with id 'resultado2' is updated to show the sum and the average. An `alert` is shown with the sum and the average.
+6. **Prevent form submission:** The function returns `false` to prevent the form from being submitted and the page from reloading.
+
+## Project Structure
+
+- `index.html`: Contains the structure of the web page and references to the JavaScript and CSS files.
+- `MCMproblem.js`: Contains the JavaScript code to solve problem 1.
+- `CalculoSumayMedia.js`: Contains the JavaScript code to solve problem 2.
+- `Problemasconjavascript.css`: Contains the CSS styles for the web page.
+
+## Usage
+
+1. Clone this repository.
+2. Open the `index.html` file in your web browser.
+3. Interact with the problems presented on the page.
+
+## Notes
+
+- Make sure to have JavaScript enabled in your browser.
+- The results are displayed on the page and via alerts.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Problemas de Cálculo en Javascript
 
 Este proyecto contiene dos problemas de cálculo implementados en Javascript. Los problemas se resuelven utilizando funciones básicas de Javascript y se presentan en una página web simple. A continuación se describen ambos problemas y su solución.
@@ -58,3 +122,4 @@ Se define una función para pedir al usuario los números, calcular la suma y la
 
 - Asegúrate de tener habilitado JavaScript en tu navegador.
 - Los resultados se muestran en la página y mediante alertas.
+
