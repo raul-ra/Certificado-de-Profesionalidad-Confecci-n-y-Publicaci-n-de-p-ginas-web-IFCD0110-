@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    flex: 0 0 150px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.result-box {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.code {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: auto;
+    color: #d4d4d4;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+code {
+    white-space: pre-wrap;
+    display: block;
+}
+
+.keyword {
+    color: #569cd6;
+}
+
+.function {
+    color: #dcdcaa;
+}
+
+.variable {
+    color: #9cdcfe;
+}
+
+.string {
+    color: #ce9178;
+}
+
+.number {
+    color: #b5cea8;
+}
+
+.comment {
+    color: #6a9955;
+}
+
+.operator {
+    color: #d4d4d4;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    label {
+        margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        margin: 5px 0;
+        padding: 10px;
+    }
+
+    .result-box {
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .code {
+        padding: 10px;
+    }
+}
