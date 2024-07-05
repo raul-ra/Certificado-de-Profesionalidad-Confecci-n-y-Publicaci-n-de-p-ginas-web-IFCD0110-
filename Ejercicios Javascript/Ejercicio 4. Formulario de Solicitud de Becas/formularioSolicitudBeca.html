@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4: Formulario de Elegibilidad para Becas</title>
+    <link rel="stylesheet" href="formularioSolicitudBeca.css">
+</head>
+<body>
+    <h1><u>Ejercicio 4: Formulario de Solicitud de Becas</u></h1>
+
+    <section>
+        <div class="card">
+            <h2>Formulario de Solicitud de Becas</h2>
+            <p>
+                Introduce la información del estudiante y haz clic en "Calcular Beca" para determinar el monto de la beca según la edad del estudiante y los ingresos de los padres.
+            </p>
+            <form id="scholarshipForm">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Edad:</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="parentsIncome">Ingresos de los padres:</label>
+                    <input type="number" id="parentsIncome" name="parentsIncome" required>
+                </div>
+                <div class="form-group">
+                    <label for="scholarship">Beca:</label>
+                    <input type="number" id="scholarship" name="scholarship" readonly>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="calculateScholarship">Calcular Beca</button>
+                    <button type="button" id="clearForm">Limpiar</button>
+                </div>
+            </form>
+            <div id="resultBox" class="result-box">
+                <h2>Resultado:</h2>
+                <p id="resultText"></p>
+            </div>
+        </div>
+
+        <h3>Explicación</h3>
+        <p>El código JavaScript calcula el monto de la beca según la edad del estudiante y los ingresos de los padres.</p>
+        <pre class="code">
+            <code>
+                <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'calculateScholarship'</span>).<span class="function">addEventListener</span>(<span class="string">'click'</span>, <span class="function">calcularBeca</span>);
+                <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'clearForm'</span>).<span class="function">addEventListener</span>(<span class="string">'click'</span>, <span class="function">limpiarFormulario</span>);
+
+                <span class="keyword">function</span> <span class="function">calcularBeca</span>() {
+                    <span class="keyword">const</span> <span class="variable">nombre</span> <span class="operator">=</span> <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'name'</span>).<span class="variable">value</span>;
+                    <span class="keyword">const</span> <span class="variable">edad</span> <span class="operator">=</span> <span class="keyword">parseInt</span>(<span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'age'</span>).<span class="variable">value</span>);
+                    <span class="keyword">const</span> <span class="variable">ingresosPadres</span> <span class="operator">=</span> <span class="keyword">parseInt</span>(<span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'parentsIncome'</span>).<span class="variable">value</span>);
+                    <span class="keyword">let</span> <span class="variable">beca</span> <span class="operator">=</span> <span class="number">0</span>;
+
+                    <span class="keyword">if</span> (<span class="variable">edad</span> <span class="operator">&gt;=</span> <span class="number">14</span> <span class="operator">&amp;&amp;</span> <span class="variable">edad</span> <span class="operator">&lt;</span> <span class="number">18</span> <span class="operator">&amp;&amp;</span> <span class="variable">ingresosPadres</span> <span class="operator">&lt;=</span> <span class="number">25000</span>) {
+                        <span class="variable">beca</span> <span class="operator">=</span> <span class="number">1000</span>;
+                    } <span class="keyword">else if</span> (<span class="variable">edad</span> <span class="operator">&gt;=</span> <span class="number">8</span> <span class="operator">&amp;&amp;</span> <span class="variable">edad</span> <span class="operator">&lt;=</span> <span class="number">13</span> <span class="operator">&amp;&amp;</span> <span class="variable">ingresosPadres</span> <span class="operator">&lt;=</span> <span class="number">25000</span>) {
+                        <span class="variable">beca</span> <span class="operator">=</span> <span class="number">1800</span>;
+                    } <span class="keyword">else if</span> (<span class="variable">edad</span> <span class="operator">&gt;=</span> <span class="number">3</span> <span class="operator">&amp;&amp;</span> <span class="variable">edad</span> <span class="operator">&lt;=</span> <span class="number">7</span> <span class="operator">&amp;&amp;</span> <span class="variable">ingresosPadres</span> <span class="operator">&lt;=</span> <span class="number">25000</span>) {
+                        <span class="variable">beca</span> <span class="operator">=</span> <span class="number">2200</span>;
+                    }
+
+                    <span class="keyword">if</span> (<span class="variable">beca</span> <span class="operator">==</span> <span class="number">0</span>) {
+                        <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'resultText'</span>).<span class="variable">innerHTML</span> <span class="operator">=</span> <span class="string">"No cumple con los requisitos."</span>;
+                        <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'scholarship'</span>).<span class="variable">value</span> <span class="operator">=</span> <span class="number">0</span>;
+                    } <span class="keyword">else</span> {
+                        <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'scholarship'</span>).<span class="variable">value</span> <span class="operator">=</span> <span class="variable">beca</span>;
+                        <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'resultText'</span>).<span class="variable">innerHTML</span> <span class="operator">=</span> <span class="string">`El estudiante ${nombre} recibe una beca de ${beca} euros.`</span>;
+                    }
+
+                    <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'resultBox'</span>).<span class="variable">style</span>.<span class="variable">display</span> <span class="operator">=</span> <span class="string">'block'</span>;
+                }
+
+                <span class="keyword">function</span> <span class="function">limpiarFormulario</span>() {
+                    <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'scholarshipForm'</span>).<span class="variable">reset</span>();
+                    <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'scholarship'</span>).<span class="variable">value</span> <span class="operator">=</span> <span class="string">''</span>; 
+                    <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'resultBox'</span>).<span class="variable">style</span>.<span class="variable">display</span> <span class="operator">=</span> <span class="string">'none'</span>;
+                }
+            </code>
+        </pre>
+        <p>Paso a paso:</p>
+        <ol>
+            <li><strong>Agregar Event Listeners:</strong> Se añaden eventos a los botones "Calcular Beca" y "Limpiar" para que llamen a las funciones correspondientes cuando se hace clic en ellos.</li>
+            <li><strong>Función calcularBeca:</strong> Esta función calcula el monto de la beca según la edad del estudiante y los ingresos de los padres.</li>
+            <ul>
+                <li>Obtiene los valores de los campos de entrada: nombre, edad e ingresos de los padres.</li>
+                <li>Calcula la beca según las reglas definidas:
+                    <ul>
+                        <li>Si la edad está entre 14 y 17 años (inclusive) y los ingresos de los padres son menores o iguales a 25,000 euros, la beca es de 1,000 euros.</li>
+                        <li>Si la edad está entre 8 y 13 años (inclusive) y los ingresos de los padres son menores o iguales a 25,000 euros, la beca es de 1,800 euros.</li>
+                        <li>Si la edad está entre 3 y 7 años (inclusive) y los ingresos de los padres son menores o iguales a 25,000 euros, la beca es de 2,200 euros.</li>
+                        <li>Si no cumple con ninguno de los requisitos, se muestra un mensaje indicando que no cumple con los requisitos y se asigna un valor de 0 al campo "Beca".</li>
+                    </ul>
+                </li>
+                <li>Muestra el monto de la beca en el campo de beca y en el contenedor de resultados, o un mensaje si no cumple con los requisitos.</li>
+                <li>Hace visible el contenedor de resultados.</li>
+            </ul>
+            <li><strong>Función limpiarFormulario:</strong> Esta función limpia los valores del formulario y oculta el contenedor de resultados.</li>
+        </ol>
+        <p>En el archivo <u>formularioSolicitudBeca.js</u> podras encontrar más información</p>
+    </section>
+
+    <script src="formularioSolicitudBeca.js"></script>
+</body>
+</html>
