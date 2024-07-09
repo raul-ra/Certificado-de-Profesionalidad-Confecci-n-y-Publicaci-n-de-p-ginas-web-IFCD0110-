@@ -1,11 +1,340 @@
+/* Estilos generales y fuentes */
+
+@font-face {
+    font-family: 'Gliker Black Semi Condensed';
+    src: url('../assets/fonts/Gliker-BlackSemiCondensed.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gliker Regular';
+    src: url('../assets/fonts/Gliker-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Gliker Regular', Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f8efd2; /* Fondo de la página */
+    color: #2b2137; /* Color de texto principal */
 }
 
 img {
     max-width: 100%;
     height: auto;
+}
+
+/* Estilos del Hero Banner */
+
+.hero {
+    background-color: #2b2137; /* Fondo oscuro para la hero section */
+    color: white;
+    text-align: center;
+    padding: 0; /* Eliminar el padding */
+}
+
+.hero__banner {
+    width: 100%;
+    height: auto;
+}
+
+.hero__title {
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
+    font-size: 2.5em;
+    margin: 20px 0 10px;
+    color: #f8efd2; /* Color claro */
+}
+
+.hero__subtitle {
+    font-size: 1.5em;
+    margin: 0;
+    color: #509397; /* Color teal */
+}
+
+/* Estilos del Navbar */
+
+.navbar {
+    background-color: #2b2137; /* Fondo oscuro */
+    overflow: hidden;
+    width: 100%;
+    padding: 0; /* Eliminar el padding */
+}
+
+.navbar__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.navbar__item {
+    display: inline;
+}
+
+.navbar__link {
+    display: block;
+    color: #509397; /* Fuente teal */
+    text-align: center;
+    padding: 1rem 1rem; /* Ajustar el padding */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px; /* Redondear el borde */
+}
+
+.navbar__link:hover {
+    background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
+    color: #509397; /* Fuente teal */
+    border-radius: 20px; /* Redondear el borde */
+}
+
+/* Estilos del Banner */
+
+#banner {
+    width: 100%;
+    padding: 0; /* Eliminar el padding */
+}
+
+.banner-image {
+    width: 100%;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos de la Lista de Modelos */
+
+.model-list {
+    padding: 20px;
+    background-color: #f8efd2; /* Fondo de la página */
+}
+
+.model-list__item a {
+    color: #2b2137; /* Color de texto principal */
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.model-list__item a:hover {
+    background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
+    color: #509397; /* Fuente teal */
+    border-radius: 20px; /* Redondear el borde */
+}
+
+/* Estilos de la Información del Vehículo */
+
+.vehicle-info {
+    padding: 20px;
+    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f8efd2; /* Fondo de la página */
+    position: relative;
+}
+
+.vehicle-info__price-table {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 2rem; /* Ajustar el margen */
+}
+
+.vehicle-info__price-item {
+    text-align: left;
+    margin-bottom: 1rem; /* Ajustar el margen */
+    color: #2b2137; /* Color de texto principal */
+}
+
+.vehicle-info__image-container {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.vehicle-info__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    border: 2px solid #2b2137; /* Borde oscuro */
+}
+
+.vehicle-info__model-name {
+    margin-top: 1rem; /* Ajustar el margen */
+    font-size: 1.2em;
+    color: #2b2137; /* Color de texto principal */
+}
+
+.vehicle-info__header {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 2rem; /* Ajustar el margen */
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
+    font-weight: bold;
+    color: #2b2137; /* Color de texto principal */
+}
+
+.vehicle-info__logo {
+    position: absolute;
+    top: 1rem; /* Ajustar la posición */
+    left: 1rem; /* Ajustar la posición */
+    width: 100px; /* Ajustar el ancho */
+    height: auto;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #EF7C3F; /* Fondo del botón */
+    color: #509397; /* Fuente del botón */
+    border: none;
+    padding: 1rem 2rem; /* Ajustar el padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem; /* Ajustar el tamaño de la fuente */
+    margin: 0.5rem 0.2rem; /* Ajustar el margen */
+    cursor: pointer;
+    border-radius: 20px; /* Redondear el borde */
+}
+
+.button:hover {
+    background-color: #509397; /* Fondo del botón al pasar el cursor */
+    color: #EF7C3F; /* Fuente del botón al pasar el cursor */
+    border-radius: 20px; /* Redondear el borde */
+}
+
+/* Estilos de la sección de historia */
+
+.history {
+    padding: 20px;
+    background-color: #f8efd2; /* Fondo de la página */
+    color: #2b2137; /* Color de texto principal */
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history__title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.history__image {
+    max-width: 100%;
+    width: 400px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    display: block;
+}
+
+/* Media Queries para hacer la página responsive */
+
+@media (max-width: 768px) {
+    .navbar__link {
+        padding: 0.5rem 1rem;
+    }
+
+    .vehicle-info__price-table {
+        margin-right: 1rem;
+    }
+
+    .vehicle-info__price-item {
+        margin-bottom: 0.5rem;
+    }
+
+    .vehicle-info__header {
+        font-size: 1.2em;
+        margin-bottom: 1rem;
+    }
+
+    .vehicle-info__model-name {
+        font-size: 1em;
+    }
+
+    .button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .history__title {
+        font-size: 1.5em;
+        margin-bottom: 1rem;
+    }
+
+    .history__image {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar__list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar__link {
+        padding: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .vehicle-info__price-table {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-right: 0;
+    }
+
+    .vehicle-info__price-item {
+        flex: 1 1 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .vehicle-info__header {
+        font-size: 1em;
+        margin-bottom: 0.5rem;
+    }
+
+    .vehicle-info__image-container {
+        width: 100%;
+    }
+
+    .vehicle-info__image {
+        max-width: 100%;
+        width: auto;
+    }
+
+    .vehicle-info__logo {
+        width: 80px;
+    }
+
+    .button {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .history__title {
+        font-size: 1.2em;
+        margin-bottom: 0.5rem;
+    }
+
+    .history__image {
+        width: 100%;
+        max-width: 200px;
+    }
 }

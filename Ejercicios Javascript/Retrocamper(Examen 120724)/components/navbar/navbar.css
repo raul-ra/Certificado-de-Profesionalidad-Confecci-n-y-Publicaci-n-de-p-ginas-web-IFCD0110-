@@ -1,6 +1,7 @@
 .navbar {
-    background-color: #333;
+    background-color: #2b2137; /* Fondo oscuro */
     overflow: hidden;
+    width: 100%;
 }
 
 .navbar__list {
@@ -15,13 +16,16 @@
 
 .navbar__link {
     display: block;
-    color: white;
+    color: #509397; /* Fuente teal */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px; /* Redondear el borde */
 }
 
 .navbar__link:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
+    color: #509397; /* Fuente teal */
+    border-radius: 20px; /* Redondear el borde */
 }
