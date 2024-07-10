@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroCamper</title>
-    <link rel="stylesheet" href="components/navbar/navbar.css">
     <link rel="stylesheet" href="retroCamper.css">
 </head>
 <body>
     <header>
-        <div id="banner">
-            <img src="assets/logo/RetroCamper banner.svg" alt="RetroCamper Banner" class="banner-image" onclick="window.location.href='retroCamper.html'">
+        <div class="hero">
+            <img src="assets/logo/RetroCamper banner.svg" alt="RetroCamper Banner" class="hero__banner">
         </div>
-        <div id="navbar"></div>
+        <nav class="navbar">
+            <div id="navbar"></div>
+        </nav>
     </header>
     <main>
         <div id="model-list" class="model-list"></div>
         <div id="vehicle-info" class="vehicle-info"></div>
     </main>
-    <script src="js/retroCamper.js"></script>
+    <script src="retroCamper.js"></script>
 </body>
 </html>

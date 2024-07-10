@@ -35,24 +35,16 @@ img {
     color: white;
     text-align: center;
     padding: 0; /* Eliminar el padding */
+    margin: 0;
+    width: 100%; /* Asegurar que ocupe el 100% del ancho */
 }
 
 .hero__banner {
     width: 100%;
     height: auto;
-}
-
-.hero__title {
-    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
-    font-size: 2.5em;
-    margin: 20px 0 10px;
-    color: #f8efd2; /* Color claro */
-}
-
-.hero__subtitle {
-    font-size: 1.5em;
     margin: 0;
-    color: #509397; /* Color teal */
+    padding: 0;
+    cursor: pointer;
 }
 
 /* Estilos del Navbar */
@@ -61,7 +53,10 @@ img {
     background-color: #2b2137; /* Fondo oscuro */
     overflow: hidden;
     width: 100%;
-    padding: 0; /* Eliminar el padding */
+    margin: 0; /* Eliminar margen */
+    padding: 0; /* Eliminar padding */
+    display: flex;
+    justify-content: center; /* Centrar los elementos de la navbar */
 }
 
 .navbar__list {
@@ -69,21 +64,21 @@ img {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: center; /* Alineación central de la lista */
 }
 
 .navbar__item {
-    display: inline;
+    margin: 0 10px; /* Espacio entre los elementos */
 }
 
 .navbar__link {
     display: block;
     color: #509397; /* Fuente teal */
     text-align: center;
-    padding: 1rem 1rem; /* Ajustar el padding */
+    padding: 14px 16px;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.5em; /* Tamaño de fuente más grande */
     border-radius: 20px; /* Redondear el borde */
 }
 
@@ -91,20 +86,6 @@ img {
     background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
     color: #509397; /* Fuente teal */
     border-radius: 20px; /* Redondear el borde */
-}
-
-/* Estilos del Banner */
-
-#banner {
-    width: 100%;
-    padding: 0; /* Eliminar el padding */
-}
-
-.banner-image {
-    width: 100%;
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
 }
 
 /* Estilos de la Lista de Modelos */
@@ -138,6 +119,31 @@ img {
     flex-wrap: wrap;
     background-color: #f8efd2; /* Fondo de la página */
     position: relative;
+    justify-content: center; /* Centrar el contenido */
+}
+
+.vehicle-info__header-container {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px; /* Añadir padding inferior */
+    display: flex;
+    flex-direction: row; /* En línea con el logo */
+    align-items: center;
+    justify-content: center;
+}
+
+.vehicle-info__header {
+    font-size: 2.5em; /* Tamaño de fuente más grande */
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
+    font-weight: bold;
+    color: #2b2137; /* Color de texto principal */
+    margin-left: 10px; /* Espacio entre el logo y el título */
+}
+
+.vehicle-info__logo {
+    width: 150px; /* Tamaño más grande */
+    height: auto;
+    cursor: pointer;
 }
 
 .vehicle-info__price-table {
@@ -145,12 +151,12 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 2rem; /* Ajustar el margen */
+    margin-right: 20px;
 }
 
 .vehicle-info__price-item {
     text-align: left;
-    margin-bottom: 1rem; /* Ajustar el margen */
+    margin-bottom: 10px;
     color: #2b2137; /* Color de texto principal */
 }
 
@@ -163,53 +169,43 @@ img {
 }
 
 .vehicle-info__image {
-    width: 100%;
-    max-width: 400px;
+    max-width: 100%;
     height: auto;
     object-fit: cover;
+    width: 400px;
+    height: 300px;
     border: 2px solid #2b2137; /* Borde oscuro */
 }
 
 .vehicle-info__model-name {
-    margin-top: 1rem; /* Ajustar el margen */
+    margin-top: 10px;
     font-size: 1.2em;
     color: #2b2137; /* Color de texto principal */
 }
 
-.vehicle-info__header {
+.vehicle-info__buttons {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 2rem; /* Ajustar el margen */
-    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
-    font-weight: bold;
-    color: #2b2137; /* Color de texto principal */
+    margin-top: 20px;
 }
 
-.vehicle-info__logo {
-    position: absolute;
-    top: 1rem; /* Ajustar la posición */
-    left: 1rem; /* Ajustar la posición */
-    width: 100px; /* Ajustar el ancho */
-    height: auto;
-    cursor: pointer;
-}
-
-.button {
+.vehicle-info__button {
     background-color: #EF7C3F; /* Fondo del botón */
     color: #509397; /* Fuente del botón */
     border: none;
-    padding: 1rem 2rem; /* Ajustar el padding */
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1rem; /* Ajustar el tamaño de la fuente */
-    margin: 0.5rem 0.2rem; /* Ajustar el margen */
+    font-size: 18px; /* Aumentar tamaño de fuente */
+    margin: 4px 2px;
     cursor: pointer;
     border-radius: 20px; /* Redondear el borde */
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif; /* Fuente del botón */
 }
 
-.button:hover {
+.vehicle-info__button:hover {
     background-color: #509397; /* Fondo del botón al pasar el cursor */
     color: #EF7C3F; /* Fuente del botón al pasar el cursor */
     border-radius: 20px; /* Redondear el borde */
@@ -222,9 +218,6 @@ img {
     background-color: #f8efd2; /* Fondo de la página */
     color: #2b2137; /* Color de texto principal */
     text-align: justify;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .history__title {
@@ -234,107 +227,48 @@ img {
 }
 
 .history__image {
-    max-width: 100%;
-    width: 400px;
+    max-width: 80%;
     height: auto;
     margin: 0 auto 20px auto;
-    display: block;
 }
 
-/* Media Queries para hacer la página responsive */
-
-@media (max-width: 768px) {
-    .navbar__link {
-        padding: 0.5rem 1rem;
-    }
-
-    .vehicle-info__price-table {
-        margin-right: 1rem;
-    }
-
-    .vehicle-info__price-item {
-        margin-bottom: 0.5rem;
-    }
-
-    .vehicle-info__header {
-        font-size: 1.2em;
-        margin-bottom: 1rem;
-    }
-
-    .vehicle-info__model-name {
-        font-size: 1em;
-    }
-
-    .button {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-    }
-
-    .history__title {
-        font-size: 1.5em;
-        margin-bottom: 1rem;
-    }
-
-    .history__image {
-        width: 100%;
-        max-width: 300px;
-    }
+/* Estilos de la lista de precios */
+.price-list {
+    padding: 20px;
+    background-color: #f8efd2; /* Fondo de la página */
 }
 
-@media (max-width: 480px) {
-    .navbar__list {
-        flex-direction: column;
-        align-items: center;
-    }
+.price-list__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px; /* Espacio entre el logo y el nombre de la marca */
+}
 
-    .navbar__link {
-        padding: 0.5rem;
-        width: 100%;
-        text-align: center;
-    }
+.price-list__logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
 
-    .vehicle-info__price-table {
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-right: 0;
-    }
+.price-list__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Espacio entre tablas */
+}
 
-    .vehicle-info__price-item {
-        flex: 1 1 100%;
-        text-align: center;
-        margin-bottom: 0.5rem;
-    }
+.price-list__table th, .price-list__table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #509397; /* Color de la línea */
+}
 
-    .vehicle-info__header {
-        font-size: 1em;
-        margin-bottom: 0.5rem;
-    }
+.price-list__table th {
+    background-color: #509397; /* Fondo del encabezado */
+    color: #f8efd2; /* Color de la fuente del encabezado */
+}
 
-    .vehicle-info__image-container {
-        width: 100%;
-    }
-
-    .vehicle-info__image {
-        max-width: 100%;
-        width: auto;
-    }
-
-    .vehicle-info__logo {
-        width: 80px;
-    }
-
-    .button {
-        padding: 0.5rem;
-        font-size: 0.8rem;
-    }
-
-    .history__title {
-        font-size: 1.2em;
-        margin-bottom: 0.5rem;
-    }
-
-    .history__image {
-        width: 100%;
-        max-width: 200px;
-    }
+.price-list__table tr:nth-child(even) {
+    background-color: #EF7C3F; /* Fondo de las filas pares */
+    color: #f8efd2; /* Color de la fuente de las filas pares */
 }
