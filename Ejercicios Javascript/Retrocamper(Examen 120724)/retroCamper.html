@@ -9,18 +9,37 @@
 </head>
 <body>
     <header>
-        <div id="banner">
-            <img src="/assets/logo/RetroCamper banner.svg" alt="RetroCamper Banner" class="banner-image" onclick="window.location.href='../../retroCamper.html'">
+        <div id="banner" class="banner">
+            <img src="assets/logo/RetroCamper banner.svg" alt="RetroCamper Banner" class="banner-image" onclick="window.location.href='retroCamper.html'">
         </div>
-        <nav id="navbar"></nav>
+        <nav id="navbar" class="navbar"></nav>
     </header>
-    <div id="navbar"></div>
-    <div id="model-list" class="model-list"></div>
-    <div id="vehicle-info" class="vehicle-info"></div>
     <main>
+        <div id="main-content">
+            <section id="welcome" class="welcome">
+                <h1>Bienvenido a RetroCamper</h1>
+                <p>La página de venta de furgonetas camper antiguas para que tu experiencia sea única.</p>
+            </section>
+            <section id="carousel" class="carousel">
+                <div class="carousel__container">
+                    <img src="assets/images/t1.jpg" alt="Volkswagen T1" class="carousel__image">
+                    <img src="assets/images/t2.jpg" alt="Volkswagen T2" class="carousel__image">
+                    <img src="assets/images/t3.jpg" alt="Volkswagen T3" class="carousel__image">
+                    <img src="assets/images/lt.jpg" alt="Volkswagen LT" class="carousel__image">
+                </div>
+            </section>
+        </div>
         <section id="model-list" class="model-list"></section>
-        <section id="vehicle-info" class="vehicle-info"></section>
+        <section id="vehicle-info" class="vehicle-info">
+            <div class="vehicle-info__header-container">
+                <img src="" alt="" class="vehicle-info__logo">
+                <div class="vehicle-info__header">Nombre del Vehículo</div>
+            </div>
+        </section>
     </main>
+    <footer class="footer">
+        <p>&copy; 2024 RetroCamper. Todos los derechos reservados.</p>
+    </footer>
     <script src="js/retroCamper.js"></script>
 </body>
 </html>

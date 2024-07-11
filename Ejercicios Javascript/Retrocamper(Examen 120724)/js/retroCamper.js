@@ -29,7 +29,7 @@ const vehicles = {
         { model: "Ford Econoline E-100", img: "assets/images/e100.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1975, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-econoline-e100.html" },
         { model: "Ford Thames 400E", img: "assets/images/400e.jpg", basePrice: 25000, matriculation: 600, iva: 5250, year: 1957, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-thames-400e.html" },
     ],
-    citroen: [
+    citroën: [
         { model: "Citroën HY", img: "assets/images/hy.jpg", basePrice: 16000, matriculation: 400, iva: 3360, year: 1947, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-hy.html" },
         { model: "Citroën C25", img: "assets/images/c25.jpg", basePrice: 18000, matriculation: 450, iva: 3780, year: 1981, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-c25.html" },
         { model: "Citroën Type H", img: "assets/images/typeh.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1948, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-typeh.html" },
@@ -61,7 +61,14 @@ function attachNavbarListeners() {
 
 // Función para mostrar la lista de modelos de una marca seleccionada
 function showModels(brand) {
+    const mainContent = document.getElementById('main-content');
     const modelList = document.getElementById('model-list');
+    const vehicleInfo = document.getElementById('vehicle-info');
+
+    mainContent.style.display = 'none';
+    modelList.style.display = 'block';
+    vehicleInfo.style.display = 'none';
+
     modelList.innerHTML = '';
 
     vehicles[brand].forEach(vehicle => {
@@ -77,6 +84,9 @@ function showVehicleInfo(brand, model) {
     clearHistory();  // Limpiar el contenido de la historia antes de mostrar la nueva información
     const vehicle = vehicles[brand].find(v => v.model === model);
     const vehicleInfo = document.getElementById('vehicle-info');
+    const modelList = document.getElementById('model-list');
+
+    modelList.style.display = 'none';
     vehicleInfo.style.display = 'flex';
     vehicleInfo.innerHTML = `
         <div class="vehicle-info__header-container">

@@ -28,45 +28,78 @@ img {
     height: auto;
 }
 
-/* Estilos del Hero Banner */
+/* Estilos del Banner */
 
-.hero {
-    background-color: #2b2137; /* Fondo oscuro para la hero section */
-    color: white;
+.banner {
+    background-color: #2b2137; /* Mismo color que la navbar */
     text-align: center;
-    padding: 0; /* Eliminar el padding */
+    padding: 0;
     margin: 0;
     width: 100%; /* Asegurar que ocupe el 100% del ancho */
 }
 
-.hero__banner {
-    width: 100%;
+.banner-image {
+    width: 100%; /* Asegurar que la imagen del banner ocupe el 100% del ancho */
     height: auto;
     margin: 0;
     padding: 0;
     cursor: pointer;
 }
 
-/* Estilos de la Lista de Modelos */
+/* Estilos de la Navbar */
 
-.model-list {
+.navbar {
+    background-color: #2b2137;
+}
+
+.navbar__link {
+    font-size: 1.2em; /* Tamaño de las letras más grande */
+    color: #f8efd2;
+}
+
+/* Estilos de la sección de bienvenida */
+
+.welcome {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8efd2; /* Fondo de la página */
+}
+
+.welcome h1 {
+    font-size: 2.5em;
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
+    color: #2b2137; /* Color de texto principal */
+}
+
+.welcome p {
+    font-size: 1.2em;
+    color: #2b2137; /* Color de texto principal */
+}
+
+/* Estilos del carrusel */
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
     background-color: #f8efd2; /* Fondo de la página */
 }
 
-.model-list__item a {
-    color: #2b2137; /* Color de texto principal */
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-weight: bold;
+.carousel__container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
 }
 
-.model-list__item a:hover {
-    background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
-    color: #509397; /* Fuente teal */
-    border-radius: 20px; /* Redondear el borde */
+.carousel__image {
+    flex: none;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid #2b2137;
+    scroll-snap-align: start;
 }
 
 /* Estilos de la Información del Vehículo */
@@ -74,43 +107,40 @@ img {
 .vehicle-info {
     padding: 20px;
     display: none;
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* Para alinear elementos verticalmente */
     background-color: #f8efd2; /* Fondo de la página */
     position: relative;
-    justify-content: center; /* Centrar el contenido */
+    margin-top: 40px; /* Separar del resto de la página */
 }
 
 .vehicle-info__header-container {
     width: 100%;
-    text-align: center;
-    padding-bottom: 20px; /* Añadir padding inferior */
+    background-color: #2b2137; /* Color de fondo para el banner de info del vehículo */
+    color: #f8efd2; /* Color de texto blanco */
+    padding: 10px 20px; /* Espaciado interno */
     display: flex;
-    flex-direction: row; /* En línea con el logo */
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Alinear verticalmente el logo y el nombre */
 }
 
 .vehicle-info__header {
-    font-size: 2.5em; /* Tamaño de fuente más grande */
+    font-size: 2em; /* Tamaño de fuente */
     font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
     font-weight: bold;
-    color: #2b2137; /* Color de texto principal */
-    margin-left: 10px; /* Espacio entre el logo y el título */
+    margin-left: 20px; /* Espacio entre el logo y el nombre */
+    flex: 1; /* Ocupa el espacio restante */
 }
 
 .vehicle-info__logo {
-    width: 150px; /* Tamaño más grande */
+    width: 100px; /* Tamaño del logo */
     height: auto;
     cursor: pointer;
 }
 
 .vehicle-info__price-table {
-    flex: 1 1 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 20px;
+    margin: 20px 0; /* Margen vertical para separación */
 }
 
 .vehicle-info__price-item {
@@ -120,11 +150,11 @@ img {
 }
 
 .vehicle-info__image-container {
-    flex: 1 1 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 20px 0; /* Margen vertical para separación */
 }
 
 .vehicle-info__image {
@@ -170,64 +200,14 @@ img {
     border-radius: 20px; /* Redondear el borde */
 }
 
-/* Estilos de la sección de historia */
+/* Estilos del footer */
 
-.history {
-    padding: 20px;
-    background-color: #f8efd2; /* Fondo de la página */
-    color: #2b2137; /* Color de texto principal */
-    text-align: justify;
-}
-
-.history__title {
-    font-size: 2em;
-    margin-bottom: 20px;
+.footer {
+    background-color: #2b2137;
+    color: #f8efd2;
     text-align: center;
-}
-
-.history__image {
-    max-width: 80%;
-    height: auto;
-    margin: 0 auto 20px auto;
-}
-
-/* Estilos de la lista de precios */
-.price-list {
     padding: 20px;
-    background-color: #f8efd2; /* Fondo de la página */
-}
-
-.price-list__header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: 20px; /* Espacio entre el logo y el nombre de la marca */
-}
-
-.price-list__logo {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.price-list__table {
+    position: relative;
+    bottom: 0;
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px; /* Espacio entre tablas */
-}
-
-.price-list__table th, .price-list__table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #509397; /* Color de la línea */
-}
-
-.price-list__table th {
-    background-color: #509397; /* Fondo del encabezado */
-    color: #f8efd2; /* Color de la fuente del encabezado */
-}
-
-.price-list__table tr:nth-child(even) {
-    background-color: #EF7C3F; /* Fondo de las filas pares */
-    color: #f8efd2; /* Color de la fuente de las filas pares */
 }
