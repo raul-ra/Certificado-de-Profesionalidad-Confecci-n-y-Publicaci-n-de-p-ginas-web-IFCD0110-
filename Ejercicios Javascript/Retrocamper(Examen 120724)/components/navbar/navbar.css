@@ -1,3 +1,59 @@
+/* Estilos generales y fuentes */
+@font-face {
+    font-family: 'Gliker Black Semi Condensed';
+    src: url('../assets/fonts/Gliker-BlackSemiCondensed.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gliker Regular';
+    src: url('../assets/fonts/Gliker-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Gliker Regular', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8efd2; /* Fondo de la página */
+    color: #2b2137; /* Color de texto principal */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos del Hero Banner */
+.hero {
+    background-color: #2b2137; /* Fondo oscuro para la hero section */
+    color: white;
+    text-align: center;
+    padding: 0; /* Eliminar el padding */
+}
+
+.hero__banner {
+    width: 100%;
+    height: auto;
+}
+
+.hero__title {
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
+    font-size: 2.5em;
+    margin: 20px 0 10px;
+    color: #f8efd2; /* Color claro */
+}
+
+.hero__subtitle {
+    font-size: 1.5em;
+    margin: 0;
+    color: #509397; /* Color teal */
+}
+
+/* Estilos del Navbar */
 .navbar {
     background-color: #2b2137; /* Fondo oscuro */
     overflow: hidden;
@@ -28,4 +84,172 @@
     background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
     color: #509397; /* Fuente teal */
     border-radius: 20px; /* Redondear el borde */
+}
+
+/* Estilos de la Lista de Modelos */
+.model-list {
+    padding: 20px;
+    background-color: #f8efd2; /* Fondo de la página */
+}
+
+.model-list__item a {
+    color: #2b2137; /* Color de texto principal */
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.model-list__item a:hover {
+    background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
+    color: #509397; /* Fuente teal */
+    border-radius: 20px; /* Redondear el borde */
+}
+
+/* Estilos de la Información del Vehículo */
+.vehicle-info {
+    padding: 20px;
+    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f8efd2; /* Fondo de la página */
+    position: relative;
+}
+
+.vehicle-info__price-table {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.vehicle-info__price-item {
+    text-align: left;
+    margin-bottom: 10px;
+    color: #2b2137; /* Color de texto principal */
+}
+
+.vehicle-info__image-container {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.vehicle-info__image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    width: 400px;
+    height: 300px;
+    border: 2px solid #2b2137; /* Borde oscuro */
+}
+
+.vehicle-info__model-name {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #2b2137; /* Color de texto principal */
+}
+
+.vehicle-info__header {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
+    font-weight: bold;
+    color: #2b2137; /* Color de texto principal */
+}
+
+.vehicle-info__logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #EF7C3F; /* Fondo del botón */
+    color: #509397; /* Fuente del botón */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px; /* Redondear el borde */
+}
+
+.button:hover {
+    background-color: #509397; /* Fondo del botón al pasar el cursor */
+    color: #EF7C3F; /* Fuente del botón al pasar el cursor */
+    border-radius: 20px; /* Redondear el borde */
+}
+
+/* Estilos de la sección de historia */
+.history {
+    padding: 20px;
+    background-color: #f8efd2; /* Fondo de la página */
+    color: #2b2137; /* Color de texto principal */
+    text-align: justify;
+}
+
+.history__title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.history__image {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto 20px auto;
+}
+
+/* Estilos de la lista de precios */
+.price-list {
+    padding: 20px;
+    background-color: #f8efd2; /* Fondo de la página */
+}
+
+.price-list__header {
+    display: flex;
+    align-items: left;
+    margin-bottom: 20px;
+    margin-top: 20px; /* Espacio entre el logo y el nombre de la marca */
+}
+
+.price-list__logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.price-list__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Espacio entre tablas */
+}
+
+.price-list__table th, .price-list__table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #509397; /* Color de la línea */
+}
+
+.price-list__table th {
+    background-color: #509397; /* Fondo del encabezado */
+    color: #f8efd2; /* Color de la fuente del encabezado */
+}
+
+.price-list__table tr:nth-child(even) {
+    background-color: #EF7C3F; /* Fondo de las filas pares */
+    color: #f8efd2; /* Color de la fuente de las filas pares */
 }

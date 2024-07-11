@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (path.includes('/pages/history/')) {
             navbarPath = '../../components/navbar/navbar.html';
         }
-        loadComponent('navbar', navbarPath);
+        loadComponent('navbar', navbarPath, attachNavbarListeners);
     }
 });
 
@@ -27,7 +27,7 @@ const vehicles = {
         { model: "Ford Transit Mk1", img: "assets/images/mk1.jpg", basePrice: 18000, matriculation: 450, iva: 3780, year: 1965, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-transit-mk1.html" },
         { model: "Ford Transit Mk2", img: "assets/images/mk2.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1978, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-transit-mk2.html" },
         { model: "Ford Econoline E-100", img: "assets/images/e100.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1975, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-econoline-e100.html" },
-        { model: "Ford Thames 400E", img: "assets/images/400e.jpg", basePrice: 25000, matriculation: 600, iva: 5250, year: 1957, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford/europa", historyUrl: "pages/history/ford-thames-400e.html" },
+        { model: "Ford Thames 400E", img: "assets/images/400e.jpg", basePrice: 25000, matriculation: 600, iva: 5250, year: 1957, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-thames-400e.html" },
     ],
     citroen: [
         { model: "Citroën HY", img: "assets/images/hy.jpg", basePrice: 16000, matriculation: 400, iva: 3360, year: 1947, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-hy.html" },
@@ -38,10 +38,25 @@ const vehicles = {
 };
 
 // Función para cargar componentes HTML de manera dinámica
-function loadComponent(id, url) {
+function loadComponent(id, url, callback) {
     fetch(url)
         .then(response => response.text())
-        .then(data => document.getElementById(id).innerHTML = data);
+        .then(data => {
+            document.getElementById(id).innerHTML = data;
+            if (callback) callback();
+        });
+}
+
+// Función para adjuntar oyentes de eventos a los enlaces de la barra de navegación
+function attachNavbarListeners() {
+    const links = document.querySelectorAll('.navbar__link');
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const brand = this.textContent.toLowerCase().replace(/-benz/g, '').replace('é', 'e');
+            showModels(brand);
+        });
+    });
 }
 
 // Función para mostrar la lista de modelos de una marca seleccionada
@@ -89,41 +104,23 @@ function showVehicleInfo(brand, model) {
         <div class="vehicle-info__buttons">
             <button class="button vehicle-info__button" onclick="window.location.href='${vehicle.historyUrl}'">Historia</button>
             <button class="button vehicle-info__button" onclick="window.open('${vehicle.actualidadUrl}', '_blank')">Actualidad</button>
-            <button class="button vehicle-info__button" onclick="showPriceList()">Visualizar lista de precios</button>
+            <button class="button vehicle-info__button" onclick="showPriceList()">Lista de precios</button>
         </div>
     `;
 }
 
-// Función para mostrar la historia del modelo seleccionado
-function showHistory(brand, model) {
-    const modelFileName = model.toLowerCase().replace(/ /g, '-').replace('citroën', 'citroen').replace('mercedes-benz', 'mercedes'); // Asegurarse de que no se duplique la marca en el nombre del archivo
-    const brandFileName = brand.toLowerCase().replace(/ /g, '-');
-    const fullPath = `pages/history/${brandFileName}-${modelFileName}.html`;
-    window.location.href = fullPath; // Redirigir a la página de historia correspondiente
-}
-
-// Limpiar el contenido de la historia cuando se selecciona un nuevo modelo
-function clearHistory() {
-    const historyElement = document.querySelector('.history');
-    if (historyElement) {
-        historyElement.remove();
-    }
-}
-
-// Función para mostrar la lista de precios de todos los modelos de todas las marcas
+// Función para mostrar la lista de precios de todos los modelos
 function showPriceList() {
-    const priceListContainer = document.createElement('div');
-    priceListContainer.className = 'price-list';
+    const vehicleInfo = document.getElementById('vehicle-info');
+    vehicleInfo.innerHTML = ''; // Limpiar contenido actual
 
     let priceListHTML = '';
 
     Object.keys(vehicles).forEach(brand => {
-        const brandLogo = vehicles[brand][0].brandLogo;
-        const brandName = brand.charAt(0).toUpperCase() + brand.slice(1);
         priceListHTML += `
             <div class="price-list__header">
-                <img src="${brandLogo}" alt="${brand} logo" class="price-list__logo">
-                <h2>${brandName}</h2>
+                <img src="${vehicles[brand][0].brandLogo}" alt="${brand} logo" class="price-list__logo">
+                <h2>${brand.charAt(0).toUpperCase() + brand.slice(1)}</h2>
             </div>
             <table class="price-list__table">
                 <thead>
@@ -157,9 +154,13 @@ function showPriceList() {
         `;
     });
 
-    priceListContainer.innerHTML = priceListHTML;
+    vehicleInfo.innerHTML = priceListHTML;
+}
 
-    const vehicleInfo = document.getElementById('vehicle-info');
-    vehicleInfo.style.display = 'none';
-    document.body.appendChild(priceListContainer);
+// Limpiar el contenido de la historia cuando se selecciona un nuevo modelo
+function clearHistory() {
+    const historyElement = document.querySelector('.history');
+    if (historyElement) {
+        historyElement.remove();
+    }
 }

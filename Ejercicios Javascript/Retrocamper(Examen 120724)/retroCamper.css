@@ -2,14 +2,14 @@
 
 @font-face {
     font-family: 'Gliker Black Semi Condensed';
-    src: url('../assets/fonts/Gliker-BlackSemiCondensed.woff2') format('woff2');
+    src: url('assets/fonts/Gliker-BlackSemiCondensed.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gliker Regular';
-    src: url('../assets/fonts/Gliker-Regular.woff2') format('woff2');
+    src: url('assets/fonts/Gliker-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -45,47 +45,6 @@ img {
     margin: 0;
     padding: 0;
     cursor: pointer;
-}
-
-/* Estilos del Navbar */
-
-.navbar {
-    background-color: #2b2137; /* Fondo oscuro */
-    overflow: hidden;
-    width: 100%;
-    margin: 0; /* Eliminar margen */
-    padding: 0; /* Eliminar padding */
-    display: flex;
-    justify-content: center; /* Centrar los elementos de la navbar */
-}
-
-.navbar__list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; /* Alineación central de la lista */
-}
-
-.navbar__item {
-    margin: 0 10px; /* Espacio entre los elementos */
-}
-
-.navbar__link {
-    display: block;
-    color: #509397; /* Fuente teal */
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.5em; /* Tamaño de fuente más grande */
-    border-radius: 20px; /* Redondear el borde */
-}
-
-.navbar__link:hover {
-    background-color: #EF7C3F; /* Fondo del botón al pasar el cursor */
-    color: #509397; /* Fuente teal */
-    border-radius: 20px; /* Redondear el borde */
 }
 
 /* Estilos de la Lista de Modelos */
