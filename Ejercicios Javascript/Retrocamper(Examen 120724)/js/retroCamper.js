@@ -8,34 +8,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         loadComponent('navbar', navbarPath, attachNavbarListeners);
     }
-});
 
-const vehicles = {
-    volkswagen: [
-        { model: "Volkswagen T1", img: "assets/images/t1.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1964, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-t1.html" },
-        { model: "Volkswagen T2", img: "assets/images/t2.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1968, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-t2.html" },
-        { model: "Volkswagen T3", img: "assets/images/t3.jpg", basePrice: 25000, matriculation: 600, iva: 5250, year: 1979, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-t3.html" },
-        { model: "Volkswagen LT", img: "assets/images/lt.jpg", basePrice: 27000, matriculation: 650, iva: 5670, year: 1975, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-lt.html" },
-    ],
-    mercedes: [
-        { model: "Mercedes-Benz L319", img: "assets/images/l319.jpg", basePrice: 30000, matriculation: 700, iva: 6300, year: 1955, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-l319.html" },
-        { model: "Mercedes-Benz T1", img: "assets/images/mt1.jpg", basePrice: 32000, matriculation: 750, iva: 6720, year: 1977, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-t1.html" },
-        { model: "Mercedes-Benz 206D", img: "assets/images/206d.jpg", basePrice: 35000, matriculation: 800, iva: 7350, year: 1967, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-206d.html" },
-        { model: "Mercedes-Benz 508D", img: "assets/images/508d.jpg", basePrice: 37000, matriculation: 850, iva: 7770, year: 1980, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-508d.html" },
-    ],
-    ford: [
-        { model: "Ford Transit Mk1", img: "assets/images/mk1.jpg", basePrice: 18000, matriculation: 450, iva: 3780, year: 1965, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-transit-mk1.html" },
-        { model: "Ford Transit Mk2", img: "assets/images/mk2.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1978, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-transit-mk2.html" },
-        { model: "Ford Econoline E-100", img: "assets/images/e100.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1975, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-econoline-e100.html" },
-        { model: "Ford Thames 400E", img: "assets/images/400e.jpg", basePrice: 25000, matriculation: 600, iva: 5250, year: 1957, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-thames-400e.html" },
-    ],
-    citroën: [
-        { model: "Citroën HY", img: "assets/images/hy.jpg", basePrice: 16000, matriculation: 400, iva: 3360, year: 1947, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-hy.html" },
-        { model: "Citroën C25", img: "assets/images/c25.jpg", basePrice: 18000, matriculation: 450, iva: 3780, year: 1981, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-c25.html" },
-        { model: "Citroën Type H", img: "assets/images/typeh.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1948, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-typeh.html" },
-        { model: "Citroën 2CV Fourgonnette", img: "assets/images/2cv.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1951, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-2cv.html" },
-    ],
-};
+    // Configuración del carrusel
+    const carouselContainer = document.querySelector('.carousel__container');
+    let currentIndex = 0;
+
+    function showNextImage() {
+        const images = document.querySelectorAll('.carousel__image');
+        currentIndex = (currentIndex + 1) % images.length;
+        const offset = -currentIndex * 300; // 300 es el ancho de cada imagen
+        carouselContainer.style.transform = `translateX(${offset}px)`;
+    }
+
+    setInterval(showNextImage, 3000); // Cambiar imagen cada 3 segundos
+
+    // Obtener el modal y el botón de cierre
+    const modal = document.getElementById('history-modal');
+    const closeModalBtn = document.getElementsByClassName('close-modal')[0];
+
+    // Cuando el usuario haga clic en <span> (x), cerrar el modal
+    closeModalBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    // Cuando el usuario haga clic en cualquier parte fuera del modal, cerrarlo
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
 
 // Función para cargar componentes HTML de manera dinámica
 function loadComponent(id, url, callback) {
@@ -112,7 +114,7 @@ function showVehicleInfo(brand, model) {
             <div class="vehicle-info__model-name">${vehicle.model}, ${vehicle.year}</div>
         </div>
         <div class="vehicle-info__buttons">
-            <button class="button vehicle-info__button" onclick="window.location.href='${vehicle.historyUrl}'">Historia</button>
+            <button class="button vehicle-info__button" onclick="loadHistory('${vehicle.brandLogo}', '${vehicle.model}', '${vehicle.img}', '${vehicle.historyUrl}')">Historia</button>
             <button class="button vehicle-info__button" onclick="window.open('${vehicle.actualidadUrl}', '_blank')">Actualidad</button>
             <button class="button vehicle-info__button" onclick="showPriceList()">Lista de precios</button>
         </div>
@@ -174,3 +176,52 @@ function clearHistory() {
         historyElement.remove();
     }
 }
+
+// Función para cargar y mostrar la historia en el modal
+function loadHistory(logo, model, image, url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            const modalLogo = document.getElementById('modal-logo');
+            const modalTitle = document.getElementById('modal-title');
+            const modalImage = document.getElementById('modal-image');
+            const modalBody = document.getElementById('modal-body');
+            
+            modalLogo.src = logo;
+            modalTitle.textContent = model;
+            modalImage.src = image;
+            modalBody.innerHTML = data;
+
+            // Mostrar el modal
+            const modal = document.getElementById('history-modal');
+            modal.style.display = 'block';
+        });
+}
+
+// Vehículos disponibles
+const vehicles = {
+    volkswagen: [
+        { model: "Volkswagen T1", img: "assets/images/t1.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1964, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-t1.html" },
+        { model: "Volkswagen T2", img: "assets/images/t2.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1968, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-t2.html" },
+        { model: "Volkswagen T3", img: "assets/images/t3.jpg", basePrice: 25000, matriculation: 600, iva: 5250, year: 1979, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-t3.html" },
+        { model: "Volkswagen LT", img: "assets/images/lt.jpg", basePrice: 27000, matriculation: 650, iva: 5670, year: 1975, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-lt.html" },
+    ],
+    mercedes: [
+        { model: "Mercedes-Benz L319", img: "assets/images/l319.jpg", basePrice: 30000, matriculation: 700, iva: 6300, year: 1955, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-l319.html" },
+        { model: "Mercedes-Benz T1", img: "assets/images/mt1.jpg", basePrice: 32000, matriculation: 750, iva: 6720, year: 1977, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-t1.html" },
+        { model: "Mercedes-Benz 206D", img: "assets/images/206d.jpg", basePrice: 35000, matriculation: 800, iva: 7350, year: 1967, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-206d.html" },
+        { model: "Mercedes-Benz 508D", img: "assets/images/508d.jpg", basePrice: 37000, matriculation: 850, iva: 7770, year: 1980, brandLogo: "assets/logo/mercedeslogo.png", brandUrl: "https://www.mercedes-benz.es/passengercars/brand.html", actualidadUrl: "https://www.mercedes-benz.es/passengercars/brand.html", historyUrl: "pages/history/mercedes-508d.html" },
+    ],
+    ford: [
+        { model: "Ford Transit Mk1", img: "assets/images/mk1.jpg", basePrice: 18000, matriculation: 450, iva: 3780, year: 1965, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-transit-mk1.html" },
+        { model: "Ford Transit Mk2", img: "assets/images/mk2.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1978, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-transit-mk2.html" },
+        { model: "Ford Econoline E-100", img: "assets/images/e100.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1975, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-econoline-e100.html" },
+        { model: "Ford Thames 400E", img: "assets/images/400e.jpg", basePrice: 25000, matriculation: 600, iva: 5250, year: 1957, brandLogo: "assets/logo/fordlogo.png", brandUrl: "https://www.ford.es/experiencia-ford/noticias-ford/nuestro-legado", actualidadUrl: "https://www.ford.es/experiencia-ford/noticias-ford/ventas-2021-ford-europa", historyUrl: "pages/history/ford-thames-400e.html" },
+    ],
+    citroën: [
+        { model: "Citroën HY", img: "assets/images/hy.jpg", basePrice: 16000, matriculation: 400, iva: 3360, year: 1947, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-hy.html" },
+        { model: "Citroën C25", img: "assets/images/c25.jpg", basePrice: 18000, matriculation: 450, iva: 3780, year: 1981, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-c25.html" },
+        { model: "Citroën Type H", img: "assets/images/typeh.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1948, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-typeh.html" },
+        { model: "Citroën 2CV Fourgonnette", img: "assets/images/2cv.jpg", basePrice: 22000, matriculation: 550, iva: 4620, year: 1951, brandLogo: "assets/logo/citroenlogo.png", brandUrl: "https://www.citroen.es/universo-citroen/historia.html", actualidadUrl: "https://www.citroen.es/universo-citroen/citroen-en-cifras.html", historyUrl: "pages/history/citroen-2cv.html" },
+    ],
+};
