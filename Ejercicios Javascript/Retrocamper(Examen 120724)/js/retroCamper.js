@@ -6,21 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (path.includes('/pages/history/')) {
             navbarPath = '../../components/navbar/navbar.html';
         }
+        // Carga el componente de la barra de navegación de manera dinámica
         loadComponent('navbar', navbarPath, attachNavbarListeners);
     }
 
     // Configuración del carrusel
-    const carouselContainer = document.querySelector('.carousel__container');
-    let currentIndex = 0;
-
-    function showNextImage() {
-        const images = document.querySelectorAll('.carousel__image');
-        currentIndex = (currentIndex + 1) % images.length;
-        const offset = -currentIndex * 300; // 300 es el ancho de cada imagen
-        carouselContainer.style.transform = `translateX(${offset}px)`;
-    }
-
-    setInterval(showNextImage, 3000); // Cambiar imagen cada 3 segundos
+    setupCarousel();
 
     // Obtener el modal y el botón de cierre
     const modal = document.getElementById('history-modal');
@@ -67,12 +58,14 @@ function showModels(brand) {
     const modelList = document.getElementById('model-list');
     const vehicleInfo = document.getElementById('vehicle-info');
 
+    // Oculta el contenido principal y la información del vehículo, muestra la lista de modelos
     mainContent.style.display = 'none';
     modelList.style.display = 'block';
     vehicleInfo.style.display = 'none';
 
     modelList.innerHTML = '';
 
+    // Genera la lista de modelos para la marca seleccionada
     vehicles[brand].forEach(vehicle => {
         const modelItem = document.createElement('div');
         modelItem.className = 'model-list__item';
@@ -83,35 +76,40 @@ function showModels(brand) {
 
 // Función para mostrar la información del vehículo seleccionado
 function showVehicleInfo(brand, model) {
-    clearHistory();  // Limpiar el contenido de la historia antes de mostrar la nueva información
+    clearHistory(); // Limpiar el contenido de la historia antes de mostrar la nueva información
     const vehicle = vehicles[brand].find(v => v.model === model);
     const vehicleInfo = document.getElementById('vehicle-info');
     const modelList = document.getElementById('model-list');
 
+    // Oculta la lista de modelos y muestra la información del vehículo
     modelList.style.display = 'none';
-    vehicleInfo.style.display = 'flex';
+    vehicleInfo.style.display = 'block';
+
+    // Genera el contenido de la información del vehículo
     vehicleInfo.innerHTML = `
         <div class="vehicle-info__header-container">
             <img src="${vehicle.brandLogo}" alt="${brand} logo" class="vehicle-info__logo" onclick="window.location.href='${vehicle.brandUrl}'">
             <div class="vehicle-info__header">${vehicle.model}</div>
         </div>
-        <div class="vehicle-info__price-table">
-            <div class="vehicle-info__price-item">
-                <h3>Precio Base</h3>
-                <p>${vehicle.basePrice} €</p>
+        <div class="vehicle-info__content">
+            <div class="vehicle-info__prices">
+                <div class="vehicle-info__price-item">
+                    <h3>Precio Base</h3>
+                    <p>${vehicle.basePrice} €</p>
+                </div>
+                <div class="vehicle-info__price-item">
+                    <h3>Precio Matriculación</h3>
+                    <p>${vehicle.matriculation} €</p>
+                </div>
+                <div class="vehicle-info__price-item">
+                    <h3>Precio con IVA</h3>
+                    <p>${vehicle.basePrice + vehicle.iva} €</p>
+                </div>
             </div>
-            <div class="vehicle-info__price-item">
-                <h3>Precio Matriculación</h3>
-                <p>${vehicle.matriculation} €</p>
+            <div class="vehicle-info__image-container">
+                <img class="vehicle-info__image" src="${vehicle.img}" alt="${vehicle.model}">
+                <div class="vehicle-info__model-name">${vehicle.model}, ${vehicle.year}</div>
             </div>
-            <div class="vehicle-info__price-item">
-                <h3>Precio con IVA</h3>
-                <p>${vehicle.basePrice + vehicle.iva} €</p>
-            </div>
-        </div>
-        <div class="vehicle-info__image-container">
-            <img class="vehicle-info__image" src="${vehicle.img}" alt="${vehicle.model}">
-            <div class="vehicle-info__model-name">${vehicle.model}, ${vehicle.year}</div>
         </div>
         <div class="vehicle-info__buttons">
             <button class="button vehicle-info__button" onclick="loadHistory('${vehicle.brandLogo}', '${vehicle.model}', '${vehicle.img}', '${vehicle.historyUrl}')">Historia</button>
@@ -128,6 +126,7 @@ function showPriceList() {
 
     let priceListHTML = '';
 
+    // Genera la lista de precios para todas las marcas y sus modelos
     Object.keys(vehicles).forEach(brand => {
         priceListHTML += `
             <div class="price-list__header">
@@ -187,6 +186,7 @@ function loadHistory(logo, model, image, url) {
             const modalImage = document.getElementById('modal-image');
             const modalBody = document.getElementById('modal-body');
             
+            // Configura el contenido del modal con la historia del vehículo
             modalLogo.src = logo;
             modalTitle.textContent = model;
             modalImage.src = image;
@@ -198,7 +198,52 @@ function loadHistory(logo, model, image, url) {
         });
 }
 
-// Vehículos disponibles
+// Configurar y mostrar el carrusel
+function setupCarousel() {
+    const carouselContainer = document.querySelector('.carousel__container');
+
+    // Obtener todas las imágenes de la carpeta 'assets/images'
+    const imagePaths = [
+        'assets/images/t1.jpg',
+        'assets/images/t2.jpg',
+        'assets/images/t3.jpg',
+        'assets/images/lt.jpg',
+        'assets/images/l319.jpg',
+        'assets/images/mt1.jpg',
+        'assets/images/206d.jpg',
+        'assets/images/508d.jpg',
+        'assets/images/mk1.jpg',
+        'assets/images/mk2.jpg',
+        'assets/images/e100.jpg',
+        'assets/images/400e.jpg',
+        'assets/images/hy.jpg',
+        'assets/images/c25.jpg',
+        'assets/images/typeh.jpg',
+        'assets/images/2cv.jpg'
+    ];
+
+    // Añadir las imágenes al contenedor del carrusel
+    imagePaths.forEach(path => {
+        const img = document.createElement('img');
+        img.src = path;
+        img.className = 'carousel__image';
+        carouselContainer.appendChild(img);
+    });
+
+    let currentIndex = 0;
+
+    // Función para mostrar la siguiente imagen en el carrusel
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % imagePaths.length;
+        const offset = -currentIndex * 300; // 300 es el ancho de cada imagen
+        carouselContainer.style.transform = `translateX(${offset}px)`;
+        carouselContainer.style.transition = 'transform 0.5s ease';
+    }
+
+    setInterval(showNextImage, 3000); // Cambia la imagen cada 3 segundos
+}
+
+// Datos de vehículos disponibles
 const vehicles = {
     volkswagen: [
         { model: "Volkswagen T1", img: "assets/images/t1.jpg", basePrice: 20000, matriculation: 500, iva: 4200, year: 1964, brandLogo: "assets/logo/wwlogo.png", brandUrl: "https://www.volkswagen.es/comunicacion/category/compania/historia/", actualidadUrl: "https://www.volkswagen.es/comunicacion/alrededor-de-487-millones-de-vehiculos-en-todo-el-mundo-la-marca-volkswagen-aumenta-sus-entregas-en-2023/", historyUrl: "pages/history/volkswagen-t1.html" },

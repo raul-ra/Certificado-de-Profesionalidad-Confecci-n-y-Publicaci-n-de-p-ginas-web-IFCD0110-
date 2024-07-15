@@ -1,5 +1,4 @@
 /* Estilos generales y fuentes */
-
 @font-face {
     font-family: 'Gliker Black Semi Condensed';
     src: url('assets/fonts/Gliker-BlackSemiCondensed.woff2') format('woff2');
@@ -36,7 +35,6 @@ img {
 }
 
 /* Estilos del Banner */
-
 .banner {
     background-color: #2b2137; /* Mismo color que la navbar */
     text-align: center;
@@ -54,7 +52,6 @@ img {
 }
 
 /* Estilos de la Navbar */
-
 .navbar {
     background-color: #2b2137;
 }
@@ -65,7 +62,6 @@ img {
 }
 
 /* Estilos de la sección de bienvenida */
-
 .welcome {
     text-align: center;
     padding: 40px;
@@ -84,7 +80,6 @@ img {
 }
 
 /* Estilos del carrusel */
-
 .carousel {
     display: flex;
     justify-content: center;
@@ -112,8 +107,6 @@ img {
 
 .vehicle-info {
     padding: 20px;
-    display: none;
-    flex-direction: column; /* Para alinear elementos verticalmente */
     background-color: #f8efd2; /* Fondo de la página */
     position: relative;
     margin-top: 40px; /* Separar del resto de la página */
@@ -121,19 +114,11 @@ img {
 
 .vehicle-info__header-container {
     width: 100%;
-    background-color: #2b2137; /* Color de fondo para el banner de info del vehículo */
     color: #f8efd2; /* Color de texto blanco */
     padding: 10px 20px; /* Espaciado interno */
     display: flex;
     align-items: center; /* Alinear verticalmente el logo y el nombre */
-}
-
-.vehicle-info__header {
-    font-size: 2em; /* Tamaño de fuente */
-    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
-    font-weight: bold;
-    margin-left: 20px; /* Espacio entre el logo y el nombre */
-    flex: 1; /* Ocupa el espacio restante */
+    justify-content: space-between;
 }
 
 .vehicle-info__logo {
@@ -142,11 +127,23 @@ img {
     cursor: pointer;
 }
 
-.vehicle-info__price-table {
+.vehicle-info__header {
+    font-size: 2em; /* Tamaño de fuente */
+    font-family: 'Gliker Black Semi Condensed', Arial, sans-serif;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+}
+
+.vehicle-info__content {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 20px 0; /* Margen vertical para separación */
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.vehicle-info__prices {
+    flex: 1;
+    margin-right: 20px;
 }
 
 .vehicle-info__price-item {
@@ -156,19 +153,17 @@ img {
 }
 
 .vehicle-info__image-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 20px 0; /* Margen vertical para separación */
 }
 
 .vehicle-info__image {
-    max-width: 100%;
-    height: auto;
+    width: 300px; /* Ajustar tamaño fijo */
+    height: 300px; /* Ajustar tamaño fijo */
     object-fit: cover;
-    width: 400px;
-    height: 300px;
     border: 2px solid #2b2137; /* Borde oscuro */
 }
 
@@ -176,6 +171,7 @@ img {
     margin-top: 10px;
     font-size: 1.2em;
     color: #2b2137; /* Color de texto principal */
+    text-align: center;
 }
 
 .vehicle-info__buttons {
@@ -207,7 +203,6 @@ img {
 }
 
 /* Estilos del footer */
-
 .footer {
     background-color: #2b2137;
     color: #f8efd2;
@@ -232,7 +227,7 @@ img {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #f8efd2;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -290,4 +285,129 @@ img {
 .modal-body {
     font-size: 1em;
     line-height: 1.5;
+}
+
+/* Media Queries */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .navbar__link {
+        font-size: 1em; /* Reducir el tamaño de las letras */
+    }
+
+    .welcome h1 {
+        font-size: 2em; /* Reducir el tamaño del título */
+    }
+
+    .welcome p {
+        font-size: 1em; /* Reducir el tamaño del párrafo */
+    }
+
+    .carousel__image {
+        width: 250px; /* Reducir el tamaño de las imágenes del carrusel */
+        height: 150px; /* Reducir el tamaño de las imágenes del carrusel */
+    }
+
+    .vehicle-info__header {
+        font-size: 1.5em; /* Reducir el tamaño del encabezado */
+    }
+
+    .vehicle-info__content {
+        flex-direction: column; /* Cambiar a una columna para mejor visualización */
+    }
+
+    .vehicle-info__image-container,
+    .vehicle-info__prices {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .vehicle-info__image {
+        width: 250px; /* Reducir el tamaño de la imagen */
+        height: 250px; /* Reducir el tamaño de la imagen */
+    }
+
+    .vehicle-info__button {
+        font-size: 16px; /* Reducir el tamaño de las letras de los botones */
+        padding: 8px 16px; /* Reducir el padding de los botones */
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .navbar__link {
+        font-size: 0.8em; /* Reducir aún más el tamaño de las letras */
+    }
+
+    .welcome h1 {
+        font-size: 1.5em; /* Reducir el tamaño del título */
+    }
+
+    .welcome p {
+        font-size: 0.9em; /* Reducir el tamaño del párrafo */
+    }
+
+    .carousel__image {
+        width: 200px; /* Reducir aún más el tamaño de las imágenes del carrusel */
+        height: 120px; /* Reducir aún más el tamaño de las imágenes del carrusel */
+    }
+
+    .vehicle-info__header {
+        font-size: 1.2em; /* Reducir el tamaño del encabezado */
+    }
+
+    .vehicle-info__image {
+        width: 200px; /* Reducir aún más el tamaño de la imagen */
+        height: 200px; /* Reducir aún más el tamaño de la imagen */
+    }
+
+    .vehicle-info__button {
+        font-size: 14px; /* Reducir aún más el tamaño de las letras de los botones */
+        padding: 6px 12px; /* Reducir el padding de los botones */
+    }
+}
+
+/* Ajustes adicionales para asegurar que el contenido se vea bien en todas las pantallas */
+@media (max-width: 1024px) {
+    .vehicle-info__header {
+        font-size: 1.8em; /* Ajustar el tamaño del encabezado */
+    }
+
+    .vehicle-info__prices, .vehicle-info__image-container {
+        margin-bottom: 20px; /* Añadir margen inferior para separar mejor las secciones */
+    }
+}
+
+/* Estilos específicos para dispositivos muy pequeños */
+@media (max-width: 360px) {
+    .navbar__link {
+        font-size: 0.7em; /* Reducir aún más el tamaño de las letras */
+    }
+
+    .welcome h1 {
+        font-size: 1.2em; /* Reducir el tamaño del título */
+    }
+
+    .welcome p {
+        font-size: 0.8em; /* Reducir el tamaño del párrafo */
+    }
+
+    .carousel__image {
+        width: 180px; /* Reducir el tamaño de las imágenes del carrusel */
+        height: 100px; /* Reducir el tamaño de las imágenes del carrusel */
+    }
+
+    .vehicle-info__header {
+        font-size: 1em; /* Reducir el tamaño del encabezado */
+    }
+
+    .vehicle-info__image {
+        width: 180px; /* Reducir el tamaño de la imagen */
+        height: 180px; /* Reducir el tamaño de la imagen */
+    }
+
+    .vehicle-info__button {
+        font-size: 12px; /* Reducir el tamaño de las letras de los botones */
+        padding: 4px 8px; /* Reducir el padding de los botones */
+    }
 }
