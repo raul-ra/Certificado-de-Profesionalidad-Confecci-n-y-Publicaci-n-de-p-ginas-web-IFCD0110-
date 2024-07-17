@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Admisión Veterinaria</title>
+    <link rel="stylesheet" href="./styles/quillavetstyles.css">
+    <script src="./js/quillavetjs.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Formulario de Admisión Veterinaria</h1>
+    </header>
+    <main class="main-content">
+        <form id="admission-form" class="form">
+            <div class="form__group">
+                <label for="owner-name" class="form__label">Nombre del Dueño:</label>
+                <input type="text" id="owner-name" class="form__input" maxlength="25">
+            </div>
+            <div class="form__group">
+                <label for="dni" class="form__label">DNI:</label>
+                <input type="text" id="dni" class="form__input">
+            </div>
+            <div class="form__group">
+                <label for="address" class="form__label">Dirección:</label>
+                <input type="text" id="address" class="form__input" maxlength="40">
+            </div>
+            <div class="form__group">
+                <label for="province" class="form__label">Provincia:</label>
+                <select id="province" class="form__select"></select>
+            </div>
+            <div class="form__group">
+                <label for="locality" class="form__label">Localidad:</label>
+                <select id="locality" class="form__select"></select>
+            </div>
+            <div class="form__group">
+                <label for="postal-code" class="form__label">Código Postal:</label>
+                <input type="text" id="postal-code" class="form__input">
+            </div>
+            <div class="form__group">
+                <label for="phone" class="form__label">Teléfono:</label>
+                <input type="text" id="phone" class="form__input">
+            </div>
+            <div class="form__group">
+                <label for="animal-name" class="form__label">Nombre del Animal:</label>
+                <input type="text" id="animal-name" class="form__input">
+            </div>
+            <div class="form__group">
+                <label for="chip-number" class="form__label">Número de Chip:</label>
+                <input type="text" id="chip-number" class="form__input" maxlength="15">
+            </div>
+            <div class="form__group">
+                <label for="admission-date" class="form__label">Fecha de Ingreso:</label>
+                <input type="date" id="admission-date" class="form__input">
+            </div>
+            <div class="form__group">
+                <label for="surgery-date" class="form__label">Fecha de Intervención Quirúrgica:</label>
+                <input type="date" id="surgery-date" class="form__input">
+            </div>
+            <div class="form__group">
+                <label for="species" class="form__label">Especie:</label>
+                <select id="species" class="form__select"></select>
+            </div>
+            <div class="form__group">
+                <label for="breed" class="form__label">Raza:</label>
+                <select id="breed" class="form__select"></select>
+            </div>
+            <div class="form__group">
+                <label for="vaccination" class="form__label">Vacunación:</label>
+                <select id="vaccination" class="form__select"></select>
+            </div>
+            <div class="form__group">
+                <label for="vaccination-date" class="form__label">Fecha de Vacunación:</label>
+                <input type="date" id="vaccination-date" class="form__input">
+            </div>
+            <div class="form__buttons">
+                <button type="button" id="submit-button" class="form__button">Aceptar</button>
+                <button type="button" id="cancel-button" class="form__button">Cancelar</button>
+                <button type="button" id="view-records-button" class="form__button">Visualizar Fichas</button>
+                <button type="button" id="end-program-button" class="form__button">Fin de Programa</button>
+            </div>
+        </form>
+        <section id="records-view" class="records-view" style="display: none;">
+            <div id="record-details" class="record-details"></div>
+            <div class="records-navigation">
+                <button id="prev-record" class="records-navigation__button">Anterior</button>
+                <span id="record-number" class="records-navigation__number"></span>
+                <button id="next-record" class="records-navigation__button">Siguiente</button>
+            </div>
+        </section>
+    </main>
+    <div id="genericModal" class="modal">
+        <div class="modal__content">
+            <span class="close">&times;</span>
+            <p id="modal-message" class="modal__message"></p>
+            <div id="modal-buttons" class="modal__buttons">
+                <button id="modal-confirm" class="modal__button">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
