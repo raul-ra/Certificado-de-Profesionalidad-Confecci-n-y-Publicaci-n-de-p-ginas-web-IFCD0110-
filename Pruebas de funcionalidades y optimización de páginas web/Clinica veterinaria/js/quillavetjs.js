@@ -965,6 +965,24 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('records-view').style.display = 'block';
         }
 
+             // Vincula el botón de eliminación a la función deleteRecord
+            document.getElementById('delete-record').addEventListener('click', deleteRecord);
+
+        // Función para borrar un registro específica
+
+function deleteRecord() {
+    const recordIndex = parseInt(document.getElementById('record-number').textContent, 10) - 1;
+    if (!isNaN(recordIndex)) {
+        const records = JSON.parse(localStorage.getItem('records')) || [];
+        if (records.length > 0 && recordIndex >= 0 && recordIndex < records.length) {
+            records.splice(recordIndex, 1); // Elimina el registro del array
+            localStorage.setItem('records', JSON.stringify(records)); // Actualiza el almacenamiento local
+            alert('Registro eliminado exitosamente.');
+            showNextRecord(); // Muestra el siguiente registro
+        }
+    }
+}
+
         // Manejar el fin del programa
         function handleEndProgram() {
             console.log('Manejando el fin del programa...');
@@ -981,3 +999,125 @@ document.addEventListener('DOMContentLoaded', () => {
         loadProvinces();
         loadSpecies();
     });
+
+    //Funciones globales para el DOM
+
+    // Función para borrar un registrocen el DOM
+    window.deleteRecord = deleteRecord;
+    // Función para cargar provincias en un elemento select del DOM
+window.loadProvinces = function() {
+    // Ejemplo de una lista de provincias
+    const provinces = ['Madrid', 'Barcelona', 'Valencia']; 
+    // Obtener el elemento select por su ID
+    const provinceSelect = document.getElementById('province');
+    // Recorrer cada provincia y añadirla como una opción al select
+    provinces.forEach(province => {
+        const option = document.createElement('option');
+        option.value = province;
+        option.textContent = province;
+        provinceSelect.appendChild(option);
+    });
+};
+
+// Función para cargar localidades en un elemento select del DOM, basado en la provincia seleccionada
+window.loadLocalities = function(province) {
+    // Ejemplo de un objeto que mapea provincias a sus localidades
+    const localities = {
+        'Madrid': ['Alcalá de Henares', 'Getafe'],
+        'Barcelona': ['Badalona', 'Terrassa'],
+        'Valencia': ['Gandía', 'Sagunto']
+    };
+    // Obtener el elemento select por su ID y limpiar su contenido
+    const localitySelect = document.getElementById('locality');
+    localitySelect.innerHTML = ''; // Limpiar el select
+    // Si hay localidades para la provincia dada, añadirlas al select
+    if (localities[province]) {
+        localities[province].forEach(locality => {
+            const option = document.createElement('option');
+            option.value = locality;
+            option.textContent = locality;
+            localitySelect.appendChild(option);
+        });
+    }
+};
+
+// Función para cargar el código postal basado en la provincia y localidad seleccionadas
+window.loadPostalCode = function(province, locality) {
+    // Ejemplo de un objeto que mapea provincias y localidades a sus códigos postales
+    const postalCodes = {
+        'Madrid': {
+            'Alcalá de Henares': '28801',
+            'Getafe': '28901'
+        },
+        'Barcelona': {
+            'Badalona': '08911',
+            'Terrassa': '08221'
+        },
+        'Valencia': {
+            'Gandía': '46730',
+            'Sagunto': '46500'
+        }
+    };
+    // Obtener el elemento input del código postal por su ID
+    const postalCodeInput = document.getElementById('postal-code');
+    // Si hay un código postal para la combinación de provincia y localidad dadas, establecer su valor
+    if (postalCodes[province] && postalCodes[province][locality]) {
+        postalCodeInput.value = postalCodes[province][locality];
+    } else {
+        postalCodeInput.value = ''; // Limpiar el input si no hay coincidencia
+    }
+};
+
+// Función para cargar especies en un elemento select del DOM
+window.loadSpecies = function() {
+    // Ejemplo de una lista de especies
+    const species = ['Perro', 'Gato', 'Ave'];
+    // Obtener el elemento select por su ID
+    const speciesSelect = document.getElementById('species');
+    // Recorrer cada especie y añadirla como una opción al select
+    species.forEach(species => {
+        const option = document.createElement('option');
+        option.value = species;
+        option.textContent = species;
+        speciesSelect.appendChild(option);
+    });
+};
+
+// Función para cargar razas en un elemento select del DOM, basado en la especie seleccionada
+window.loadBreeds = function(species) {
+    // Ejemplo de un objeto que mapea especies a sus razas
+    const breeds = {
+        'Perro': ['Labrador', 'Bulldog'],
+        'Gato': ['Siames', 'Persa'],
+        'Ave': ['Canario', 'Periquito']
+    };
+    // Obtener el elemento select por su ID y limpiar su contenido
+    const breedSelect = document.getElementById('breed');
+    breedSelect.innerHTML = ''; // Limpiar el select
+    // Si hay razas para la especie dada, añadirlas al select
+    if (breeds[species]) {
+        breeds[species].forEach(breed => {
+            const option = document.createElement('option');
+            option.value = breed;
+            option.textContent = breed;
+            breedSelect.appendChild(option);
+        });
+    }
+};
+
+// Función para validar los campos del formulario
+window.validateFields = function() {
+    // Lista de IDs de los campos requeridos
+    const requiredFields = ['owner-name', 'dni', 'address', 'phone', 'animal-name', 'chip-number', 'admission-date'];
+    let allValid = true;
+    // Recorrer cada campo requerido y verificar que no esté vacío
+    requiredFields.forEach(id => {
+        const input = document.getElementById(id);
+        // Si el campo no existe o su valor está vacío, marcar como no válido
+        if (!input || input.value.trim() === '') {
+            allValid = false;
+        }
+    });
+    // Retornar si todos los campos son válidos
+    return allValid;
+};
