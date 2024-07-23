@@ -658,20 +658,756 @@ const vacunas = {
     caballo: ["Influenza equina", "Tétanos", "Rinoneumonitis equina", "Virus del Nilo Occidental", "Encefalomielitis equina", "Rabia", "Leptospirosis", "Anemia infecciosa equina", "Adenovirus equino", "Salmonelosis", "Botulismo", "Gripe equina", "Herpesvirus equino", "Arteritis viral equina", "Rotavirus equino"]
 };
 
+// Cuidados y enfermedades por raza
+const breedCare = {
+    "Labrador": {
+        "care": "Ejercicio regular, dieta equilibrada, aseo rutinario",
+        "diseases": "Displasia de cadera, displasia de codo, obesidad"
+    },
+    "Bulldog": {
+        "care": "Ejercicio moderado, limpieza frecuente de los pliegues faciales",
+        "diseases": "Problemas respiratorios, displasia de cadera, infecciones de piel"
+    },
+    "Poodle": {
+        "care": "Ejercicio regular, aseo frecuente, limpieza de oídos",
+        "diseases": "Problemas dentales, displasia de cadera, atrofia progresiva de retina"
+    },
+    "Pastor Alemán": {
+        "care": "Ejercicio intensivo, entrenamiento regular, dieta rica en proteínas",
+        "diseases": "Displasia de cadera, displasia de codo, problemas digestivos"
+    },
+    "Golden Retriever": {
+        "care": "Ejercicio regular, cepillado frecuente, chequeos de salud",
+        "diseases": "Displasia de cadera, problemas cardíacos, cáncer"
+    },
+    "Beagle": {
+        "care": "Ejercicio diario, limpieza de orejas, dieta controlada",
+        "diseases": "Problemas de tiroides, epilepsia, problemas de espalda"
+    },
+    "Chihuahua": {
+        "care": "Ejercicio ligero, protección contra el frío, dieta adecuada",
+        "diseases": "Problemas dentales, luxación de rótula, problemas cardíacos"
+    },
+    "Pomerania": {
+        "care": "Ejercicio moderado, aseo regular, protección contra el calor",
+        "diseases": "Colapso traqueal, problemas dentales, displasia de cadera"
+    },
+    "Dálmata": {
+        "care": "Ejercicio intenso, dieta rica en proteínas, socialización temprana",
+        "diseases": "Sordera, cálculos urinarios, alergias de piel"
+    },
+    "Rottweiler": {
+        "care": "Ejercicio intensivo, entrenamiento firme, chequeos de salud",
+        "diseases": "Displasia de cadera, problemas cardíacos, cáncer"
+    },
+    "Boxer": {
+        "care": "Ejercicio moderado, socialización temprana, dieta equilibrada",
+        "diseases": "Problemas cardíacos, cáncer, displasia de cadera"
+    },
+    "Shih Tzu": {
+        "care": "Ejercicio ligero, aseo frecuente, limpieza de ojos",
+        "diseases": "Problemas dentales, problemas respiratorios, infecciones de oído"
+    },
+    "Bulldog Francés": {
+        "care": "Ejercicio moderado, protección contra el calor, aseo regular",
+        "diseases": "Problemas respiratorios, alergias de piel, problemas de espalda"
+    },
+    "Cocker Spaniel": {
+        "care": "Ejercicio regular, cepillado frecuente, limpieza de orejas",
+        "diseases": "Problemas de oído, problemas cardíacos, displasia de cadera"
+    },
+    "Doberman": {
+        "care": "Ejercicio intensivo, entrenamiento firme, dieta rica en proteínas",
+        "diseases": "Problemas cardíacos, displasia de cadera, problemas de tiroides"
+    },
+    "Siames": {
+        "care": "Dieta equilibrada, cepillado regular, atención veterinaria periódica",
+        "diseases": "Problemas respiratorios, problemas dentales, problemas hepáticos"
+    },
+    "Persa": {
+        "care": "Cepillado diario, limpieza de ojos, dieta equilibrada",
+        "diseases": "Problemas respiratorios, problemas renales, problemas dentales"
+    },
+    "Maine Coon": {
+        "care": "Cepillado frecuente, dieta rica en proteínas, ejercicio regular",
+        "diseases": "Displasia de cadera, problemas cardíacos, atrofia muscular espinal"
+    },
+    "Bengala": {
+        "care": "Ejercicio intensivo, dieta rica en proteínas, chequeos regulares",
+        "diseases": "Problemas cardíacos, problemas intestinales, displasia de cadera"
+    },
+    "Sphynx": {
+        "care": "Baños frecuentes, protección contra el frío, dieta equilibrada",
+        "diseases": "Problemas de piel, problemas dentales, problemas cardíacos"
+    },
+    "Ragdoll": {
+        "care": "Cepillado regular, dieta rica en proteínas, atención veterinaria",
+        "diseases": "Problemas cardíacos, problemas renales, problemas de vejiga"
+    },
+    "British Shorthair": {
+        "care": "Ejercicio moderado, cepillado regular, dieta equilibrada",
+        "diseases": "Problemas cardíacos, displasia de cadera, problemas renales"
+    },
+    "Abyssinian": {
+        "care": "Ejercicio regular, dieta equilibrada, chequeos de salud",
+        "diseases": "Problemas renales, problemas dentales, atrofia muscular espinal"
+    },
+    "Birmano": {
+        "care": "Cepillado regular, dieta rica en proteínas, ejercicio moderado",
+        "diseases": "Problemas cardíacos, problemas renales, problemas de vejiga"
+    },
+    "Oriental": {
+        "care": "Ejercicio regular, dieta equilibrada, cepillado ocasional",
+        "diseases": "Problemas dentales, problemas cardíacos, problemas respiratorios"
+    },
+    "Scottish Fold": {
+        "care": "Ejercicio moderado, cepillado regular, atención veterinaria",
+        "diseases": "Problemas articulares, problemas cardíacos, problemas renales"
+    },
+    "Siberiano": {
+        "care": "Cepillado regular, dieta rica en proteínas, ejercicio regular",
+        "diseases": "Problemas cardíacos, problemas renales, problemas respiratorios"
+    },
+    "Exótico": {
+        "care": "Cepillado regular, limpieza de ojos, dieta equilibrada",
+        "diseases": "Problemas respiratorios, problemas cardíacos, problemas renales"
+    },
+    "Savannah": {
+        "care": "Ejercicio intensivo, dieta rica en proteínas, chequeos regulares",
+        "diseases": "Problemas cardíacos, problemas intestinales, problemas renales"
+    },
+    "Devon Rex": {
+        "care": "Baños regulares, dieta equilibrada, ejercicio moderado",
+        "diseases": "Problemas de piel, problemas cardíacos, problemas renales"
+    },
+    "Iguana": {
+        "care": "Terrario adecuado, dieta rica en vegetales, iluminación UVB",
+        "diseases": "MBD (Enfermedad metabólica ósea), infecciones respiratorias, problemas de piel"
+    },
+    "Gecko": {
+        "care": "Terrario adecuado, dieta balanceada de insectos, iluminación UVB",
+        "diseases": "MBD (Enfermedad metabólica ósea), infecciones respiratorias, problemas de piel"
+    },
+    "Pitón": {
+        "care": "Terrario adecuado, dieta de roedores, humedad controlada",
+        "diseases": "Enfermedades respiratorias, problemas de piel, parásitos"
+    },
+    "Camaleón": {
+        "care": "Terrario adecuado, dieta de insectos, humedad y temperatura controladas",
+        "diseases": "MBD (Enfermedad metabólica ósea), infecciones oculares, infecciones respiratorias"
+    },
+    "Dragón Barbudo": {
+        "care": "Terrario adecuado, dieta balanceada, iluminación UVB",
+        "diseases": "MBD (Enfermedad metabólica ósea), infecciones respiratorias, problemas de piel"
+    },
+    "Serpiente del Maíz": {
+        "care": "Terrario adecuado, dieta de roedores, temperatura controlada",
+        "diseases": "Enfermedades respiratorias, problemas de piel, parásitos"
+    },
+    "Anolis": {
+        "care": "Terrario adecuado, dieta de insectos, humedad y temperatura controladas",
+        "diseases": "MBD (Enfermedad metabólica ósea), infecciones respiratorias, problemas de piel"
+    },
+    "Tortuga": {
+        "care": "Acuario o terrario adecuado, dieta balanceada, iluminación UVB",
+        "diseases": "MBD (Enfermedad metabólica ósea), infecciones respiratorias, problemas de caparazón"
+    },
+    "Boa": {
+        "care": "Terrario adecuado, dieta de roedores, temperatura controlada",
+        "diseases": "Enfermedades respiratorias, problemas de piel, parásitos"
+    },
+    "Lagarto Monitor": {
+        "care": "Terrario adecuado, dieta de roedores y aves, temperatura controlada",
+        "diseases": "Enfermedades respiratorias, problemas de piel, parásitos"
+    },
+    "Caimán": {
+        "care": "Terrario amplio, dieta de carne y pescado, temperatura y humedad controladas",
+        "diseases": "Enfermedades respiratorias, problemas de piel, parásitos"
+    },
+    "Tarántula": {
+        "care": "Terrario adecuado, dieta de insectos, humedad controlada",
+        "diseases": "Muda problemática, infecciones de hongos, parásitos"
+    },
+    "Escorpión": {
+        "care": "Terrario adecuado, dieta de insectos, humedad controlada",
+        "diseases": "Muda problemática, infecciones de hongos, parásitos"
+    },
+    "Salamandra": {
+        "care": "Terrario adecuado, dieta de insectos, humedad controlada",
+        "diseases": "Infecciones bacterianas, infecciones fúngicas, problemas de piel"
+    },
+    "Axolotl": {
+        "care": "Acuario adecuado, dieta de lombrices y pellets, temperatura controlada",
+        "diseases": "Infecciones bacterianas, infecciones fúngicas, problemas de piel"
+    },
+    "Hamster": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, tumores"
+    },
+    "Cobaya": {
+        "care": "Jaula adecuada, dieta rica en vitamina C, ejercicio regular",
+        "diseases": "Escorbuto, problemas dentales, infecciones respiratorias"
+    },
+    "Ratón": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, tumores"
+    },
+    "Chinchilla": {
+        "care": "Jaula adecuada, baño de polvo, dieta alta en fibra",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas digestivos"
+    },
+    "Jerbo": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, tumores"
+    },
+    "Rata": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, tumores"
+    },
+    "Ardilla": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas de piel"
+    },
+    "Degú": {
+        "care": "Jaula adecuada, dieta alta en fibra, ejercicio regular",
+        "diseases": "Diabetes, problemas dentales, infecciones respiratorias"
+    },
+    "Conejo": {
+        "care": "Jaula adecuada, dieta alta en fibra, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas digestivos"
+    },
+    "Erizo": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas de piel"
+    },
+    "Cuy": {
+        "care": "Jaula adecuada, dieta rica en vitamina C, ejercicio regular",
+        "diseases": "Escorbuto, problemas dentales, infecciones respiratorias"
+    },
+    "Paca": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas digestivos"
+    },
+    "Pacarana": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas digestivos"
+    },
+    "Agutí": {
+        "care": "Jaula adecuada, dieta balanceada, ejercicio regular",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas digestivos"
+    },
+    "Capibara": {
+        "care": "Jaula amplia, dieta alta en fibra, acceso a agua para nadar",
+        "diseases": "Problemas dentales, infecciones respiratorias, problemas digestivos"
+    },
+    "Canario": {
+        "care": "Jaula adecuada, dieta de semillas y frutas, baños regulares",
+        "diseases": "Infecciones respiratorias, problemas de piel, parásitos"
+    },
+    "Periquito": {
+        "care": "Jaula adecuada, dieta de semillas y frutas, socialización",
+        "diseases": "Problemas respiratorios, problemas de piel, parásitos"
+    },
+    "Cacatúa": {
+        "care": "Jaula grande, dieta de semillas, frutas y verduras, socialización",
+        "diseases": "Problemas respiratorios, problemas de piel, problemas de comportamiento"
+    },
+    "Agapornis": {
+        "care": "Jaula adecuada, dieta de semillas y frutas, socialización",
+        "diseases": "Problemas respiratorios, problemas de piel, parásitos"
+    },
+    "Loro": {
+        "care": "Jaula grande, dieta de semillas, frutas y verduras, socialización",
+        "diseases": "Problemas respiratorios, problemas de piel, problemas de comportamiento"
+    },
+    "Ninfa": {
+        "care": "Jaula adecuada, dieta de semillas y frutas, socialización",
+        "diseases": "Problemas respiratorios, problemas de piel, parásitos"
+    },
+    "Jilguero": {
+        "care": "Jaula adecuada, dieta de semillas y frutas, baños regulares",
+        "diseases": "Infecciones respiratorias, problemas de piel, parásitos"
+    },
+    "Gorrión": {
+        "care": "Jaula adecuada, dieta de semillas y frutas, baños regulares",
+        "diseases": "Infecciones respiratorias, problemas de piel, parásitos"
+    },
+    "Halcón": {
+        "care": "Jaula amplia, dieta de carne, entrenamiento regular",
+        "diseases": "Problemas respiratorios, infecciones bacterianas, parásitos"
+    },
+    "Águila": {
+        "care": "Jaula muy amplia, dieta de carne, entrenamiento regular",
+        "diseases": "Problemas respiratorios, infecciones bacterianas, parásitos"
+    },
+    "Búho": {
+        "care": "Jaula amplia, dieta de carne, entrenamiento regular",
+        "diseases": "Problemas respiratorios, infecciones bacterianas, parásitos"
+    },
+    "Lechuza": {
+        "care": "Jaula amplia, dieta de carne, entrenamiento regular",
+        "diseases": "Problemas respiratorios, infecciones bacterianas, parásitos"
+    },
+    "Cisne": {
+        "care": "Acceso a agua, dieta de vegetales y granos, espacio amplio",
+        "diseases": "Problemas respiratorios, infecciones bacterianas, parásitos"
+    },
+    "Pato": {
+        "care": "Acceso a agua, dieta de vegetales y granos, espacio amplio",
+        "diseases": "Problemas respiratorios, infecciones bacterianas, parásitos"
+    },
+    "Flamenco": {
+        "care": "Acceso a agua, dieta de crustáceos y vegetales, espacio amplio",
+        "diseases": "Problemas respiratorios, infecciones bacterianas, parásitos"
+    },
+    "Andaluz": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas respiratorios"
+    },
+    "Árabe": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas respiratorios"
+    },
+    "Pura Sangre": {
+        "care": "Ejercicio intensivo, dieta rica en proteínas, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas cardíacos"
+    },
+    "Percherón": {
+        "care": "Ejercicio moderado, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, problemas articulares, cólicos"
+    },
+    "Mustang": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas respiratorios"
+    },
+    "Appaloosa": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, problemas oculares, cólicos"
+    },
+    "Cuarto de Milla": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas musculares"
+    },
+    "Frisón": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Problemas cardíacos, cólicos, laminitis"
+    },
+    "Clydesdale": {
+        "care": "Ejercicio moderado, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, problemas articulares, cólicos"
+    },
+    "Shetland": {
+        "care": "Ejercicio moderado, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, problemas respiratorios, cólicos"
+    },
+    "Lusitano": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas respiratorios"
+    },
+    "Morgan": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, problemas cardíacos, cólicos"
+    },
+    "Tennessee Walker": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, problemas articulares, cólicos"
+    },
+    "Lipizzano": {
+        "care": "Ejercicio regular, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas cardíacos"
+    },
+    "Hannoveriano": {
+        "care": "Ejercicio intensivo, dieta balanceada, aseo y cuidado de cascos",
+        "diseases": "Laminitis, cólicos, problemas articulares"
+    }
+};
+
+// Rutas de imagenes
+const breedImages = {
+    gato: {
+        abisinio: './assets/img/gato/abisinio.jpeg',
+        bengala: './assets/img/gato/bengala.jpeg',
+        birmano: './assets/img/gato/birmano.jpeg',
+        britishShorthair: './assets/img/gato/britishShorthair.jpeg',
+        devonRex: './assets/img/gato/devonRex.jpeg',
+        exotico: './assets/img/gato/exotico.jpeg',
+        maineCoon: './assets/img/gato/maineCoon.jpeg',
+        oriental: './assets/img/gato/oriental.jpeg',
+        persa: './assets/img/gato/persa.jpeg',
+        ragdoll: './assets/img/gato/ragdoll.jpeg',
+        savannah: './assets/img/gato/savannah.jpeg',
+        scottishFold: './assets/img/gato/scottishFold.jpeg',
+        siames: './assets/img/gato/siames.jpeg',
+        siberiano: './assets/img/gato/siberiano.jpeg',
+        sphynx: './assets/img/gato/sphynx.jpeg'
+    },
+    perro: {
+        beagle: './assets/img/perro/beagle.jpeg',
+        boxer: './assets/img/perro/boxer.jpeg',
+        bulldog: './assets/img/perro/bulldog.jpeg',
+        bulldogFrances: './assets/img/perro/bulldogFrances.jpeg',
+        caniche: './assets/img/perro/caniche.jpeg',
+        chihuahua: './assets/img/perro/chihuahua.jpeg',
+        cockerSpaniel: './assets/img/perro/cockerSpaniel.jpeg',
+        dalmata: './assets/img/perro/dalmata.jpeg',
+        doberman: './assets/img/perro/doberman.jpeg',
+        golden: './assets/img/perro/golden.jpeg',
+        labrador: './assets/img/perro/labrador.jpeg',
+        pastorAleman: './assets/img/perro/pastorAleman.jpeg',
+        pomerania: './assets/img/perro/pomerania.jpeg',
+        rottweiler: './assets/img/perro/rottweiler.jpeg',
+        shihTzu: './assets/img/perro/shihTzu.jpeg'
+    },
+    caballo: {
+        andaluz: './assets/img/caballo/andaluz.jpeg',
+        appaloosa: './assets/img/caballo/appaloosa.jpeg',
+        clydesdale: './assets/img/caballo/clydesdale.jpeg',
+        cuartoDeMilla: './assets/img/caballo/cuartoDeMilla.jpeg',
+        frison: './assets/img/caballo/frison.jpeg',
+        hannoveriano: './assets/img/caballo/hannoveriano.jpeg',
+        lipizano: './assets/img/caballo/lipizano.jpeg',
+        lusitano: './assets/img/caballo/lusitano.jpeg',
+        morgan: './assets/img/caballo/morgan.jpeg',
+        mustang: './assets/img/caballo/mustang.jpeg',
+        percheron: './assets/img/caballo/percheron.jpeg',
+        puraSangre: './assets/img/caballo/puraSangre.jpeg',
+        shetland: './assets/img/caballo/shetland.jpeg',
+        tennesseeWalker: './assets/img/caballo/tennesseeWalker.jpeg'
+    },
+    reptil: {
+        anolis: './assets/img/reptil/anolis.jpeg',
+        axolotl: './assets/img/reptil/axolotl.jpeg',
+        boa: './assets/img/reptil/boa.jpeg',
+        caiman: './assets/img/reptil/caiman.jpeg',
+        camaleon: './assets/img/reptil/camaleon.jpeg',
+        dragonBarbudo: './assets/img/reptil/dragonBarbudo.jpeg',
+        escorpion: './assets/img/reptil/escorpion.jpeg',
+        gecko: './assets/img/reptil/gecko.jpeg',
+        iguana: './assets/img/reptil/iguana.jpeg',
+        lagartoMonitor: './assets/img/reptil/lagartoMonitor.jpeg',
+        piton: './assets/img/reptil/piton.jpeg',
+        salamandra: './assets/img/reptil/salamandra.jpeg',
+        serpienteDelMaiz: './assets/img/reptil/serpienteDelMaiz.jpeg',
+        tortuga: './assets/img/reptil/tortuga.jpeg',
+        tarantula: './assets/img/reptil/tarantula.jpeg'
+    },
+    roedor: {
+        aguti: './assets/img/roedor/aguti.jpeg',
+        ardilla: './assets/img/roedor/ardilla.jpeg',
+        capibara: './assets/img/roedor/capibara.jpeg',
+        chinchilla: './assets/img/roedor/chinchilla.jpeg',
+        cobaya: './assets/img/roedor/cobaya.jpeg',
+        conejo: './assets/img/roedor/conejo.jpeg',
+        cuy: './assets/img/roedor/cuy.jpeg',
+        degu: './assets/img/roedor/degu.jpeg',
+        erizo: './assets/img/roedor/erizo.jpeg',
+        hamster: './assets/img/roedor/hamster.jpeg',
+        jerbo: './assets/img/roedor/jerbo.jpeg',
+        paca: './assets/img/roedor/paca.jpeg',
+        rata: './assets/img/roedor/rata.jpeg',
+        raton: './assets/img/roedor/raton.jpeg'
+    },
+    ave: {
+        agapornis: './assets/img/ave/agapornis.jpeg',
+        aguila: './assets/img/ave/aguila.jpeg',
+        arabe: './assets/img/ave/arabe.jpeg',
+        buho: './assets/img/ave/buho.jpeg',
+        cacatua: './assets/img/ave/cacatua.jpeg',
+        canario: './assets/img/ave/canario.jpeg',
+        cisne: './assets/img/ave/cisne.jpeg',
+        flamenco: './assets/img/ave/flamenco.jpeg',
+        gorrion: './assets/img/ave/gorrion.jpeg',
+        halcon: './assets/img/ave/halcon.jpeg',
+        jilguero: './assets/img/ave/jilguero.jpeg',
+        lechuza: './assets/img/ave/lechuza.jpeg',
+        loro: './assets/img/ave/loro.jpeg',
+        ninfa: './assets/img/ave/ninfa.jpeg',
+        pato: './assets/img/ave/pato.jpeg',
+        periquito: './assets/img/ave/periquito.jpeg'
+    }
+};
+
+// Funciones
+// Constantes (datos)
+// (mantén las constantes como estaban)
+
+// Funciones
+
 // Función almacenamiento de datos
 function saveData(animalData) {
     let records = JSON.parse(localStorage.getItem('animalRecords')) || [];
     records.push(animalData);
     localStorage.setItem('animalRecords', JSON.stringify(records));
-    console.info('Datos guardados correctamente:', animalData);  // Información sobre los datos guardados
+    showModal('Datos guardados correctamente.');  // Modal para mostrar mensaje
 }
 
+// Función para obtener datos del almacenamiento local
 function getData() {
-    console.debug('Obteniendo datos del almacenamiento local...');  // Mensaje de depuración
     return JSON.parse(localStorage.getItem('animalRecords')) || [];
 }
 
-// Comienza el script principal
+// Función para cargar las provincias en el select de provincias
+function loadProvinces(provinceSelect) {
+    provinceSelect.innerHTML = '<option value="">Selecciona una provincia</option>';
+    Object.keys(provincias).forEach(province => {
+        const option = document.createElement('option');
+        option.value = province;
+        option.textContent = province;
+        provinceSelect.appendChild(option);
+    });
+}
+
+// Función para cargar las localidades en el select de localidades basado en la provincia seleccionada
+function loadLocalities(province, localitySelect) {
+    localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
+    provincias[province].forEach(locality => {
+        const option = document.createElement('option');
+        option.value = locality;
+        option.textContent = locality;
+        localitySelect.appendChild(option);
+    });
+}
+
+// Función para cargar el código postal basado en la provincia y la localidad seleccionada
+function loadPostalCode(province, locality, postalCodeInput) {
+    postalCodeInput.value = codigosPostales[province][locality] || '';
+}
+
+// Función para cargar las especies en el select de especies
+function loadSpecies(speciesSelect) {
+    speciesSelect.innerHTML = '<option value="">Selecciona una especie</option>';
+    Object.keys(especies).forEach(species => {
+        const option = document.createElement('option');
+        option.value = species;
+        option.textContent = species.charAt(0).toUpperCase() + species.slice(1);
+        speciesSelect.appendChild(option);
+    });
+}
+
+// Función para cargar las razas en el select de razas basado en la especie seleccionada
+function loadBreeds(species, breedSelect) {
+    breedSelect.innerHTML = '<option value="">Selecciona una raza</option>';
+    especies[species].forEach(breed => {
+        const option = document.createElement('option');
+        option.value = breed;
+        option.textContent = breed;
+        option.dataset.image = breedImages[species][breed.toLowerCase().replace(/ /g, '')];
+        breedSelect.appendChild(option);
+    });
+}
+
+// Función para cargar las vacunaciones en el select de vacunaciones basado en la especie seleccionada
+function loadVaccinations(species, vaccinationSelect) {
+    vaccinationSelect.innerHTML = '<option value="">Selecciona una vacunación</option>';
+    vacunas[species].forEach(vaccine => {
+        const option = document.createElement('option');
+        option.value = vaccine;
+        option.textContent = vaccine;
+        vaccinationSelect.appendChild(option);
+    });
+}
+
+// Función para validar el NIF
+function calcularLetraDni(dni) {
+    const cadena = "TRWAGMYFPDXBNJZSQVHLCKE";
+    const posicion = dni % 23;
+    return cadena.charAt(posicion);
+}
+
+function formatoNifValido(nif) {
+    const regex = /^\d{8}[A-Z]$/i;
+    return regex.test(nif);
+}
+
+function validarNif(nif) {
+    if (!formatoNifValido(nif)) return false;
+    const numero = nif.slice(0, -1);
+    const letra = nif.slice(-1).toUpperCase();
+    const isValid = calcularLetraDni(numero) === letra;
+    console.assert(isValid, 'NIF inválido:', nif);  // Validación con aserto
+    return isValid;
+}
+
+// Función para manejar la presentación de registros
+function showRecords(records) {
+    const recordsView = document.getElementById('records-view');
+    recordsView.style.display = 'block';
+    const recordDetails = document.getElementById('record-details');
+    let currentIndex = 0;
+
+    function updateRecordDetails() {
+        const record = records[currentIndex];
+        const breedImage = breedImages[record.species.toLowerCase()][record.breed.toLowerCase().replace(/ /g, '')];
+        const breedCareDetails = breedCare[record.breed] || { care: 'No disponible', diseases: 'No disponible' };
+        recordDetails.innerHTML = `
+            <h2>Ficha de Registro de ${sanitizeOutput(record.animalName)}</h2>
+            <img src="${sanitizeOutput(breedImage)}" alt="${sanitizeOutput(record.breed)}" class="breed-image">
+            <p><strong>Dueño:</strong> ${sanitizeOutput(record.owner)}</p>
+            <p><strong>DNI:</strong> ${sanitizeOutput(record.dni)}</p>
+            <p><strong>Dirección:</strong> ${sanitizeOutput(record.address)}</p>
+            <p><strong>Provincia:</strong> ${sanitizeOutput(record.province)}</p>
+            <p><strong>Localidad:</strong> ${sanitizeOutput(record.locality)}</p>
+            <p><strong>Código Postal:</strong> ${sanitizeOutput(record.postalCode)}</p>
+            <p><strong>Teléfono:</strong> ${sanitizeOutput(record.phone)}</p>
+            <p><strong>Nombre del Animal:</strong> ${sanitizeOutput(record.animalName)}</p>
+            <p><strong>Número de Chip:</strong> ${sanitizeOutput(record.chipNumber)}</p>
+            <p><strong>Fecha de Ingreso:</strong> ${formatDate(record.admissionDate)}</p>
+            <p><strong>Fecha de Intervención Quirúrgica:</strong> ${formatDate(record.surgeryDate)}</p>
+            <p><strong>Especie:</strong> ${sanitizeOutput(record.species)}</p>
+            <p><strong>Raza:</strong> ${sanitizeOutput(record.breed)}</p>
+            <p><strong>Vacunación:</strong> ${sanitizeOutput(record.vaccination)}</p>
+            <p><strong>Fecha de Vacunación:</strong> ${formatDate(record.vaccinationDate)}</p>
+            <div class="breed-care">
+                <h3>Cuidados y Enfermedades Habituales</h3>
+                <p><strong>Cuidados:</strong> ${sanitizeOutput(breedCareDetails.care)}</p>
+                <p><strong>Enfermedades:</strong> ${sanitizeOutput(breedCareDetails.diseases)}</p>
+            </div>
+        `;
+        document.getElementById('record-number').textContent = `${currentIndex + 1} / ${records.length}`;
+    }
+
+    document.getElementById('prev-record').addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateRecordDetails();
+        }
+    });
+
+    document.getElementById('next-record').addEventListener('click', () => {
+        if (currentIndex < records.length - 1) {
+            currentIndex++;
+            updateRecordDetails();
+        }
+    });
+
+    document.getElementById('delete-record').addEventListener('click', () => {
+        showModal('¿Estás seguro de que quieres eliminar este registro?', () => {
+            records.splice(currentIndex, 1);
+            localStorage.setItem('animalRecords', JSON.stringify(records));
+            if (records.length === 0) {
+                recordsView.style.display = 'none';
+            } else {
+                if (currentIndex >= records.length) {
+                    currentIndex--;
+                }
+                updateRecordDetails();
+            }
+        });
+    });
+
+    updateRecordDetails();
+}
+
+// Función para mostrar imagen de raza al pasar el ratón
+function showBreedImageOnHover(breedSelect) {
+    const breedImagePreview = document.getElementById('breed-image-preview');
+
+    breedSelect.addEventListener('mouseover', (event) => {
+        const breed = event.target.value.toLowerCase().replace(/ /g, '');
+        const species = document.getElementById('species').value.toLowerCase();
+        if (breedImages[species] && breedImages[species][breed]) {
+            breedImagePreview.src = breedImages[species][breed];
+            breedImagePreview.style.display = 'block';
+        }
+    });
+
+    breedSelect.addEventListener('mouseout', () => {
+        breedImagePreview.style.display = 'none';
+    });
+}
+
+// Formatear fecha al formato europeo (DD/MM/YYYY)
+function formatDate(date) {
+    const [year, month, day] = date.split('-');
+    return `${day}/${month}/${year}`;
+}
+
+// Función para mostrar una ventana modal
+function showModal(message, onConfirm) {
+    const modal = document.getElementById('modal');
+    const modalMessage = document.getElementById('modal-message');
+    const confirmButton = document.getElementById('modal-confirm');
+    const cancelButton = document.getElementById('modal-cancel');
+
+    modalMessage.textContent = message;
+    modal.style.display = 'block';
+
+    confirmButton.onclick = () => {
+        modal.style.display = 'none';
+        if (onConfirm) onConfirm();
+    };
+
+    cancelButton.onclick = () => {
+        modal.style.display = 'none';
+    };
+}
+
+// Validación de campos del formulario
+function validateForm() {
+    const ownerName = document.getElementById('owner-name').value.trim();
+    const dni = document.getElementById('dni').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const animalName = document.getElementById('animal-name').value.trim();
+    const admissionDate = document.getElementById('admission-date').value;
+    const surgeryDate = document.getElementById('surgery-date').value;
+    const vaccinationDate = document.getElementById('vaccination-date').value;
+
+    const regexNoSpecialChars = /^[a-zA-Z0-9\s]*$/; // Solo letras, números y espacios
+
+    if (ownerName.length > 25 || ownerName === '' || !regexNoSpecialChars.test(ownerName)) {
+        showModal('El nombre del dueño no puede estar vacío, debe tener máximo 25 caracteres y no puede contener caracteres especiales.');
+        return false;
+    }
+
+    if (!validarNif(dni)) {
+        showModal('El DNI no es válido.');
+        return false;
+    }
+
+    if (address.length > 40 || address === '' || !regexNoSpecialChars.test(address)) {
+        showModal('La dirección no puede estar vacía, debe tener máximo 40 caracteres y no puede contener caracteres especiales.');
+        return false;
+    }
+
+    if (phone === '' || isNaN(phone) || phone.length !== 9) {
+        showModal('El teléfono debe ser un número de 9 dígitos.');
+        return false;
+    }
+
+    if (animalName === '' || !regexNoSpecialChars.test(animalName)) {
+        showModal('El nombre del animal no puede estar vacío y no puede contener caracteres especiales.');
+        return false;
+    }
+
+    if (new Date(surgeryDate) > new Date(admissionDate)) {
+        showModal('La fecha de intervención quirúrgica debe ser anterior a la fecha de ingreso.');
+        return false;
+    }
+
+    if (new Date(vaccinationDate) < new Date(admissionDate)) {
+        showModal('La fecha de vacunación debe ser igual o mayor a la fecha de ingreso.');
+        return false;
+    }
+
+    return true;
+}
+
+// Función para sanitizar la entrada y proteger contra scripts maliciosos
+function sanitizeInput(input) {
+    const element = document.createElement('div');
+    element.innerText = input;
+    return element.innerHTML;
+}
+
+// Función para sanitizar la salida
+function sanitizeOutput(output) {
+    const element = document.createElement('div');
+    element.innerText = output;
+    return element.innerHTML;
+}
+
+// Evento para cargar las provincias y localidades al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     const provinceSelect = document.getElementById('province');
     const localitySelect = document.getElementById('locality');
@@ -680,423 +1416,76 @@ document.addEventListener('DOMContentLoaded', () => {
     const breedSelect = document.getElementById('breed');
     const vaccinationSelect = document.getElementById('vaccination');
 
-    // Cargar las provincias en el select de provincias
-    function loadProvinces() {
-        console.log('Cargando provincias...');  // Información general
-        provinceSelect.innerHTML = '<option value="">Selecciona una provincia</option>';
-        Object.keys(provincias).forEach(province => {
-            const option = document.createElement('option');
-            option.value = province;
-            option.textContent = province;
-            provinceSelect.appendChild(option);
-        });
-    }
+    loadProvinces(provinceSelect);
 
-    // Cargar las localidades en el select de localidades basado en la provincia seleccionada
-    function loadLocalities(province) {
-        console.log('Cargando localidades para la provincia:', province);  // Información específica
-        localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
-        provincias[province].forEach(locality => {
-            const option = document.createElement('option');
-            option.value = locality;
-            option.textContent = locality;
-            localitySelect.appendChild(option);
-        });
-    }
-
-    // Cargar el código postal basado en la provincia y la localidad seleccionada
-    function loadPostalCode(province, locality) {
-        console.log('Cargando código postal para:', province, locality);  // Información específica
-        postalCodeInput.value = codigosPostales[province][locality] || '';
-    }
-
-    // Cargar las especies en el select de especies
-    function loadSpecies() {
-        console.log('Cargando especies...');  // Información general
-        speciesSelect.innerHTML = '<option value="">Selecciona una especie</option>';
-        Object.keys(especies).forEach(species => {
-            const option = document.createElement('option');
-            option.value = species;
-            option.textContent = species.charAt(0).toUpperCase() + species.slice(1);
-            speciesSelect.appendChild(option);
-        });
-    }
-
-    // Cargar las razas en el select de razas basado en la especie seleccionada
-    function loadBreeds(species) {
-        console.log('Cargando razas para la especie:', species);  // Información específica
-        breedSelect.innerHTML = '<option value="">Selecciona una raza</option>';
-        especies[species].forEach(breed => {
-            const option = document.createElement('option');
-            option.value = breed;
-            option.textContent = breed;
-            breedSelect.appendChild(option);
-        });
-    }
-
-    // Cargar las vacunaciones en el select de vacunaciones basado en la especie seleccionada
-    function loadVaccinations(species) {
-        console.log('Cargando vacunaciones para la especie:', species);  // Información específica
-        vaccinationSelect.innerHTML = '<option value="">Selecciona una vacunación</option>';
-        vacunas[species].forEach(vaccine => {
-            const option = document.createElement('option');
-            option.value = vaccine;
-            option.textContent = vaccine;
-            vaccinationSelect.appendChild(option);
-        });
-    }
-
-    // Event listener para cuando cambia la provincia
     provinceSelect.addEventListener('change', () => {
-        const selectedProvince = provinceSelect.value;
-        if (selectedProvince) {
-            loadLocalities(selectedProvince);
-        }
+        loadLocalities(provinceSelect.value, localitySelect);
     });
 
-    // Event listener para cuando cambia la localidad
     localitySelect.addEventListener('change', () => {
-        const selectedProvince = provinceSelect.value;
-        const selectedLocality = localitySelect.value;
-        if (selectedProvince && selectedLocality) {
-            loadPostalCode(selectedProvince, selectedLocality);
-        }
+        loadPostalCode(provinceSelect.value, localitySelect.value, postalCodeInput);
     });
 
-    // Event listener para cuando cambia la especie
+    loadSpecies(speciesSelect);
+
     speciesSelect.addEventListener('change', () => {
-        const selectedSpecies = speciesSelect.value;
-        if (selectedSpecies) {
-            loadBreeds(selectedSpecies);
-            loadVaccinations(selectedSpecies);
-        }
+        loadBreeds(speciesSelect.value, breedSelect);
+        loadVaccinations(speciesSelect.value, vaccinationSelect);
     });
 
-    // Función para validar el NIF
-    function calcularLetraDni(dni) {
-        const cadena = "TRWAGMYFPDXBNJZSQVHLCKE";
-        const posicion = dni % 23;
-        return cadena.charAt(posicion);
-    }
+    showBreedImageOnHover(breedSelect);
 
-    function formatoNifValido(nif) {
-        const regex = /^\d{8}[A-Z]$/i;
-        return regex.test(nif);
-    }
-
-    function validarNif(nif) {
-        if (!formatoNifValido(nif)) return false;
-        const numero = nif.slice(0, -1);
-        const letra = nif.slice(-1).toUpperCase();
-        const isValid = calcularLetraDni(numero) === letra;
-        console.assert(isValid, 'NIF inválido:', nif);  // Validación con aserto
-        return isValid;
-    }
-
-    // Validar campos del formulario
-    function validateFields() {
-        console.log('Validando campos...');  // Información general
-        const ownerName = document.getElementById('owner-name');
-        const dni = document.getElementById('dni');
-        const address = document.getElementById('address');
-        const phone = document.getElementById('phone');
-        const animalName = document.getElementById('animal-name');
-        const chipNumber = document.getElementById('chip-number');
-        const admissionDate = document.getElementById('admission-date');
-        const surgeryDate = document.getElementById('surgery-date');
-        const vaccinationDate = document.getElementById('vaccination-date');
-
-        if (ownerName.value.length > 25 || /[<>]/.test(ownerName.value)) {
-            showModal('El nombre del dueño no es válido.', ownerName);
-            return false;
-        }
-
-        if (!validarNif(dni.value)) {
-            showModal('El DNI no es válido.', dni);
-            return false;
-        }
-
-        if (address.value.length > 40 || /[<>]/.test(address.value)) {
-            showModal('La dirección no es válida.', address);
-            return false;
-        }
-
-        if (!/^[0-9]{9,15}$/.test(phone.value)) {
-            showModal('El teléfono no es válido.', phone);
-            return false;
-        }
-
-        if (animalName.value === '' || /[<>]/.test(animalName.value)) {
-            showModal('El nombre del animal no es válido.', animalName);
-            return false;
-        }
-
-        if (chipNumber.value.length !== 15 || /[<>]/.test(chipNumber.value)) {
-            showModal('El número de chip no es válido.', chipNumber);
-            return false;
-        }
-
-        if (surgeryDate.value && new Date(surgeryDate.value) >= new Date(admissionDate.value)) {
-            showModal('La fecha de intervención quirúrgica debe ser anterior a la fecha de ingreso.', surgeryDate);
-            return false;
-        }
-
-        if (new Date(vaccinationDate.value) < new Date(admissionDate.value)) {
-            showModal('La fecha de vacunación no puede ser anterior a la fecha de ingreso.', vaccinationDate);
-            return false;
-        }
-
-        return true;
-    }
-
-    // Función para mostrar el modal
-    function showModal(message, element) {
-        const modal = document.getElementById('genericModal');
-        const modalMessage = document.getElementById('modal-message');
-        const modalConfirm = document.getElementById('modal-confirm');
-
-        modalMessage.textContent = message;
-        modal.style.display = "block";
-
-        modalConfirm.onclick = function () {
-            modal.style.display = "none";
-            if (element) element.focus();
-        };
-
-        document.getElementsByClassName("close")[0].onclick = function () {
-            modal.style.display = "none";
-            if (element) element.focus();
-        };
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                if (element) element.focus();
-            }
-        };
-    }
-
-    // Manejar el envío del formulario
-    function handleSubmit() {
-        console.log('Manejando el envío del formulario...');  // Información general
-        const animalData = {
-            ownerName: document.getElementById('owner-name').value,
-            dni: document.getElementById('dni').value,
-            address: document.getElementById('address').value,
-            locality: document.getElementById('locality').value,
-            province: document.getElementById('province').value,
-            postalCode: document.getElementById('postal-code').value,
-            phone: document.getElementById('phone').value,
-            animalName: document.getElementById('animal-name').value,
-            chipNumber: document.getElementById('chip-number').value,
-            admissionDate: document.getElementById('admission-date').value,
-            surgeryDate: document.getElementById('surgery-date').value,
-            species: document.getElementById('species').value,
-            breed: document.getElementById('breed').value,
-            vaccination: document.getElementById('vaccination').value,
-            vaccinationDate: document.getElementById('vaccination-date').value
-        };
-
-        if (validateFields()) {
-            showModal('¿Estás seguro de querer continuar?', null);
-            document.getElementById('modal-confirm').onclick = function () {
+    // Evento para manejar el envío del formulario
+    document.getElementById('submit-button').addEventListener('click', () => {
+        if (validateForm()) {
+            const animalData = {
+                owner: sanitizeInput(document.getElementById('owner-name').value),
+                dni: sanitizeInput(document.getElementById('dni').value),
+                address: sanitizeInput(document.getElementById('address').value),
+                province: sanitizeInput(provinceSelect.value),
+                locality: sanitizeInput(localitySelect.value),
+                postalCode: sanitizeInput(postalCodeInput.value),
+                phone: sanitizeInput(document.getElementById('phone').value),
+                animalName: sanitizeInput(document.getElementById('animal-name').value),
+                chipNumber: sanitizeInput(document.getElementById('chip-number').value),
+                admissionDate: sanitizeInput(document.getElementById('admission-date').value),
+                surgeryDate: sanitizeInput(document.getElementById('surgery-date').value),
+                species: sanitizeInput(speciesSelect.value),
+                breed: sanitizeInput(breedSelect.value),
+                vaccination: sanitizeInput(vaccinationSelect.value),
+                vaccinationDate: sanitizeInput(document.getElementById('vaccination-date').value),
+            };
+            showModal('¿Estás seguro de querer continuar?', () => {
                 saveData(animalData);
                 document.getElementById('admission-form').reset();
-                showModal('Datos guardados correctamente.', null);
-            };
+            });
         }
-    }
+    });
 
-    // Manejar el botón de cancelar
-    function handleCancel() {
-        console.warn('Manejando el cancelado del formulario...');  // Advertencia
-        if (confirm('¿Estás seguro de cancelar?')) {
+    // Evento para manejar la cancelación del formulario
+    document.getElementById('cancel-button').addEventListener('click', () => {
+        showModal('¿Estás seguro de cancelar?', () => {
             document.getElementById('admission-form').reset();
-        }
-    }
-
-    // Manejar la visualización de registros
-    function handleViewRecords() {
-        console.log('Manejando la visualización de registros...');  // Información general
-        const records = getData();  // Obtiene los registros del almacenamiento local
-        if (records.length === 0) {
-            alert('No hay registros para mostrar.');
-            document.getElementById('records-view').style.display = 'none';  // Oculta la vista de registros si no hay registros
-            return;
-        }
-
-        let currentIndex = 0;  // Índice del registro actual
-        const recordDetails = document.getElementById('record-details');
-        const recordNumber = document.getElementById('record-number');
-
-        // Función para actualizar la vista del registro
-        function updateRecordView() {
-            const record = records[currentIndex];  // Obtiene el registro actual
-            recordDetails.innerHTML = `
-                <p>Nombre del Dueño: ${record.ownerName}</p>
-                <p>DNI: ${record.dni}</p>
-                <p>Dirección: ${record.address}</p>
-                <p>Localidad: ${record.locality}</p>
-                <p>Provincia: ${record.province}</p>
-                <p>Código Postal: ${record.postalCode}</p>
-                <p>Teléfono: ${record.phone}</p>
-                <p>Nombre del Animal: ${record.animalName}</p>
-                <p>Número de Chip: ${record.chipNumber}</p>
-                <p>Fecha de Ingreso: ${record.admissionDate}</p>
-                <p>Fecha de Intervención Quirúrgica: ${record.surgeryDate}</p>
-                <p>Especie: ${record.species}</p>
-                <p>Raza: ${record.breed}</p>
-                <p>Vacunación: ${record.vaccination}</p>
-                <p>Fecha de Vacunación: ${record.vaccinationDate}</p>
-            `;
-            recordNumber.textContent = `Ficha ${currentIndex + 1} de ${records.length}`;
-        }
-
-        // Maneja el botón "Anterior"
-        document.getElementById('prev-record').addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateRecordView();  // Actualiza la vista del registro
-            }
         });
+    });
 
-        // Maneja el botón "Siguiente"
-        document.getElementById('next-record').addEventListener('click', () => {
-            if (currentIndex < records.length - 1) {
-                currentIndex++;
-                updateRecordView();  // Actualiza la vista del registro
-            }
-        });
-
-        updateRecordView();  // Muestra el primer registro
-        console.group('Visualización de Registros');  // Inicia un grupo de mensajes
-        records.forEach((record, index) => {
-            console.log(`Registro ${index + 1}:`, record);
-        });
-        console.groupEnd();  // Finaliza el grupo de mensajes
-        document.getElementById('records-view').style.display = 'block';  // Muestra la vista de registros
-    }
-
-    // Función para borrar un registro específico
-    function deleteRecord() {
-        const recordIndex = parseInt(document.getElementById('record-number').textContent.split(' ')[1], 10) - 1;
-        if (!isNaN(recordIndex)) {
-            const records = JSON.parse(localStorage.getItem('animalRecords')) || [];
-            if (records.length > 0 && recordIndex >= 0 && recordIndex < records.length) {
-                records.splice(recordIndex, 1);  // Elimina el registro del array
-                localStorage.setItem('animalRecords', JSON.stringify(records));  // Actualiza el almacenamiento local
-                console.warn('Registro eliminado:', records);  // Advertencia de eliminación de registro
-                handleViewRecords();  // Recarga la vista de registros
-            }
+    // Evento para manejar la visualización de registros
+    document.getElementById('view-records-button').addEventListener('click', () => {
+        const records = getData();
+        if (records.length > 0) {
+            showRecords(records);
+        } else {
+            showModal('No hay registros disponibles.');
         }
-    }
+    });
 
-    // Vincula el botón de eliminación a la función deleteRecord
-    document.getElementById('delete-record').addEventListener('click', deleteRecord);
-
-    // Función para obtener datos de registros del almacenamiento local
-    function getData() {
-        console.debug('Obteniendo datos del almacenamiento local...');  // Mensaje de depuración
-        return JSON.parse(localStorage.getItem('animalRecords')) || [];
-    }
-
-    // Manejar el fin del programa
-    function handleEndProgram() {
-        console.log('Manejando el fin del programa...');  // Información general
-        if (confirm('¿Estás seguro de que quieres finalizar el programa?')) {
-            window.close();
-        }
-    }
-
-    document.getElementById('submit-button').addEventListener('click', handleSubmit);
-    document.getElementById('cancel-button').addEventListener('click', handleCancel);
-    document.getElementById('view-records-button').addEventListener('click', handleViewRecords);
-    document.getElementById('end-program-button').addEventListener('click', handleEndProgram);
-
-    loadProvinces();
-    loadSpecies();
+    // Evento para manejar el fin de programa
+    document.getElementById('end-program-button').addEventListener('click', () => {
+        showModal('¿Estás seguro de que quieres finalizar el programa?', () => {
+            localStorage.clear();
+            showModal('Programa finalizado. Todos los datos han sido borrados.', () => {
+                window.location.reload();
+            });
+        });
+    });
 });
-
-// Funciones globales para el DOM
-
-// Función para borrar un registro en el DOM
-window.deleteRecord = deleteRecord;
-
-// Función para cargar provincias en un elemento select del DOM
-window.loadProvinces = function() {
-    // Utiliza la constante 'provincias' definida en la parte superior
-    const provinceSelect = document.getElementById('province');
-    Object.keys(provincias).forEach(province => {
-        const option = document.createElement('option');
-        option.value = province;
-        option.textContent = province;
-        provinceSelect.appendChild(option);
-    });
-};
-
-// Función para cargar localidades en un elemento select del DOM, basado en la provincia seleccionada
-window.loadLocalities = function(province) {
-    // Utiliza la constante 'provincias' definida en la parte superior
-    const localitySelect = document.getElementById('locality');
-    localitySelect.innerHTML = '';  // Limpiar el select
-    if (provincias[province]) {
-        provincias[province].forEach(locality => {
-            const option = document.createElement('option');
-            option.value = locality;
-            option.textContent = locality;
-            localitySelect.appendChild(option);
-        });
-    }
-};
-
-// Función para cargar el código postal basado en la provincia y localidad seleccionadas
-window.loadPostalCode = function(province, locality) {
-    // Utiliza la constante 'codigosPostales' definida en la parte superior
-    const postalCodeInput = document.getElementById('postal-code');
-    if (codigosPostales[province] && codigosPostales[province][locality]) {
-        postalCodeInput.value = codigosPostales[province][locality];
-    } else {
-        postalCodeInput.value = '';  // Limpiar el input si no hay coincidencia
-    }
-};
-
-// Función para cargar especies en un elemento select del DOM
-window.loadSpecies = function() {
-    // Utiliza la constante 'especies' definida en la parte superior
-    const speciesSelect = document.getElementById('species');
-    Object.keys(especies).forEach(species => {
-        const option = document.createElement('option');
-        option.value = species;
-        option.textContent = species.charAt(0).toUpperCase() + species.slice(1);
-        speciesSelect.appendChild(option);
-    });
-};
-
-// Función para cargar razas en un elemento select del DOM, basado en la especie seleccionada
-window.loadBreeds = function(species) {
-    // Utiliza la constante 'especies' definida en la parte superior
-    const breedSelect = document.getElementById('breed');
-    breedSelect.innerHTML = '';  // Limpiar el select
-    if (especies[species]) {
-        especies[species].forEach(breed => {
-            const option = document.createElement('option');
-            option.value = breed;
-            option.textContent = breed;
-            breedSelect.appendChild(option);
-        });
-    }
-};
-
-// Función para validar los campos del formulario
-window.validateFields = function() {
-    const requiredFields = ['owner-name', 'dni', 'address', 'phone', 'animal-name', 'chip-number', 'admission-date'];
-    let allValid = true;
-    requiredFields.forEach(id => {
-        const input = document.getElementById(id);
-        if (!input || input.value.trim() === '') {
-            allValid = false;
-        }
-    });
-    console.assert(allValid, 'Faltan campos requeridos por completar.');  // Validación con aserto
-    return allValid;
-};

@@ -78,18 +78,18 @@
                     <input type="date" id="vaccination-date" class="form__input">
                 </div>
                 <div class="form__buttons">
-                    <button type="button" id="submit-button" class="form__button btn-accept">Aceptar</button>
+                    <button type="button" id="submit-button" class="form__button">Aceptar</button>
                     <button type="button" id="cancel-button" class="form__button btn-cancel">Cancelar</button>
-                    <button type="button" id="view-records-button" class="form__button btn-view">Visualizar Fichas</button>
-                    <button type="button" id="end-program-button" class="form__button btn-end">Fin de Programa</button>
+                    <button type="button" id="view-records-button" class="form__button btn-view-records">Ver Registros</button>
+                    <button type="button" id="end-program-button" class="form__button btn-end-program">Finalizar Programa</button>
                 </div>
             </form>
-            <!-- Visualización de fichas -->
             <section id="records-view" class="records-view" style="display: none;">
                 <div class="records-header">
                     <img src="./assets/logo/LOGO_COLVET_web.png" alt="Logo" class="records-logo">
                 </div>
                 <div id="record-details" class="record-details"></div>
+                <img id="breed-image-preview" class="breed-image-preview" alt="Vista previa de la raza"> <!-- Vista previa de la raza -->
                 <div class="records-navigation">
                     <button id="prev-record" class="records-navigation__button btn-nav">Anterior</button>
                     <span id="record-number" class="records-navigation__number"></span>
@@ -99,14 +99,13 @@
             </section>
         </div>
     </main>
-    <!-- Modal genérico -->
-    <div id="genericModal" class="modal">
+    
+    <!-- Modal -->
+    <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
             <p id="modal-message"></p>
-            <div id="modal-buttons">
-                <button id="modal-confirm" class="btn-modal-accept">Aceptar</button>
-            </div>
+            <button id="modal-confirm" class="modal-button">Confirmar</button>
+            <button id="modal-cancel" class="modal-button">Cancelar</button>
         </div>
     </div>
 </body>
