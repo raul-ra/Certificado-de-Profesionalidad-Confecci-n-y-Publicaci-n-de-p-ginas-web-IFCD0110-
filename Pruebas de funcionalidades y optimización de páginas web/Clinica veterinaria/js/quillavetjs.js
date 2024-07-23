@@ -663,9 +663,11 @@ function saveData(animalData) {
     let records = JSON.parse(localStorage.getItem('animalRecords')) || [];
     records.push(animalData);
     localStorage.setItem('animalRecords', JSON.stringify(records));
+    console.info('Datos guardados correctamente:', animalData);  // Información sobre los datos guardados
 }
 
 function getData() {
+    console.debug('Obteniendo datos del almacenamiento local...');  // Mensaje de depuración
     return JSON.parse(localStorage.getItem('animalRecords')) || [];
 }
 
@@ -680,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar las provincias en el select de provincias
     function loadProvinces() {
-        console.log('Cargando provincias...');
+        console.log('Cargando provincias...');  // Información general
         provinceSelect.innerHTML = '<option value="">Selecciona una provincia</option>';
         Object.keys(provincias).forEach(province => {
             const option = document.createElement('option');
@@ -692,7 +694,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar las localidades en el select de localidades basado en la provincia seleccionada
     function loadLocalities(province) {
-        console.log('Cargando localidades para la provincia:', province);
+        console.log('Cargando localidades para la provincia:', province);  // Información específica
         localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
         provincias[province].forEach(locality => {
             const option = document.createElement('option');
@@ -704,13 +706,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar el código postal basado en la provincia y la localidad seleccionada
     function loadPostalCode(province, locality) {
-        console.log('Cargando código postal para:', province, locality);
+        console.log('Cargando código postal para:', province, locality);  // Información específica
         postalCodeInput.value = codigosPostales[province][locality] || '';
     }
 
     // Cargar las especies en el select de especies
     function loadSpecies() {
-        console.log('Cargando especies...');
+        console.log('Cargando especies...');  // Información general
         speciesSelect.innerHTML = '<option value="">Selecciona una especie</option>';
         Object.keys(especies).forEach(species => {
             const option = document.createElement('option');
@@ -722,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar las razas en el select de razas basado en la especie seleccionada
     function loadBreeds(species) {
-        console.log('Cargando razas para la especie:', species);
+        console.log('Cargando razas para la especie:', species);  // Información específica
         breedSelect.innerHTML = '<option value="">Selecciona una raza</option>';
         especies[species].forEach(breed => {
             const option = document.createElement('option');
@@ -734,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar las vacunaciones en el select de vacunaciones basado en la especie seleccionada
     function loadVaccinations(species) {
-        console.log('Cargando vacunaciones para la especie:', species);
+        console.log('Cargando vacunaciones para la especie:', species);  // Información específica
         vaccinationSelect.innerHTML = '<option value="">Selecciona una vacunación</option>';
         vacunas[species].forEach(vaccine => {
             const option = document.createElement('option');
@@ -786,12 +788,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!formatoNifValido(nif)) return false;
         const numero = nif.slice(0, -1);
         const letra = nif.slice(-1).toUpperCase();
-        return calcularLetraDni(numero) === letra;
+        const isValid = calcularLetraDni(numero) === letra;
+        console.assert(isValid, 'NIF inválido:', nif);  // Validación con aserto
+        return isValid;
     }
 
     // Validar campos del formulario
     function validateFields() {
-        console.log('Validando campos...');
+        console.log('Validando campos...');  // Información general
         const ownerName = document.getElementById('owner-name');
         const dni = document.getElementById('dni');
         const address = document.getElementById('address');
@@ -874,7 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejar el envío del formulario
     function handleSubmit() {
-        console.log('Manejando el envío del formulario...');
+        console.log('Manejando el envío del formulario...');  // Información general
         const animalData = {
             ownerName: document.getElementById('owner-name').value,
             dni: document.getElementById('dni').value,
@@ -905,7 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejar el botón de cancelar
     function handleCancel() {
-        console.log('Manejando el cancelado del formulario...');
+        console.warn('Manejando el cancelado del formulario...');  // Advertencia
         if (confirm('¿Estás seguro de cancelar?')) {
             document.getElementById('admission-form').reset();
         }
@@ -913,21 +917,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejar la visualización de registros
     function handleViewRecords() {
-        console.log('Manejando la visualización de registros...');
-        const records = getData(); // Obtiene los registros del almacenamiento local
+        console.log('Manejando la visualización de registros...');  // Información general
+        const records = getData();  // Obtiene los registros del almacenamiento local
         if (records.length === 0) {
             alert('No hay registros para mostrar.');
-            document.getElementById('records-view').style.display = 'none'; // Oculta la vista de registros si no hay registros
+            document.getElementById('records-view').style.display = 'none';  // Oculta la vista de registros si no hay registros
             return;
         }
 
-        let currentIndex = 0; // Índice del registro actual
+        let currentIndex = 0;  // Índice del registro actual
         const recordDetails = document.getElementById('record-details');
         const recordNumber = document.getElementById('record-number');
 
         // Función para actualizar la vista del registro
         function updateRecordView() {
-            const record = records[currentIndex]; // Obtiene el registro actual
+            const record = records[currentIndex];  // Obtiene el registro actual
             recordDetails.innerHTML = `
                 <p>Nombre del Dueño: ${record.ownerName}</p>
                 <p>DNI: ${record.dni}</p>
@@ -952,7 +956,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('prev-record').addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-                updateRecordView(); // Actualiza la vista del registro
+                updateRecordView();  // Actualiza la vista del registro
             }
         });
 
@@ -960,12 +964,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('next-record').addEventListener('click', () => {
             if (currentIndex < records.length - 1) {
                 currentIndex++;
-                updateRecordView(); // Actualiza la vista del registro
+                updateRecordView();  // Actualiza la vista del registro
             }
         });
 
-        updateRecordView(); // Muestra el primer registro
-        document.getElementById('records-view').style.display = 'block'; // Muestra la vista de registros
+        updateRecordView();  // Muestra el primer registro
+        console.group('Visualización de Registros');  // Inicia un grupo de mensajes
+        records.forEach((record, index) => {
+            console.log(`Registro ${index + 1}:`, record);
+        });
+        console.groupEnd();  // Finaliza el grupo de mensajes
+        document.getElementById('records-view').style.display = 'block';  // Muestra la vista de registros
     }
 
     // Función para borrar un registro específico
@@ -974,10 +983,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isNaN(recordIndex)) {
             const records = JSON.parse(localStorage.getItem('animalRecords')) || [];
             if (records.length > 0 && recordIndex >= 0 && recordIndex < records.length) {
-                records.splice(recordIndex, 1); // Elimina el registro del array
-                localStorage.setItem('animalRecords', JSON.stringify(records)); // Actualiza el almacenamiento local
-                alert('Registro eliminado exitosamente.');
-                handleViewRecords(); // Recarga la vista de registros
+                records.splice(recordIndex, 1);  // Elimina el registro del array
+                localStorage.setItem('animalRecords', JSON.stringify(records));  // Actualiza el almacenamiento local
+                console.warn('Registro eliminado:', records);  // Advertencia de eliminación de registro
+                handleViewRecords();  // Recarga la vista de registros
             }
         }
     }
@@ -987,12 +996,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para obtener datos de registros del almacenamiento local
     function getData() {
+        console.debug('Obteniendo datos del almacenamiento local...');  // Mensaje de depuración
         return JSON.parse(localStorage.getItem('animalRecords')) || [];
     }
 
     // Manejar el fin del programa
     function handleEndProgram() {
-        console.log('Manejando el fin del programa...');
+        console.log('Manejando el fin del programa...');  // Información general
         if (confirm('¿Estás seguro de que quieres finalizar el programa?')) {
             window.close();
         }
@@ -1028,7 +1038,7 @@ window.loadProvinces = function() {
 window.loadLocalities = function(province) {
     // Utiliza la constante 'provincias' definida en la parte superior
     const localitySelect = document.getElementById('locality');
-    localitySelect.innerHTML = ''; // Limpiar el select
+    localitySelect.innerHTML = '';  // Limpiar el select
     if (provincias[province]) {
         provincias[province].forEach(locality => {
             const option = document.createElement('option');
@@ -1046,7 +1056,7 @@ window.loadPostalCode = function(province, locality) {
     if (codigosPostales[province] && codigosPostales[province][locality]) {
         postalCodeInput.value = codigosPostales[province][locality];
     } else {
-        postalCodeInput.value = ''; // Limpiar el input si no hay coincidencia
+        postalCodeInput.value = '';  // Limpiar el input si no hay coincidencia
     }
 };
 
@@ -1066,7 +1076,7 @@ window.loadSpecies = function() {
 window.loadBreeds = function(species) {
     // Utiliza la constante 'especies' definida en la parte superior
     const breedSelect = document.getElementById('breed');
-    breedSelect.innerHTML = ''; // Limpiar el select
+    breedSelect.innerHTML = '';  // Limpiar el select
     if (especies[species]) {
         especies[species].forEach(breed => {
             const option = document.createElement('option');
@@ -1087,5 +1097,6 @@ window.validateFields = function() {
             allValid = false;
         }
     });
+    console.assert(allValid, 'Faltan campos requeridos por completar.');  // Validación con aserto
     return allValid;
 };
