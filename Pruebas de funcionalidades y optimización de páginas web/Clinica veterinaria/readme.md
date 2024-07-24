@@ -51,7 +51,7 @@ Este proyecto implementa un formulario de admisión veterinaria para registrar d
 
 11. **Fecha de Intervención Quirúrgica:**
     - Tipo: Fecha
-    - Validación: Puede ser "Sí" o "No"; debe ser anterior a la fecha de ingreso
+    - Validación: Debe ser anterior a la fecha de ingreso
 
 12. **Especie:**
     - Tipo: Desplegable
@@ -127,16 +127,122 @@ Este proyecto implementa un formulario de admisión veterinaria para registrar d
 - Botón de "Visualizar Fichas" para mostrar los datos guardados en una ventana paralela al formulario con flechas de navegación y numeración de fichas.
 - Botón de "Fin de Programa" para cerrar la aplicación.
 
-### Lógica de las Funciones
+## Lógica de las Funciones
 
-- **loadProvinces:** Carga las provincias en el select de provincias.
-- **loadLocalities:** Carga las localidades en el select de localidades basado en la provincia seleccionada.
-- **loadPostalCode:** Carga el código postal basado en la provincia y la localidad seleccionada.
-- **loadSpecies:** Carga las especies en el select de especies.
-- **loadBreeds:** Carga las razas en el select de razas basado en la especie seleccionada.
-- **loadVaccinations:** Carga las vacunaciones en el select de vacunaciones basado en la especie seleccionada.
-- **validateFields:** Valida los campos del formulario asegurando que cumplen con los criterios especificados.
-- **handleSubmit:** Maneja el envío del formulario, validando los campos y mostrando una ventana de confirmación antes de guardar los datos.
-- **handleCancel:** Maneja el botón de cancelar, mostrando una ventana de alerta para confirmar la cancelación.
-- **handleViewRecords:** Maneja la visualización de registros guardados en localStorage, mostrando los datos en una ventana paralela.
-- **handleEndProgram:** Maneja el botón de fin de programa, mostrando una confirmación antes de cerrar la aplicación.
+### 1. `sanitizeInput(input)`
+- **Descripción**: Sanitiza la entrada del usuario para evitar scripts maliciosos.
+- **Entrada**: `input` (string) - La cadena de entrada del usuario.
+- **Salida**: Una cadena sanitizada que es segura para insertar en el DOM.
+
+### 2. `saveData(animalData)`
+- **Descripción**: Almacena los datos del animal en el almacenamiento local (localStorage).
+- **Entrada**: `animalData` (objeto) - Los datos del animal a almacenar.
+- **Salida**: Ninguna.
+- **Medidas de Seguridad**: Sanitización de datos antes de almacenarlos.
+
+### 3. `getData()`
+- **Descripción**: Obtiene los datos almacenados en el almacenamiento local.
+- **Entrada**: Ninguna.
+- **Salida**: Un array de objetos con los datos de los animales almacenados.
+
+### 4. `loadProvinces(provinceSelect)`
+- **Descripción**: Carga las provincias en el select de provincias.
+- **Entrada**: `provinceSelect` (elemento DOM) - El elemento select donde se cargarán las provincias.
+- **Salida**: Ninguna.
+
+### 5. `loadLocalities(province, localitySelect)`
+- **Descripción**: Carga las localidades basadas en la provincia seleccionada en el select de localidades.
+- **Entrada**: `province` (string) - La provincia seleccionada.
+               `localitySelect` (elemento DOM) - El elemento select donde se cargarán las localidades.
+- **Salida**: Ninguna.
+
+### 6. `loadPostalCode(province, locality, postalCodeInput)`
+- **Descripción**: Carga el código postal basado en la provincia y la localidad seleccionada.
+- **Entrada**: `province` (string) - La provincia seleccionada.
+               `locality` (string) - La localidad seleccionada.
+               `postalCodeInput` (elemento DOM) - El campo de entrada del código postal.
+- **Salida**: Ninguna.
+
+### 7. `loadSpecies(speciesSelect)`
+- **Descripción**: Carga las especies en el select de especies.
+- **Entrada**: `speciesSelect` (elemento DOM) - El elemento select donde se cargarán las especies.
+- **Salida**: Ninguna.
+
+### 8. `loadBreeds(species, breedSelect)`
+- **Descripción**: Carga las razas basadas en la especie seleccionada en el select de razas.
+- **Entrada**: `species` (string) - La especie seleccionada.
+               `breedSelect` (elemento DOM) - El elemento select donde se cargarán las razas.
+- **Salida**: Ninguna.
+
+### 9. `loadVaccinations(species, vaccinationSelect)`
+- **Descripción**: Carga las vacunaciones basadas en la especie seleccionada en el select de vacunaciones.
+- **Entrada**: `species` (string) - La especie seleccionada.
+               `vaccinationSelect` (elemento DOM) - El elemento select donde se cargarán las vacunaciones.
+- **Salida**: Ninguna.
+
+### 10. `calcularLetraDni(dni)`
+- **Descripción**: Calcula la letra correspondiente al DNI.
+- **Entrada**: `dni` (string) - El número del DNI sin la letra.
+- **Salida**: La letra correspondiente al DNI.
+
+### 11. `formatoNifValido(nif)`
+- **Descripción**: Verifica si el formato del NIF es válido.
+- **Entrada**: `nif` (string) - El NIF completo.
+- **Salida**: `true` si el formato es válido, `false` en caso contrario.
+
+### 12. `validarNif(nif)`
+- **Descripción**: Valida si el NIF es correcto.
+- **Entrada**: `nif` (string) - El NIF completo.
+- **Salida**: `true` si el NIF es válido, `false` en caso contrario.
+
+### 13. `showRecords(records)`
+- **Descripción**: Muestra los registros almacenados en una vista detallada.
+- **Entrada**: `records` (array) - Un array de objetos con los datos de los animales.
+- **Salida**: Ninguna.
+- **Medidas de Seguridad**: Sanitización de todos los datos antes de mostrarlos en el DOM.
+
+### 14. `showBreedImageOnHover(breedSelect)`
+- **Descripción**: Muestra una imagen de la raza al pasar el ratón sobre el select de razas.
+- **Entrada**: `breedSelect` (elemento DOM) - El elemento select de las razas.
+- **Salida**: Ninguna.
+
+### 15. `formatDate(date)`
+- **Descripción**: Formatea una fecha al formato europeo (DD/MM/YYYY).
+- **Entrada**: `date` (string) - La fecha en formato YYYY-MM-DD.
+- **Salida**: La fecha en formato DD/MM/YYYY.
+
+### 16. `showModal(message, onConfirm)`
+- **Descripción**: Muestra una ventana modal con un mensaje y una acción de confirmación.
+- **Entrada**: `message` (string) - El mensaje a mostrar en el modal.
+               `onConfirm` (función) - La función a ejecutar si el usuario confirma.
+- **Salida**: Ninguna.
+
+### 17. `validateForm()`
+- **Descripción**: Valida los campos del formulario antes de enviarlo.
+- **Entrada**: Ninguna.
+- **Salida**: `true` si todos los campos son válidos, `false` en caso contrario.
+- **Validaciones**:
+    - `ownerName`: No puede estar vacío, máximo 25 caracteres, sin caracteres especiales.
+    - `dni`: Debe ser un NIF válido.
+    - `address`: No puede estar vacío, máximo 40 caracteres, sin caracteres especiales.
+    - `phone`: Debe ser un número de 9 dígitos mas el codigo del pais.
+    - `animalName`: No puede estar vacío, sin caracteres especiales.
+    - `chipNumber`: Debe ser de 15 caracteres alfanuméricos.
+    - `admissionDate` y `surgeryDate`: La fecha de cirugía debe ser anterior a la fecha de ingreso.
+    - `vaccinationDate`: La fecha de vacunación debe ser igual o mayor a la fecha de ingreso.
+
+## Medidas de Seguridad Contra XSS
+
+1. **Sanitización de Entrada**:
+    - La función `sanitizeInput` se utiliza para limpiar cualquier entrada del usuario antes de que se procese o se inserte en el DOM.
+
+2. **Sanitización de Salida**:
+    - Antes de mostrar cualquier dato en el DOM, se utiliza `sanitizeInput` para asegurar que no se ejecutará código malicioso.
+
+3. **Uso Seguro de `innerHTML`**:
+    - En lugar de utilizar `innerHTML` directamente con datos del usuario o almacenados, se crean y manipulan elementos DOM de forma segura para evitar la inyección de HTML no deseado.
+
+4. **Validaciones Exhaustivas**:
+    - Validaciones estrictas en los campos del formulario para asegurar que los datos son correctos y seguros.
+
+Estas medidas aseguran que la aplicación es robusta frente a ataques de XSS, protegiendo tanto los datos como la experiencia del usuario.

@@ -1127,13 +1127,17 @@ const breedImages = {
     }
 };
 
-// Funciones
-// Constantes (datos)
-// (mantén las constantes como estaban)
 
 // Funciones
 
-// Función almacenamiento de datos
+// Función para sanitizar la entrada y proteger contra scripts maliciosos
+function sanitizeInput(input) {
+    const element = document.createElement('div');
+    element.innerText = input;
+    return element.innerHTML;
+}
+
+// Función para almacenamiento de datos
 function saveData(animalData) {
     let records = JSON.parse(localStorage.getItem('animalRecords')) || [];
     records.push(animalData);
@@ -1151,8 +1155,8 @@ function loadProvinces(provinceSelect) {
     provinceSelect.innerHTML = '<option value="">Selecciona una provincia</option>';
     Object.keys(provincias).forEach(province => {
         const option = document.createElement('option');
-        option.value = province;
-        option.textContent = province;
+        option.value = sanitizeInput(province);
+        option.textContent = sanitizeInput(province);
         provinceSelect.appendChild(option);
     });
 }
@@ -1160,17 +1164,17 @@ function loadProvinces(provinceSelect) {
 // Función para cargar las localidades en el select de localidades basado en la provincia seleccionada
 function loadLocalities(province, localitySelect) {
     localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
-    provincias[province].forEach(locality => {
+    provincias[sanitizeInput(province)].forEach(locality => {
         const option = document.createElement('option');
-        option.value = locality;
-        option.textContent = locality;
+        option.value = sanitizeInput(locality);
+        option.textContent = sanitizeInput(locality);
         localitySelect.appendChild(option);
     });
 }
 
 // Función para cargar el código postal basado en la provincia y la localidad seleccionada
 function loadPostalCode(province, locality, postalCodeInput) {
-    postalCodeInput.value = codigosPostales[province][locality] || '';
+    postalCodeInput.value = sanitizeInput(codigosPostales[sanitizeInput(province)][sanitizeInput(locality)] || '');
 }
 
 // Función para cargar las especies en el select de especies
@@ -1178,8 +1182,8 @@ function loadSpecies(speciesSelect) {
     speciesSelect.innerHTML = '<option value="">Selecciona una especie</option>';
     Object.keys(especies).forEach(species => {
         const option = document.createElement('option');
-        option.value = species;
-        option.textContent = species.charAt(0).toUpperCase() + species.slice(1);
+        option.value = sanitizeInput(species);
+        option.textContent = sanitizeInput(species.charAt(0).toUpperCase() + species.slice(1));
         speciesSelect.appendChild(option);
     });
 }
@@ -1187,11 +1191,11 @@ function loadSpecies(speciesSelect) {
 // Función para cargar las razas en el select de razas basado en la especie seleccionada
 function loadBreeds(species, breedSelect) {
     breedSelect.innerHTML = '<option value="">Selecciona una raza</option>';
-    especies[species].forEach(breed => {
+    especies[sanitizeInput(species)].forEach(breed => {
         const option = document.createElement('option');
-        option.value = breed;
-        option.textContent = breed;
-        option.dataset.image = breedImages[species][breed.toLowerCase().replace(/ /g, '')];
+        option.value = sanitizeInput(breed);
+        option.textContent = sanitizeInput(breed);
+        option.dataset.image = sanitizeInput(breedImages[sanitizeInput(species)][sanitizeInput(breed.toLowerCase().replace(/ /g, ''))]);
         breedSelect.appendChild(option);
     });
 }
@@ -1199,10 +1203,10 @@ function loadBreeds(species, breedSelect) {
 // Función para cargar las vacunaciones en el select de vacunaciones basado en la especie seleccionada
 function loadVaccinations(species, vaccinationSelect) {
     vaccinationSelect.innerHTML = '<option value="">Selecciona una vacunación</option>';
-    vacunas[species].forEach(vaccine => {
+    vacunas[sanitizeInput(species)].forEach(vaccine => {
         const option = document.createElement('option');
-        option.value = vaccine;
-        option.textContent = vaccine;
+        option.value = sanitizeInput(vaccine);
+        option.textContent = sanitizeInput(vaccine);
         vaccinationSelect.appendChild(option);
     });
 }
@@ -1237,32 +1241,98 @@ function showRecords(records) {
 
     function updateRecordDetails() {
         const record = records[currentIndex];
-        const breedImage = breedImages[record.species.toLowerCase()][record.breed.toLowerCase().replace(/ /g, '')];
+        const breedImage = sanitizeInput(breedImages[record.species.toLowerCase()][record.breed.toLowerCase().replace(/ /g, '')]);
         const breedCareDetails = breedCare[record.breed] || { care: 'No disponible', diseases: 'No disponible' };
-        recordDetails.innerHTML = `
-            <h2>Ficha de Registro de ${sanitizeOutput(record.animalName)}</h2>
-            <img src="${sanitizeOutput(breedImage)}" alt="${sanitizeOutput(record.breed)}" class="breed-image">
-            <p><strong>Dueño:</strong> ${sanitizeOutput(record.owner)}</p>
-            <p><strong>DNI:</strong> ${sanitizeOutput(record.dni)}</p>
-            <p><strong>Dirección:</strong> ${sanitizeOutput(record.address)}</p>
-            <p><strong>Provincia:</strong> ${sanitizeOutput(record.province)}</p>
-            <p><strong>Localidad:</strong> ${sanitizeOutput(record.locality)}</p>
-            <p><strong>Código Postal:</strong> ${sanitizeOutput(record.postalCode)}</p>
-            <p><strong>Teléfono:</strong> ${sanitizeOutput(record.phone)}</p>
-            <p><strong>Nombre del Animal:</strong> ${sanitizeOutput(record.animalName)}</p>
-            <p><strong>Número de Chip:</strong> ${sanitizeOutput(record.chipNumber)}</p>
-            <p><strong>Fecha de Ingreso:</strong> ${formatDate(record.admissionDate)}</p>
-            <p><strong>Fecha de Intervención Quirúrgica:</strong> ${formatDate(record.surgeryDate)}</p>
-            <p><strong>Especie:</strong> ${sanitizeOutput(record.species)}</p>
-            <p><strong>Raza:</strong> ${sanitizeOutput(record.breed)}</p>
-            <p><strong>Vacunación:</strong> ${sanitizeOutput(record.vaccination)}</p>
-            <p><strong>Fecha de Vacunación:</strong> ${formatDate(record.vaccinationDate)}</p>
-            <div class="breed-care">
-                <h3>Cuidados y Enfermedades Habituales</h3>
-                <p><strong>Cuidados:</strong> ${sanitizeOutput(breedCareDetails.care)}</p>
-                <p><strong>Enfermedades:</strong> ${sanitizeOutput(breedCareDetails.diseases)}</p>
-            </div>
-        `;
+        
+        // Crear elementos HTML de manera segura
+        recordDetails.innerHTML = ''; // Limpiar contenido anterior
+        
+        const title = document.createElement('h2');
+        title.textContent = `Ficha de Registro de ${sanitizeInput(record.animalName)}`;
+        
+        const image = document.createElement('img');
+        image.src = breedImage;
+        image.alt = sanitizeInput(record.breed);
+        image.className = 'breed-image';
+        
+        const owner = document.createElement('p');
+        owner.innerHTML = `<strong>Dueño:</strong> ${sanitizeInput(record.owner)}`;
+        
+        const dni = document.createElement('p');
+        dni.innerHTML = `<strong>DNI:</strong> ${sanitizeInput(record.dni)}`;
+        
+        const address = document.createElement('p');
+        address.innerHTML = `<strong>Dirección:</strong> ${sanitizeInput(record.address)}`;
+        
+        const province = document.createElement('p');
+        province.innerHTML = `<strong>Provincia:</strong> ${sanitizeInput(record.province)}`;
+        
+        const locality = document.createElement('p');
+        locality.innerHTML = `<strong>Localidad:</strong> ${sanitizeInput(record.locality)}`;
+        
+        const postalCode = document.createElement('p');
+        postalCode.innerHTML = `<strong>Código Postal:</strong> ${sanitizeInput(record.postalCode)}`;
+        
+        const phone = document.createElement('p');
+        phone.innerHTML = `<strong>Teléfono:</strong> ${sanitizeInput(record.phone)}`;
+        
+        const animalName = document.createElement('p');
+        animalName.innerHTML = `<strong>Nombre del Animal:</strong> ${sanitizeInput(record.animalName)}`;
+        
+        const chipNumber = document.createElement('p');
+        chipNumber.innerHTML = `<strong>Número de Chip:</strong> ${sanitizeInput(record.chipNumber)}`;
+        
+        const admissionDate = document.createElement('p');
+        admissionDate.innerHTML = `<strong>Fecha de Ingreso:</strong> ${formatDate(record.admissionDate)}`;
+        
+        const surgeryDate = document.createElement('p');
+        surgeryDate.innerHTML = `<strong>Fecha de Intervención Quirúrgica:</strong> ${formatDate(record.surgeryDate)}`;
+        
+        const species = document.createElement('p');
+        species.innerHTML = `<strong>Especie:</strong> ${sanitizeInput(record.species)}`;
+        
+        const breed = document.createElement('p');
+        breed.innerHTML = `<strong>Raza:</strong> ${sanitizeInput(record.breed)}`;
+        
+        const vaccination = document.createElement('p');
+        vaccination.innerHTML = `<strong>Vacunación:</strong> ${sanitizeInput(record.vaccination)}`;
+        
+        const vaccinationDate = document.createElement('p');
+        vaccinationDate.innerHTML = `<strong>Fecha de Vacunación:</strong> ${formatDate(record.vaccinationDate)}`;
+        
+        const breedCareDiv = document.createElement('div');
+        breedCareDiv.className = 'breed-care';
+        const breedCareTitle = document.createElement('h3');
+        breedCareTitle.textContent = 'Cuidados y Enfermedades Habituales';
+        const breedCareDetailsCare = document.createElement('p');
+        breedCareDetailsCare.innerHTML = `<strong>Cuidados:</strong> ${sanitizeInput(breedCareDetails.care)}`;
+        const breedCareDetailsDiseases = document.createElement('p');
+        breedCareDetailsDiseases.innerHTML = `<strong>Enfermedades:</strong> ${sanitizeInput(breedCareDetails.diseases)}`;
+        
+        breedCareDiv.appendChild(breedCareTitle);
+        breedCareDiv.appendChild(breedCareDetailsCare);
+        breedCareDiv.appendChild(breedCareDetailsDiseases);
+        
+        // Agregar elementos al contenedor de detalles
+        recordDetails.appendChild(title);
+        recordDetails.appendChild(image);
+        recordDetails.appendChild(owner);
+        recordDetails.appendChild(dni);
+        recordDetails.appendChild(address);
+        recordDetails.appendChild(province);
+        recordDetails.appendChild(locality);
+        recordDetails.appendChild(postalCode);
+        recordDetails.appendChild(phone);
+        recordDetails.appendChild(animalName);
+        recordDetails.appendChild(chipNumber);
+        recordDetails.appendChild(admissionDate);
+        recordDetails.appendChild(surgeryDate);
+        recordDetails.appendChild(species);
+        recordDetails.appendChild(breed);
+        recordDetails.appendChild(vaccination);
+        recordDetails.appendChild(vaccinationDate);
+        recordDetails.appendChild(breedCareDiv);
+        
         document.getElementById('record-number').textContent = `${currentIndex + 1} / ${records.length}`;
     }
 
@@ -1303,10 +1373,10 @@ function showBreedImageOnHover(breedSelect) {
     const breedImagePreview = document.getElementById('breed-image-preview');
 
     breedSelect.addEventListener('mouseover', (event) => {
-        const breed = event.target.value.toLowerCase().replace(/ /g, '');
+        const breed = sanitizeInput(event.target.value.toLowerCase().replace(/ /g, ''));
         const species = document.getElementById('species').value.toLowerCase();
-        if (breedImages[species] && breedImages[species][breed]) {
-            breedImagePreview.src = breedImages[species][breed];
+        if (breedImages[sanitizeInput(species)] && breedImages[sanitizeInput(species)][breed]) {
+            breedImagePreview.src = sanitizeInput(breedImages[sanitizeInput(species)][breed]);
             breedImagePreview.style.display = 'block';
         }
     });
@@ -1349,11 +1419,14 @@ function validateForm() {
     const address = document.getElementById('address').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const animalName = document.getElementById('animal-name').value.trim();
+    const chipNumber = document.getElementById('chip-number').value.trim();
     const admissionDate = document.getElementById('admission-date').value;
     const surgeryDate = document.getElementById('surgery-date').value;
     const vaccinationDate = document.getElementById('vaccination-date').value;
 
     const regexNoSpecialChars = /^[a-zA-Z0-9\s]*$/; // Solo letras, números y espacios
+    const regexAlphanumeric15 = /^[a-zA-Z0-9]{15}$/; // 15 caracteres alfanuméricos
+    const regexPhone = /^\+[0-9]{13}$/; // Número de teléfono con código de país (14 dígitos en total incluyendo el '+')
 
     if (ownerName.length > 25 || ownerName === '' || !regexNoSpecialChars.test(ownerName)) {
         showModal('El nombre del dueño no puede estar vacío, debe tener máximo 25 caracteres y no puede contener caracteres especiales.');
@@ -1370,13 +1443,18 @@ function validateForm() {
         return false;
     }
 
-    if (phone === '' || isNaN(phone) || phone.length !== 9) {
-        showModal('El teléfono debe ser un número de 9 dígitos.');
+    if (phone === '' || !regexPhone.test(phone)) {
+        showModal('El teléfono debe incluir el código de país y tener un total de 13 dígitos, incluyendo el símbolo "+". Ejemplo: +0034666555777');
         return false;
     }
 
     if (animalName === '' || !regexNoSpecialChars.test(animalName)) {
         showModal('El nombre del animal no puede estar vacío y no puede contener caracteres especiales.');
+        return false;
+    }
+
+    if (!regexAlphanumeric15.test(chipNumber)) {
+        showModal('El número de chip debe ser de 15 caracteres alfanuméricos.');
         return false;
     }
 
@@ -1391,20 +1469,6 @@ function validateForm() {
     }
 
     return true;
-}
-
-// Función para sanitizar la entrada y proteger contra scripts maliciosos
-function sanitizeInput(input) {
-    const element = document.createElement('div');
-    element.innerText = input;
-    return element.innerHTML;
-}
-
-// Función para sanitizar la salida
-function sanitizeOutput(output) {
-    const element = document.createElement('div');
-    element.innerText = output;
-    return element.innerHTML;
 }
 
 // Evento para cargar las provincias y localidades al cargar la página
@@ -1433,10 +1497,12 @@ document.addEventListener('DOMContentLoaded', () => {
         loadVaccinations(speciesSelect.value, vaccinationSelect);
     });
 
+    // Llamar a la función para mostrar la imagen de la raza al pasar el ratón
     showBreedImageOnHover(breedSelect);
 
     // Evento para manejar el envío del formulario
-    document.getElementById('submit-button').addEventListener('click', () => {
+    document.getElementById('submit-button').addEventListener('click', (event) => {
+        event.preventDefault();  // Evita el envío del formulario de forma predeterminada
         if (validateForm()) {
             const animalData = {
                 owner: sanitizeInput(document.getElementById('owner-name').value),
@@ -1463,14 +1529,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Evento para manejar la cancelación del formulario
-    document.getElementById('cancel-button').addEventListener('click', () => {
+    document.getElementById('cancel-button').addEventListener('click', (event) => {
+        event.preventDefault();  // Evita el envío del formulario de forma predeterminada
         showModal('¿Estás seguro de cancelar?', () => {
             document.getElementById('admission-form').reset();
         });
     });
 
     // Evento para manejar la visualización de registros
-    document.getElementById('view-records-button').addEventListener('click', () => {
+    document.getElementById('view-records-button').addEventListener('click', (event) => {
+        event.preventDefault();  // Evita el envío del formulario de forma predeterminada
         const records = getData();
         if (records.length > 0) {
             showRecords(records);
@@ -1480,7 +1548,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Evento para manejar el fin de programa
-    document.getElementById('end-program-button').addEventListener('click', () => {
+    document.getElementById('end-program-button').addEventListener('click', (event) => {
+        event.preventDefault();  // Evita el envío del formulario de forma predeterminada
         showModal('¿Estás seguro de que quieres finalizar el programa?', () => {
             localStorage.clear();
             showModal('Programa finalizado. Todos los datos han sido borrados.', () => {
