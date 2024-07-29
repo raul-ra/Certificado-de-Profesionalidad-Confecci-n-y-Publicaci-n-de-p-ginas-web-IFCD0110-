@@ -1022,457 +1022,537 @@ const breedCare = {
     }
 };
 
-// Rutas de imagenes
-const breedImages = {
-    gato: {
-        abisinio: './assets/img/gato/abisinio.jpeg',
-        bengala: './assets/img/gato/bengala.jpeg',
-        birmano: './assets/img/gato/birmano.jpeg',
-        britishShorthair: './assets/img/gato/britishShorthair.jpeg',
-        devonRex: './assets/img/gato/devonRex.jpeg',
-        exotico: './assets/img/gato/exotico.jpeg',
-        maineCoon: './assets/img/gato/maineCoon.jpeg',
-        oriental: './assets/img/gato/oriental.jpeg',
-        persa: './assets/img/gato/persa.jpeg',
-        ragdoll: './assets/img/gato/ragdoll.jpeg',
-        savannah: './assets/img/gato/savannah.jpeg',
-        scottishFold: './assets/img/gato/scottishFold.jpeg',
-        siames: './assets/img/gato/siames.jpeg',
-        siberiano: './assets/img/gato/siberiano.jpeg',
-        sphynx: './assets/img/gato/sphynx.jpeg'
-    },
-    perro: {
-        beagle: './assets/img/perro/beagle.jpeg',
-        boxer: './assets/img/perro/boxer.jpeg',
-        bulldog: './assets/img/perro/bulldog.jpeg',
-        bulldogFrances: './assets/img/perro/bulldogFrances.jpeg',
-        caniche: './assets/img/perro/caniche.jpeg',
-        chihuahua: './assets/img/perro/chihuahua.jpeg',
-        cockerSpaniel: './assets/img/perro/cockerSpaniel.jpeg',
-        dalmata: './assets/img/perro/dalmata.jpeg',
-        doberman: './assets/img/perro/doberman.jpeg',
-        golden: './assets/img/perro/golden.jpeg',
-        labrador: './assets/img/perro/labrador.jpeg',
-        pastorAleman: './assets/img/perro/pastorAleman.jpeg',
-        pomerania: './assets/img/perro/pomerania.jpeg',
-        rottweiler: './assets/img/perro/rottweiler.jpeg',
-        shihTzu: './assets/img/perro/shihTzu.jpeg'
-    },
-    caballo: {
-        andaluz: './assets/img/caballo/andaluz.jpeg',
-        appaloosa: './assets/img/caballo/appaloosa.jpeg',
-        clydesdale: './assets/img/caballo/clydesdale.jpeg',
-        cuartoDeMilla: './assets/img/caballo/cuartoDeMilla.jpeg',
-        frison: './assets/img/caballo/frison.jpeg',
-        hannoveriano: './assets/img/caballo/hannoveriano.jpeg',
-        lipizano: './assets/img/caballo/lipizano.jpeg',
-        lusitano: './assets/img/caballo/lusitano.jpeg',
-        morgan: './assets/img/caballo/morgan.jpeg',
-        mustang: './assets/img/caballo/mustang.jpeg',
-        percheron: './assets/img/caballo/percheron.jpeg',
-        puraSangre: './assets/img/caballo/puraSangre.jpeg',
-        shetland: './assets/img/caballo/shetland.jpeg',
-        tennesseeWalker: './assets/img/caballo/tennesseeWalker.jpeg'
-    },
-    reptil: {
-        anolis: './assets/img/reptil/anolis.jpeg',
-        axolotl: './assets/img/reptil/axolotl.jpeg',
-        boa: './assets/img/reptil/boa.jpeg',
-        caiman: './assets/img/reptil/caiman.jpeg',
-        camaleon: './assets/img/reptil/camaleon.jpeg',
-        dragonBarbudo: './assets/img/reptil/dragonBarbudo.jpeg',
-        escorpion: './assets/img/reptil/escorpion.jpeg',
-        gecko: './assets/img/reptil/gecko.jpeg',
-        iguana: './assets/img/reptil/iguana.jpeg',
-        lagartoMonitor: './assets/img/reptil/lagartoMonitor.jpeg',
-        piton: './assets/img/reptil/piton.jpeg',
-        salamandra: './assets/img/reptil/salamandra.jpeg',
-        serpienteDelMaiz: './assets/img/reptil/serpienteDelMaiz.jpeg',
-        tortuga: './assets/img/reptil/tortuga.jpeg',
-        tarantula: './assets/img/reptil/tarantula.jpeg'
-    },
-    roedor: {
-        aguti: './assets/img/roedor/aguti.jpeg',
-        ardilla: './assets/img/roedor/ardilla.jpeg',
-        capibara: './assets/img/roedor/capibara.jpeg',
-        chinchilla: './assets/img/roedor/chinchilla.jpeg',
-        cobaya: './assets/img/roedor/cobaya.jpeg',
-        conejo: './assets/img/roedor/conejo.jpeg',
-        cuy: './assets/img/roedor/cuy.jpeg',
-        degu: './assets/img/roedor/degu.jpeg',
-        erizo: './assets/img/roedor/erizo.jpeg',
-        hamster: './assets/img/roedor/hamster.jpeg',
-        jerbo: './assets/img/roedor/jerbo.jpeg',
-        paca: './assets/img/roedor/paca.jpeg',
-        rata: './assets/img/roedor/rata.jpeg',
-        raton: './assets/img/roedor/raton.jpeg'
-    },
-    ave: {
-        agapornis: './assets/img/ave/agapornis.jpeg',
-        aguila: './assets/img/ave/aguila.jpeg',
-        arabe: './assets/img/ave/arabe.jpeg',
-        buho: './assets/img/ave/buho.jpeg',
-        cacatua: './assets/img/ave/cacatua.jpeg',
-        canario: './assets/img/ave/canario.jpeg',
-        cisne: './assets/img/ave/cisne.jpeg',
-        flamenco: './assets/img/ave/flamenco.jpeg',
-        gorrion: './assets/img/ave/gorrion.jpeg',
-        halcon: './assets/img/ave/halcon.jpeg',
-        jilguero: './assets/img/ave/jilguero.jpeg',
-        lechuza: './assets/img/ave/lechuza.jpeg',
-        loro: './assets/img/ave/loro.jpeg',
-        ninfa: './assets/img/ave/ninfa.jpeg',
-        pato: './assets/img/ave/pato.jpeg',
-        periquito: './assets/img/ave/periquito.jpeg'
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Rutas de imagenes
+    const breedImages = {
+        gato: {
+            abisinio: './assets/img/gato/abisinio.jpeg',
+            bengala: './assets/img/gato/bengala.jpeg',
+            birmano: './assets/img/gato/birmano.jpeg',
+            britishShorthair: './assets/img/gato/britishShorthair.jpeg',
+            devonRex: './assets/img/gato/devonRex.jpeg',
+            exotico: './assets/img/gato/exotico.jpeg',
+            maineCoon: './assets/img/gato/maineCoon.jpeg',
+            oriental: './assets/img/gato/oriental.jpeg',
+            persa: './assets/img/gato/persa.jpeg',
+            ragdoll: './assets/img/gato/ragdoll.jpeg',
+            savannah: './assets/img/gato/savannah.jpeg',
+            scottishFold: './assets/img/gato/scottishFold.jpeg',
+            siames: './assets/img/gato/siames.jpeg',
+            siberiano: './assets/img/gato/siberiano.jpeg',
+            sphynx: './assets/img/gato/sphynx.jpeg'
+        },
+        perro: {
+            beagle: './assets/img/perro/beagle.jpeg',
+            boxer: './assets/img/perro/boxer.jpeg',
+            bulldog: './assets/img/perro/bulldog.jpeg',
+            bulldogFrances: './assets/img/perro/bulldogFrances.jpeg',
+            caniche: './assets/img/perro/caniche.jpeg',
+            chihuahua: './assets/img/perro/chihuahua.jpeg',
+            cockerSpaniel: './assets/img/perro/cockerSpaniel.jpeg',
+            dalmata: './assets/img/perro/dalmata.jpeg',
+            doberman: './assets/img/perro/doberman.jpeg',
+            golden: './assets/img/perro/golden.jpeg',
+            labrador: './assets/img/perro/labrador.jpeg',
+            pastorAleman: './assets/img/perro/pastorAleman.jpeg',
+            pomerania: './assets/img/perro/pomerania.jpeg',
+            rottweiler: './assets/img/perro/rottweiler.jpeg',
+            shihTzu: './assets/img/perro/shihTzu.jpeg'
+        },
+        caballo: {
+            andaluz: './assets/img/caballo/andaluz.jpeg',
+            appaloosa: './assets/img/caballo/appaloosa.jpeg',
+            clydesdale: './assets/img/caballo/clydesdale.jpeg',
+            cuartoDeMilla: './assets/img/caballo/cuartoDeMilla.jpeg',
+            frison: './assets/img/caballo/frison.jpeg',
+            hannoveriano: './assets/img/caballo/hannoveriano.jpeg',
+            lipizano: './assets/img/caballo/lipizano.jpeg',
+            lusitano: './assets/img/caballo/lusitano.jpeg',
+            morgan: './assets/img/caballo/morgan.jpeg',
+            mustang: './assets/img/caballo/mustang.jpeg',
+            percheron: './assets/img/caballo/percheron.jpeg',
+            puraSangre: './assets/img/caballo/puraSangre.jpeg',
+            shetland: './assets/img/caballo/shetland.jpeg',
+            tennesseeWalker: './assets/img/caballo/tennesseeWalker.jpeg'
+        },
+        reptil: {
+            anolis: './assets/img/reptil/anolis.jpeg',
+            axolotl: './assets/img/reptil/axolotl.jpeg',
+            boa: './assets/img/reptil/boa.jpeg',
+            caiman: './assets/img/reptil/caiman.jpeg',
+            camaleon: './assets/img/reptil/camaleon.jpeg',
+            dragonBarbudo: './assets/img/reptil/dragonBarbudo.jpeg',
+            escorpion: './assets/img/reptil/escorpion.jpeg',
+            gecko: './assets/img/reptil/gecko.jpeg',
+            iguana: './assets/img/reptil/iguana.jpeg',
+            lagartoMonitor: './assets/img/reptil/lagartoMonitor.jpeg',
+            piton: './assets/img/reptil/piton.jpeg',
+            salamandra: './assets/img/reptil/salamandra.jpeg',
+            serpienteDelMaiz: './assets/img/reptil/serpienteDelMaiz.jpeg',
+            tortuga: './assets/img/reptil/tortuga.jpeg',
+            tarantula: './assets/img/reptil/tarantula.jpeg'
+        },
+        roedor: {
+            aguti: './assets/img/roedor/aguti.jpeg',
+            ardilla: './assets/img/roedor/ardilla.jpeg',
+            capibara: './assets/img/roedor/capibara.jpeg',
+            chinchilla: './assets/img/roedor/chinchilla.jpeg',
+            cobaya: './assets/img/roedor/cobaya.jpeg',
+            conejo: './assets/img/roedor/conejo.jpeg',
+            cuy: './assets/img/roedor/cuy.jpeg',
+            degu: './assets/img/roedor/degu.jpeg',
+            erizo: './assets/img/roedor/erizo.jpeg',
+            hamster: './assets/img/roedor/hamster.jpeg',
+            jerbo: './assets/img/roedor/jerbo.jpeg',
+            paca: './assets/img/roedor/paca.jpeg',
+            rata: './assets/img/roedor/rata.jpeg',
+            raton: './assets/img/roedor/raton.jpeg'
+        },
+        ave: {
+            agapornis: './assets/img/ave/agapornis.jpeg',
+            aguila: './assets/img/ave/aguila.jpeg',
+            arabe: './assets/img/ave/arabe.jpeg',
+            buho: './assets/img/ave/buho.jpeg',
+            cacatua: './assets/img/ave/cacatua.jpeg',
+            canario: './assets/img/ave/canario.jpeg',
+            cisne: './assets/img/ave/cisne.jpeg',
+            flamenco: './assets/img/ave/flamenco.jpeg',
+            gorrion: './assets/img/ave/gorrion.jpeg',
+            halcon: './assets/img/ave/halcon.jpeg',
+            jilguero: './assets/img/ave/jilguero.jpeg',
+            lechuza: './assets/img/ave/lechuza.jpeg',
+            loro: './assets/img/ave/loro.jpeg',
+            ninfa: './assets/img/ave/ninfa.jpeg',
+            pato: './assets/img/ave/pato.jpeg',
+            periquito: './assets/img/ave/periquito.jpeg'
+        }
+    };
+    
+    const breedImageUrls = [];
+    Object.keys(breedImages).forEach(species => {
+        Object.keys(breedImages[species]).forEach(breed => {
+            breedImageUrls.push(breedImages[species][breed]);
+        });
+    });
+    
+    // Función para mezclar el array de URLs
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
     }
-};
-
-
-// Funciones
-
-// Función para sanitizar la entrada y proteger contra scripts maliciosos
-function sanitizeInput(input) {
-    const element = document.createElement('div');
-    element.innerText = input;
-    return element.innerHTML;
-}
-
-// Función para almacenamiento de datos
-function saveData(animalData) {
-    let records = JSON.parse(localStorage.getItem('animalRecords')) || [];
-    records.push(animalData);
-    localStorage.setItem('animalRecords', JSON.stringify(records));
-    showModal('Datos guardados correctamente.');  // Modal para mostrar mensaje
-}
-
-// Función para obtener datos del almacenamiento local
-function getData() {
-    return JSON.parse(localStorage.getItem('animalRecords')) || [];
-}
-
-// Función para cargar las provincias en el select de provincias
-function loadProvinces(provinceSelect) {
-    provinceSelect.innerHTML = '<option value="">Selecciona una provincia</option>';
-    Object.keys(provincias).forEach(province => {
-        const option = document.createElement('option');
-        option.value = sanitizeInput(province);
-        option.textContent = sanitizeInput(province);
-        provinceSelect.appendChild(option);
-    });
-}
-
-// Función para cargar las localidades en el select de localidades basado en la provincia seleccionada
-function loadLocalities(province, localitySelect) {
-    localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
-    provincias[sanitizeInput(province)].forEach(locality => {
-        const option = document.createElement('option');
-        option.value = sanitizeInput(locality);
-        option.textContent = sanitizeInput(locality);
-        localitySelect.appendChild(option);
-    });
-}
-
-// Función para cargar el código postal basado en la provincia y la localidad seleccionada
-function loadPostalCode(province, locality, postalCodeInput) {
-    postalCodeInput.value = sanitizeInput(codigosPostales[sanitizeInput(province)][sanitizeInput(locality)] || '');
-}
-
-// Función para cargar las especies en el select de especies
-function loadSpecies(speciesSelect) {
-    speciesSelect.innerHTML = '<option value="">Selecciona una especie</option>';
-    Object.keys(especies).forEach(species => {
-        const option = document.createElement('option');
-        option.value = sanitizeInput(species);
-        option.textContent = sanitizeInput(species.charAt(0).toUpperCase() + species.slice(1));
-        speciesSelect.appendChild(option);
-    });
-}
-
-// Función para cargar las razas en el select de razas basado en la especie seleccionada
-function loadBreeds(species, breedSelect) {
-    breedSelect.innerHTML = '<option value="">Selecciona una raza</option>';
-    especies[sanitizeInput(species)].forEach(breed => {
-        const option = document.createElement('option');
-        option.value = sanitizeInput(breed);
-        option.textContent = sanitizeInput(breed);
-        option.dataset.image = sanitizeInput(breedImages[sanitizeInput(species)][sanitizeInput(breed.toLowerCase().replace(/ /g, ''))]);
-        breedSelect.appendChild(option);
-    });
-}
-
-// Función para cargar las vacunaciones en el select de vacunaciones basado en la especie seleccionada
-function loadVaccinations(species, vaccinationSelect) {
-    vaccinationSelect.innerHTML = '<option value="">Selecciona una vacunación</option>';
-    vacunas[sanitizeInput(species)].forEach(vaccine => {
-        const option = document.createElement('option');
-        option.value = sanitizeInput(vaccine);
-        option.textContent = sanitizeInput(vaccine);
-        vaccinationSelect.appendChild(option);
-    });
-}
-
-// Función para validar el NIF
-function calcularLetraDni(dni) {
-    const cadena = "TRWAGMYFPDXBNJZSQVHLCKE";
-    const posicion = dni % 23;
-    return cadena.charAt(posicion);
-}
-
-function formatoNifValido(nif) {
-    const regex = /^\d{8}[A-Z]$/i;
-    return regex.test(nif);
-}
-
-function validarNif(nif) {
-    if (!formatoNifValido(nif)) return false;
-    const numero = nif.slice(0, -1);
-    const letra = nif.slice(-1).toUpperCase();
-    const isValid = calcularLetraDni(numero) === letra;
-    console.assert(isValid, 'NIF inválido:', nif);  // Validación con aserto
-    return isValid;
-}
-
-// Función para manejar la presentación de registros
-function showRecords(records) {
-    const recordsView = document.getElementById('records-view');
-    recordsView.style.display = 'block';
-    const recordDetails = document.getElementById('record-details');
+    
+    // Mezclar las URLs de las imágenes
+    const shuffledImageUrls = shuffle(breedImageUrls);
+    
+    // Seleccionar el contenedor del carrusel
+    const carouselWrapper = document.querySelector('.carousel__wrapper');
     let currentIndex = 0;
+    
+    // Crear slides para cada imagen y duplicarlas para el efecto continuo
+    shuffledImageUrls.forEach(url => {
+        const slide = document.createElement('div');
+        slide.classList.add('carousel__slide');
+        const img = document.createElement('img');
+        img.src = url;
+        slide.appendChild(img);
+        carouselWrapper.appendChild(slide);
+    });
+    
+    // Duplicar las imágenes al final del contenedor para el efecto continuo
+    shuffledImageUrls.forEach(url => {
+        const slide = document.createElement('div');
+        slide.classList.add('carousel__slide');
+        const img = document.createElement('img');
+        img.src = url;
+        slide.appendChild(img);
+        carouselWrapper.appendChild(slide);
+    });
+    
+    // Función para mostrar la siguiente diapositiva
+    function showNextSlide() {
+        currentIndex++;
+        if (currentIndex === shuffledImageUrls.length) {
+            // Salto invisible al inicio cuando se alcanza el final duplicado
+            setTimeout(() => {
+                carouselWrapper.style.transition = 'none';
+                currentIndex = 0;
+                carouselWrapper.style.transform = `translateX(-${currentIndex * 250}px)`;
+                setTimeout(() => {
+                    carouselWrapper.style.transition = 'transform 0.5s ease';
+                }, 0);
+            }, 500); // Espera la duración de la transición antes de hacer el salto
+        } else {
+            carouselWrapper.style.transform = `translateX(-${currentIndex * 250}px)`;
+        }
+    }
+    
+    // Muestra la siguiente diapositiva cada 3 segundos
+    setInterval(showNextSlide, 3000);
+    
+    // Evento para manejar el efecto de ampliación al pasar el ratón
+    carouselWrapper.addEventListener('mouseover', (event) => {
+        if (event.target.tagName === 'IMG') {
+            const slides = document.querySelectorAll('.carousel__slide');
+            slides.forEach(slide => slide.classList.remove('carousel__slide--active'));
+            event.target.parentElement.classList.add('carousel__slide--active');
+        }
+    });
+    
+    // Evento para manejar el efecto de reducción al quitar el ratón
+    carouselWrapper.addEventListener('mouseout', (event) => {
+        if (event.target.tagName === 'IMG') {
+            event.target.parentElement.classList.remove('carousel__slide--active');
+        }
+    });
 
-    function updateRecordDetails() {
-        const record = records[currentIndex];
-        const breedImage = sanitizeInput(breedImages[record.species.toLowerCase()][record.breed.toLowerCase().replace(/ /g, '')]);
-        const breedCareDetails = breedCare[record.breed] || { care: 'No disponible', diseases: 'No disponible' };
-        
-        // Crear elementos HTML de manera segura
-        recordDetails.innerHTML = ''; // Limpiar contenido anterior
-        
-        const title = document.createElement('h2');
-        title.textContent = `Ficha de Registro de ${sanitizeInput(record.animalName)}`;
-        
-        const image = document.createElement('img');
-        image.src = breedImage;
-        image.alt = sanitizeInput(record.breed);
-        image.className = 'breed-image';
-        
-        const owner = document.createElement('p');
-        owner.innerHTML = `<strong>Dueño:</strong> ${sanitizeInput(record.owner)}`;
-        
-        const dni = document.createElement('p');
-        dni.innerHTML = `<strong>DNI:</strong> ${sanitizeInput(record.dni)}`;
-        
-        const address = document.createElement('p');
-        address.innerHTML = `<strong>Dirección:</strong> ${sanitizeInput(record.address)}`;
-        
-        const province = document.createElement('p');
-        province.innerHTML = `<strong>Provincia:</strong> ${sanitizeInput(record.province)}`;
-        
-        const locality = document.createElement('p');
-        locality.innerHTML = `<strong>Localidad:</strong> ${sanitizeInput(record.locality)}`;
-        
-        const postalCode = document.createElement('p');
-        postalCode.innerHTML = `<strong>Código Postal:</strong> ${sanitizeInput(record.postalCode)}`;
-        
-        const phone = document.createElement('p');
-        phone.innerHTML = `<strong>Teléfono:</strong> ${sanitizeInput(record.phone)}`;
-        
-        const animalName = document.createElement('p');
-        animalName.innerHTML = `<strong>Nombre del Animal:</strong> ${sanitizeInput(record.animalName)}`;
-        
-        const chipNumber = document.createElement('p');
-        chipNumber.innerHTML = `<strong>Número de Chip:</strong> ${sanitizeInput(record.chipNumber)}`;
-        
-        const admissionDate = document.createElement('p');
-        admissionDate.innerHTML = `<strong>Fecha de Ingreso:</strong> ${formatDate(record.admissionDate)}`;
-        
-        const surgeryDate = document.createElement('p');
-        surgeryDate.innerHTML = `<strong>Fecha de Intervención Quirúrgica:</strong> ${formatDate(record.surgeryDate)}`;
-        
-        const species = document.createElement('p');
-        species.innerHTML = `<strong>Especie:</strong> ${sanitizeInput(record.species)}`;
-        
-        const breed = document.createElement('p');
-        breed.innerHTML = `<strong>Raza:</strong> ${sanitizeInput(record.breed)}`;
-        
-        const vaccination = document.createElement('p');
-        vaccination.innerHTML = `<strong>Vacunación:</strong> ${sanitizeInput(record.vaccination)}`;
-        
-        const vaccinationDate = document.createElement('p');
-        vaccinationDate.innerHTML = `<strong>Fecha de Vacunación:</strong> ${formatDate(record.vaccinationDate)}`;
-        
-        const breedCareDiv = document.createElement('div');
-        breedCareDiv.className = 'breed-care';
-        const breedCareTitle = document.createElement('h3');
-        breedCareTitle.textContent = 'Cuidados y Enfermedades Habituales';
-        const breedCareDetailsCare = document.createElement('p');
-        breedCareDetailsCare.innerHTML = `<strong>Cuidados:</strong> ${sanitizeInput(breedCareDetails.care)}`;
-        const breedCareDetailsDiseases = document.createElement('p');
-        breedCareDetailsDiseases.innerHTML = `<strong>Enfermedades:</strong> ${sanitizeInput(breedCareDetails.diseases)}`;
-        
-        breedCareDiv.appendChild(breedCareTitle);
-        breedCareDiv.appendChild(breedCareDetailsCare);
-        breedCareDiv.appendChild(breedCareDetailsDiseases);
-        
-        // Agregar elementos al contenedor de detalles
-        recordDetails.appendChild(title);
-        recordDetails.appendChild(image);
-        recordDetails.appendChild(owner);
-        recordDetails.appendChild(dni);
-        recordDetails.appendChild(address);
-        recordDetails.appendChild(province);
-        recordDetails.appendChild(locality);
-        recordDetails.appendChild(postalCode);
-        recordDetails.appendChild(phone);
-        recordDetails.appendChild(animalName);
-        recordDetails.appendChild(chipNumber);
-        recordDetails.appendChild(admissionDate);
-        recordDetails.appendChild(surgeryDate);
-        recordDetails.appendChild(species);
-        recordDetails.appendChild(breed);
-        recordDetails.appendChild(vaccination);
-        recordDetails.appendChild(vaccinationDate);
-        recordDetails.appendChild(breedCareDiv);
-        
-        document.getElementById('record-number').textContent = `${currentIndex + 1} / ${records.length}`;
+    // Funciones
+
+    // Función para sanitizar la entrada y proteger contra scripts maliciosos
+    function sanitizeInput(input) {
+        const element = document.createElement('div');
+        element.innerText = input;
+        return element.innerHTML;
     }
 
-    document.getElementById('prev-record').addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateRecordDetails();
-        }
-    });
+    // Función para almacenamiento de datos
+    function saveData(animalData) {
+        let records = JSON.parse(localStorage.getItem('animalRecords')) || [];
+        records.push(animalData);
+        localStorage.setItem('animalRecords', JSON.stringify(records));
+        showModal('Datos guardados correctamente.');  // Modal para mostrar mensaje
+    }
 
-    document.getElementById('next-record').addEventListener('click', () => {
-        if (currentIndex < records.length - 1) {
-            currentIndex++;
-            updateRecordDetails();
-        }
-    });
+    // Función para obtener datos del almacenamiento local
+    function getData() {
+        return JSON.parse(localStorage.getItem('animalRecords')) || [];
+    }
 
-    document.getElementById('delete-record').addEventListener('click', () => {
-        showModal('¿Estás seguro de que quieres eliminar este registro?', () => {
-            records.splice(currentIndex, 1);
-            localStorage.setItem('animalRecords', JSON.stringify(records));
-            if (records.length === 0) {
-                recordsView.style.display = 'none';
-            } else {
-                if (currentIndex >= records.length) {
-                    currentIndex--;
-                }
+    // Función para cargar las provincias en el select de provincias
+    function loadProvinces(provinceSelect) {
+        provinceSelect.innerHTML = '<option value="">Selecciona una provincia</option>';
+        Object.keys(provincias).forEach(province => {
+            const option = document.createElement('option');
+            option.value = sanitizeInput(province);
+            option.textContent = sanitizeInput(province);
+            provinceSelect.appendChild(option);
+        });
+    }
+
+    // Función para cargar las localidades en el select de localidades basado en la provincia seleccionada
+    function loadLocalities(province, localitySelect) {
+        localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
+        provincias[sanitizeInput(province)].forEach(locality => {
+            const option = document.createElement('option');
+            option.value = sanitizeInput(locality);
+            option.textContent = sanitizeInput(locality);
+            localitySelect.appendChild(option);
+        });
+    }
+
+    // Función para cargar el código postal basado en la provincia y la localidad seleccionada
+    function loadPostalCode(province, locality, postalCodeInput) {
+        postalCodeInput.value = sanitizeInput(codigosPostales[sanitizeInput(province)][sanitizeInput(locality)] || '');
+    }
+
+    // Función para cargar las especies en el select de especies
+    function loadSpecies(speciesSelect) {
+        speciesSelect.innerHTML = '<option value="">Selecciona una especie</option>';
+        Object.keys(especies).forEach(species => {
+            const option = document.createElement('option');
+            option.value = sanitizeInput(species);
+            option.textContent = sanitizeInput(species.charAt(0).toUpperCase() + species.slice(1));
+            speciesSelect.appendChild(option);
+        });
+    }
+
+    // Función para cargar las razas en el select de razas basado en la especie seleccionada
+    function loadBreeds(species, breedSelect) {
+        breedSelect.innerHTML = '<option value="">Selecciona una raza</option>';
+        especies[sanitizeInput(species)].forEach(breed => {
+            const option = document.createElement('option');
+            option.value = sanitizeInput(breed);
+            option.textContent = sanitizeInput(breed);
+            option.dataset.image = sanitizeInput(breedImages[sanitizeInput(species)][sanitizeInput(breed.toLowerCase().replace(/ /g, ''))]);
+            breedSelect.appendChild(option);
+        });
+    }
+
+    // Función para cargar las vacunaciones en el select de vacunaciones basado en la especie seleccionada
+    function loadVaccinations(species, vaccinationSelect) {
+        vaccinationSelect.innerHTML = '<option value="">Selecciona una vacunación</option>';
+        vacunas[sanitizeInput(species)].forEach(vaccine => {
+            const option = document.createElement('option');
+            option.value = sanitizeInput(vaccine);
+            option.textContent = sanitizeInput(vaccine);
+            vaccinationSelect.appendChild(option);
+        });
+    }
+
+    // Función para validar el NIF
+    function calcularLetraDni(dni) {
+        const cadena = "TRWAGMYFPDXBNJZSQVHLCKE";
+        const posicion = dni % 23;
+        return cadena.charAt(posicion);
+    }
+
+    function formatoNifValido(nif) {
+        const regex = /^\d{8}[A-Z]$/i;
+        return regex.test(nif);
+    }
+
+    function validarNif(nif) {
+        if (!formatoNifValido(nif)) return false;
+        const numero = nif.slice(0, -1);
+        const letra = nif.slice(-1).toUpperCase();
+        const isValid = calcularLetraDni(numero) === letra;
+        console.assert(isValid, 'NIF inválido:', nif);  // Validación con aserto
+        return isValid;
+    }
+
+    // Función para manejar la presentación de registros
+    function showRecords(records) {
+        const recordsView = document.getElementById('records-view');
+        recordsView.style.display = 'block';
+        const recordDetails = document.getElementById('record-details');
+        let currentIndex = 0;
+
+        function updateRecordDetails() {
+            const record = records[currentIndex];
+            const breedImage = sanitizeInput(breedImages[record.species.toLowerCase()][record.breed.toLowerCase().replace(/ /g, '')]);
+            const breedCareDetails = breedCare[record.breed] || { care: 'No disponible', diseases: 'No disponible' };
+            
+            // Crear elementos HTML de manera segura
+            recordDetails.innerHTML = ''; // Limpiar contenido anterior
+            
+            const title = document.createElement('h2');
+            title.textContent = `Ficha de Registro de ${sanitizeInput(record.animalName)}`;
+            
+            const image = document.createElement('img');
+            image.src = breedImage;
+            image.alt = sanitizeInput(record.breed);
+            image.className = 'breed-image';
+            
+            const owner = document.createElement('p');
+            owner.innerHTML = `<strong>Dueño:</strong> ${sanitizeInput(record.owner)}`;
+            
+            const dni = document.createElement('p');
+            dni.innerHTML = `<strong>DNI:</strong> ${sanitizeInput(record.dni)}`;
+            
+            const address = document.createElement('p');
+            address.innerHTML = `<strong>Dirección:</strong> ${sanitizeInput(record.address)}`;
+            
+            const province = document.createElement('p');
+            province.innerHTML = `<strong>Provincia:</strong> ${sanitizeInput(record.province)}`;
+            
+            const locality = document.createElement('p');
+            locality.innerHTML = `<strong>Localidad:</strong> ${sanitizeInput(record.locality)}`;
+            
+            const postalCode = document.createElement('p');
+            postalCode.innerHTML = `<strong>Código Postal:</strong> ${sanitizeInput(record.postalCode)}`;
+            
+            const phone = document.createElement('p');
+            phone.innerHTML = `<strong>Teléfono:</strong> ${sanitizeInput(record.phone)}`;
+            
+            const animalName = document.createElement('p');
+            animalName.innerHTML = `<strong>Nombre del Animal:</strong> ${sanitizeInput(record.animalName)}`;
+            
+            const chipNumber = document.createElement('p');
+            chipNumber.innerHTML = `<strong>Número de Chip:</strong> ${sanitizeInput(record.chipNumber)}`;
+            
+            const admissionDate = document.createElement('p');
+            admissionDate.innerHTML = `<strong>Fecha de Ingreso:</strong> ${formatDate(record.admissionDate)}`;
+            
+            const surgeryDate = document.createElement('p');
+            surgeryDate.innerHTML = `<strong>Fecha de Intervención Quirúrgica:</strong> ${formatDate(record.surgeryDate)}`;
+            
+            const species = document.createElement('p');
+            species.innerHTML = `<strong>Especie:</strong> ${sanitizeInput(record.species)}`;
+            
+            const breed = document.createElement('p');
+            breed.innerHTML = `<strong>Raza:</strong> ${sanitizeInput(record.breed)}`;
+            
+            const vaccination = document.createElement('p');
+            vaccination.innerHTML = `<strong>Vacunación:</strong> ${sanitizeInput(record.vaccination)}`;
+            
+            const vaccinationDate = document.createElement('p');
+            vaccinationDate.innerHTML = `<strong>Fecha de Vacunación:</strong> ${formatDate(record.vaccinationDate)}`;
+            
+            const breedCareDiv = document.createElement('div');
+            breedCareDiv.className = 'breed-care';
+            const breedCareTitle = document.createElement('h3');
+            breedCareTitle.textContent = 'Cuidados y Enfermedades Habituales';
+            const breedCareDetailsCare = document.createElement('p');
+            breedCareDetailsCare.innerHTML = `<strong>Cuidados:</strong> ${sanitizeInput(breedCareDetails.care)}`;
+            const breedCareDetailsDiseases = document.createElement('p');
+            breedCareDetailsDiseases.innerHTML = `<strong>Enfermedades:</strong> ${sanitizeInput(breedCareDetails.diseases)}`;
+            
+            breedCareDiv.appendChild(breedCareTitle);
+            breedCareDiv.appendChild(breedCareDetailsCare);
+            breedCareDiv.appendChild(breedCareDetailsDiseases);
+            
+            // Agregar elementos al contenedor de detalles
+            recordDetails.appendChild(title);
+            recordDetails.appendChild(image);
+            recordDetails.appendChild(owner);
+            recordDetails.appendChild(dni);
+            recordDetails.appendChild(address);
+            recordDetails.appendChild(province);
+            recordDetails.appendChild(locality);
+            recordDetails.appendChild(postalCode);
+            recordDetails.appendChild(phone);
+            recordDetails.appendChild(animalName);
+            recordDetails.appendChild(chipNumber);
+            recordDetails.appendChild(admissionDate);
+            recordDetails.appendChild(surgeryDate);
+            recordDetails.appendChild(species);
+            recordDetails.appendChild(breed);
+            recordDetails.appendChild(vaccination);
+            recordDetails.appendChild(vaccinationDate);
+            recordDetails.appendChild(breedCareDiv);
+            
+            document.getElementById('record-number').textContent = `${currentIndex + 1} / ${records.length}`;
+        }
+
+        document.getElementById('prev-record').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
                 updateRecordDetails();
             }
         });
-    });
 
-    updateRecordDetails();
-}
+        document.getElementById('next-record').addEventListener('click', () => {
+            if (currentIndex < records.length - 1) {
+                currentIndex++;
+                updateRecordDetails();
+            }
+        });
 
-// Función para mostrar imagen de raza al pasar el ratón
-function showBreedImageOnHover(breedSelect) {
-    const breedImagePreview = document.getElementById('breed-image-preview');
+        document.getElementById('delete-record').addEventListener('click', () => {
+            showModal('¿Estás seguro de que quieres eliminar este registro?', () => {
+                records.splice(currentIndex, 1);
+                localStorage.setItem('animalRecords', JSON.stringify(records));
+                if (records.length === 0) {
+                    recordsView.style.display = 'none';
+                } else {
+                    if (currentIndex >= records.length) {
+                        currentIndex--;
+                    }
+                    updateRecordDetails();
+                }
+            });
+        });
 
-    breedSelect.addEventListener('mouseover', (event) => {
-        const breed = sanitizeInput(event.target.value.toLowerCase().replace(/ /g, ''));
-        const species = document.getElementById('species').value.toLowerCase();
-        if (breedImages[sanitizeInput(species)] && breedImages[sanitizeInput(species)][breed]) {
-            breedImagePreview.src = sanitizeInput(breedImages[sanitizeInput(species)][breed]);
-            breedImagePreview.style.display = 'block';
+        updateRecordDetails();
+    }
+
+    // Función para mostrar imagen de raza al pasar el ratón
+    function showBreedImageOnHover(breedSelect) {
+        const breedImagePreview = document.getElementById('breed-image-preview');
+
+        breedSelect.addEventListener('mouseover', (event) => {
+            const breed = sanitizeInput(event.target.value.toLowerCase().replace(/ /g, ''));
+            const species = document.getElementById('species').value.toLowerCase();
+            if (breedImages[sanitizeInput(species)] && breedImages[sanitizeInput(species)][breed]) {
+                breedImagePreview.src = sanitizeInput(breedImages[sanitizeInput(species)][breed]);
+                breedImagePreview.style.display = 'block';
+            }
+        });
+
+        breedSelect.addEventListener('mouseout', () => {
+            breedImagePreview.style.display = 'none';
+        });
+    }
+
+    // Formatear fecha al formato europeo (DD/MM/YYYY)
+    function formatDate(date) {
+        const [year, month, day] = date.split('-');
+        return `${day}/${month}/${year}`;
+    }
+
+    // Función para mostrar una ventana modal
+    function showModal(message, onConfirm) {
+        const modal = document.getElementById('modal');
+        const modalMessage = document.getElementById('modal-message');
+        const confirmButton = document.getElementById('modal-confirm');
+        const cancelButton = document.getElementById('modal-cancel');
+
+        modalMessage.textContent = message;
+        modal.style.display = 'block';
+
+        confirmButton.onclick = () => {
+            modal.style.display = 'none';
+            if (onConfirm) onConfirm();
+        };
+
+        cancelButton.onclick = () => {
+            modal.style.display = 'none';
+        };
+    }
+
+    // Validación de campos del formulario
+    function validateForm() {
+        const ownerName = document.getElementById('owner-name').value.trim();
+        const dni = document.getElementById('dni').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const animalName = document.getElementById('animal-name').value.trim();
+        const chipNumber = document.getElementById('chip-number').value.trim();
+        const admissionDate = document.getElementById('admission-date').value;
+        const surgeryDate = document.getElementById('surgery-date').value;
+        const vaccinationDate = document.getElementById('vaccination-date').value;
+
+        const regexNoSpecialChars = /^[a-zA-Z0-9\s]*$/; // Solo letras, números y espacios
+        const regexAlphanumeric15 = /^[a-zA-Z0-9]{15}$/; // 15 caracteres alfanuméricos
+        const regexPhone = /^\+[0-9]{13}$/; // Número de teléfono con código de país (14 dígitos en total incluyendo el '+')
+
+        if (ownerName.length > 25 || ownerName === '' || !regexNoSpecialChars.test(ownerName)) {
+            showModal('El nombre del dueño no puede estar vacío, debe tener máximo 25 caracteres y no puede contener caracteres especiales.');
+            return false;
         }
-    });
 
-    breedSelect.addEventListener('mouseout', () => {
-        breedImagePreview.style.display = 'none';
-    });
-}
+        if (!validarNif(dni)) {
+            showModal('El DNI no es válido.');
+            return false;
+        }
 
-// Formatear fecha al formato europeo (DD/MM/YYYY)
-function formatDate(date) {
-    const [year, month, day] = date.split('-');
-    return `${day}/${month}/${year}`;
-}
+        if (address.length > 40 || address === '' || !regexNoSpecialChars.test(address)) {
+            showModal('La dirección no puede estar vacía, debe tener máximo 40 caracteres y no puede contener caracteres especiales.');
+            return false;
+        }
 
-// Función para mostrar una ventana modal
-function showModal(message, onConfirm) {
-    const modal = document.getElementById('modal');
-    const modalMessage = document.getElementById('modal-message');
-    const confirmButton = document.getElementById('modal-confirm');
-    const cancelButton = document.getElementById('modal-cancel');
+        if (phone === '' || !regexPhone.test(phone)) {
+            showModal('El teléfono debe incluir el código de país y tener un total de 13 dígitos, incluyendo el símbolo "+". Ejemplo: +0034666555777');
+            return false;
+        }
 
-    modalMessage.textContent = message;
-    modal.style.display = 'block';
+        if (animalName === '' || !regexNoSpecialChars.test(animalName)) {
+            showModal('El nombre del animal no puede estar vacío y no puede contener caracteres especiales.');
+            return false;
+        }
 
-    confirmButton.onclick = () => {
-        modal.style.display = 'none';
-        if (onConfirm) onConfirm();
-    };
+        if (!regexAlphanumeric15.test(chipNumber)) {
+            showModal('El número de chip debe ser de 15 caracteres alfanuméricos.');
+            return false;
+        }
 
-    cancelButton.onclick = () => {
-        modal.style.display = 'none';
-    };
-}
+        if (new Date(surgeryDate) > new Date(admissionDate)) {
+            showModal('La fecha de intervención quirúrgica debe ser anterior a la fecha de ingreso.');
+            return false;
+        }
 
-// Validación de campos del formulario
-function validateForm() {
-    const ownerName = document.getElementById('owner-name').value.trim();
-    const dni = document.getElementById('dni').value.trim();
-    const address = document.getElementById('address').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const animalName = document.getElementById('animal-name').value.trim();
-    const chipNumber = document.getElementById('chip-number').value.trim();
-    const admissionDate = document.getElementById('admission-date').value;
-    const surgeryDate = document.getElementById('surgery-date').value;
-    const vaccinationDate = document.getElementById('vaccination-date').value;
+        if (new Date(vaccinationDate) < new Date(admissionDate)) {
+            showModal('La fecha de vacunación debe ser igual o mayor a la fecha de ingreso.');
+            return false;
+        }
 
-    const regexNoSpecialChars = /^[a-zA-Z0-9\s]*$/; // Solo letras, números y espacios
-    const regexAlphanumeric15 = /^[a-zA-Z0-9]{15}$/; // 15 caracteres alfanuméricos
-    const regexPhone = /^\+[0-9]{13}$/; // Número de teléfono con código de país (14 dígitos en total incluyendo el '+')
-
-    if (ownerName.length > 25 || ownerName === '' || !regexNoSpecialChars.test(ownerName)) {
-        showModal('El nombre del dueño no puede estar vacío, debe tener máximo 25 caracteres y no puede contener caracteres especiales.');
-        return false;
+        return true;
     }
 
-    if (!validarNif(dni)) {
-        showModal('El DNI no es válido.');
-        return false;
-    }
-
-    if (address.length > 40 || address === '' || !regexNoSpecialChars.test(address)) {
-        showModal('La dirección no puede estar vacía, debe tener máximo 40 caracteres y no puede contener caracteres especiales.');
-        return false;
-    }
-
-    if (phone === '' || !regexPhone.test(phone)) {
-        showModal('El teléfono debe incluir el código de país y tener un total de 13 dígitos, incluyendo el símbolo "+". Ejemplo: +0034666555777');
-        return false;
-    }
-
-    if (animalName === '' || !regexNoSpecialChars.test(animalName)) {
-        showModal('El nombre del animal no puede estar vacío y no puede contener caracteres especiales.');
-        return false;
-    }
-
-    if (!regexAlphanumeric15.test(chipNumber)) {
-        showModal('El número de chip debe ser de 15 caracteres alfanuméricos.');
-        return false;
-    }
-
-    if (new Date(surgeryDate) > new Date(admissionDate)) {
-        showModal('La fecha de intervención quirúrgica debe ser anterior a la fecha de ingreso.');
-        return false;
-    }
-
-    if (new Date(vaccinationDate) < new Date(admissionDate)) {
-        showModal('La fecha de vacunación debe ser igual o mayor a la fecha de ingreso.');
-        return false;
-    }
-
-    return true;
-}
-
-// Evento para cargar las provincias y localidades al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
+    // Evento para cargar las provincias y localidades al cargar la página
     const provinceSelect = document.getElementById('province');
     const localitySelect = document.getElementById('locality');
     const postalCodeInput = document.getElementById('postal-code');
