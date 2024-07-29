@@ -225,7 +225,7 @@ Este proyecto implementa un formulario de admisión veterinaria para registrar d
     - `ownerName`: No puede estar vacío, máximo 25 caracteres, sin caracteres especiales.
     - `dni`: Debe ser un NIF válido.
     - `address`: No puede estar vacío, máximo 40 caracteres, sin caracteres especiales.
-    - `phone`: Debe ser un número de 9 dígitos mas el codigo del pais.
+    - `phone`: Debe ser un número de 9 dígitos más el código del país.
     - `animalName`: No puede estar vacío, sin caracteres especiales.
     - `chipNumber`: Debe ser de 15 caracteres alfanuméricos.
     - `admissionDate` y `surgeryDate`: La fecha de cirugía debe ser anterior a la fecha de ingreso.
@@ -246,3 +246,109 @@ Este proyecto implementa un formulario de admisión veterinaria para registrar d
     - Validaciones estrictas en los campos del formulario para asegurar que los datos son correctos y seguros.
 
 Estas medidas aseguran que la aplicación es robusta frente a ataques de XSS, protegiendo tanto los datos como la experiencia del usuario.
+
+## Pruebas de `quillavetjs.js` con Jest y Testing Library
+
+### Requisitos
+
+Asegúrate de tener instalados los siguientes componentes antes de proceder:
+
+- Node.js (versión 12 o superior)
+- npm (versión 6 o superior)
+
+### Instalación
+
+Sigue estos pasos para instalar las dependencias necesarias para ejecutar las pruebas:
+
+1. Clona el repositorio de tu proyecto.
+2. Navega hasta el directorio raíz del proyecto en tu terminal.
+3. Ejecuta el siguiente comando para instalar las dependencias:
+
+    ```sh
+    npm install --save-dev jest @testing-library/dom @testing-library/jest-dom
+    ```
+
+### Estructura del Proyecto
+
+La estructura relevante del proyecto debe parecerse a esto:
+
+.
+├── assets
+│ └── img
+│ ├── ave
+│ ├── caballo
+│ ├── gato
+│ ├── perro
+│ ├── reptil
+│ └── roedor
+├── js
+│ └── quillavetjs.js
+├── styles
+│ └── quillavetstyles.css
+├── test
+│  └── test.js
+├── quillavet.html
+├── package.json
+├── package-lock.json
+├── jest.config.js
+├── jest.setup.js
+├── .gitignore
+└── README.md
+
+
+### Descripción de las Pruebas
+
+El archivo de prueba `test.js` incluye pruebas para validar la funcionalidad y seguridad del formulario. A continuación, se describen las pruebas realizadas:
+
+#### Pruebas de Validación de Campos
+
+- **Nombre del Dueño**:
+  - Longitud máxima: 25 caracteres
+  - Sin caracteres especiales
+
+- **DNI**:
+  - Formato y cálculo de letra correctos
+
+- **Dirección**:
+  - Longitud máxima: 40 caracteres
+  - Sin caracteres especiales
+
+- **Teléfono**:
+  - Formato correcto con 9 dígitos más el código del país
+
+- **Nombre del Animal**:
+  - No vacío
+  - Sin caracteres especiales
+
+- **Número de Chip**:
+  - Exactamente 15 caracteres alfanuméricos
+
+- **Fecha de Intervención Quirúrgica**:
+  - Debe ser anterior a la fecha de ingreso
+
+- **Fecha de Vacunación**:
+  - Igual o mayor a la fecha de ingreso
+
+#### Pruebas de Funcionalidades
+
+- **Sanitización de Entrada**:
+  - Verificación de que los datos ingresados no contienen caracteres que puedan ser utilizados para inyección de scripts
+
+- **Guardado de Datos**:
+  - Verificación de que los datos se almacenan correctamente en localStorage
+
+- **Carga de Provincias, Localidades y Código Postal**:
+  - Verificación de que los datos se cargan correctamente en los selectores correspondientes
+
+- **Carga de Especies, Razas y Vacunaciones**:
+  - Verificación de que los datos se cargan correctamente en los selectores correspondientes
+
+- **Mostrar y Navegar Fichas**:
+  - Verificación de que los datos se muestran correctamente y se pueden navegar entre las fichas
+
+### Ejecución de Pruebas
+
+Para ejecutar las pruebas, utiliza el siguiente comando:
+
+```sh
+npm test
