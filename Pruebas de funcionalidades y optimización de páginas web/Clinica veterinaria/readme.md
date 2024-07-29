@@ -268,34 +268,6 @@ Sigue estos pasos para instalar las dependencias necesarias para ejecutar las pr
     npm install --save-dev jest @testing-library/dom @testing-library/jest-dom
     ```
 
-### Estructura del Proyecto
-
-La estructura relevante del proyecto debe parecerse a esto:
-
-.
-├── assets
-│ └── img
-│ ├── ave
-│ ├── caballo
-│ ├── gato
-│ ├── perro
-│ ├── reptil
-│ └── roedor
-├── js
-│ └── quillavetjs.js
-├── styles
-│ └── quillavetstyles.css
-├── test
-│  └── test.js
-├── quillavet.html
-├── package.json
-├── package-lock.json
-├── jest.config.js
-├── jest.setup.js
-├── .gitignore
-└── README.md
-
-
 ### Descripción de las Pruebas
 
 El archivo de prueba `test.js` incluye pruebas para validar la funcionalidad y seguridad del formulario. A continuación, se describen las pruebas realizadas:
