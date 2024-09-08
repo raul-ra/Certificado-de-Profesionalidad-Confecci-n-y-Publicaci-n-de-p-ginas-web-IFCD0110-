@@ -10,128 +10,257 @@
     <script src="./js/storage.js" type="module"></script>
     <script src="./js/functions.js" type="module"></script>
     <script src="./js/events.js" type="module"></script>
-</head>
+    <script src="./js/appointments.js" type="module"></script>
 
+</head>
 <body>
     <header class="header">
         <img src="./assets/logo/QuillaVetBaLogo.jpg" alt="Logo" class="header__logo" />
+        <nav>
+            <button id="btn-open-citas-modal" class="form__button">Citas</button>
+        </nav>
     </header>
-    <section class="carousel">
-        <div class="carousel__container">
-            <div class="carousel__wrapper"></div>
-        </div>
-    </section>
-    <main class="main-content">
-        <h1>Formulario de Admisión Veterinaria</h1>
-        <div class="form-and-records">
-            <form id="admission-form" class="form">
-                <!-- Formulario de admisión -->
-                <div class="form__group">
-                    <label for="owner-name" class="form__label">Nombre del Dueño:</label>
-                    <input type="text" id="owner-name" class="form__input" maxlength="25" />
-                </div>
-                <div class="form__group">
-                    <label for="dni" class="form__label">DNI:</label>
-                    <input type="text" id="dni" class="form__input" />
-                </div>
-                <div class="form__group">
-                    <label for="address" class="form__label">Dirección:</label>
-                    <input type="text" id="address" class="form__input" maxlength="40" />
-                </div>
-                <div class="form__group">
-                    <label for="province" class="form__label">Provincia:</label>
-                    <select id="province" class="form__select"></select>
-                </div>
-                <div class="form__group">
-                    <label for="locality" class="form__label">Localidad:</label>
-                    <select id="locality" class="form__select"></select>
-                </div>
-                <div class="form__group">
-                    <label for="postal-code" class="form__label">Código Postal:</label>
-                    <input type="text" id="postal-code" class="form__input" />
-                </div>
-                <div class="form__group">
-                    <label for="phone" class="form__label">Teléfono:</label>
-                    <input type="text" id="phone" class="form__input" />
-                </div>
-                <div class="form__group">
-                    <label for="animal-name" class="form__label">Nombre del Animal:</label>
-                    <input type="text" id="animal-name" class="form__input" />
-                </div>
-                <div class="form__group">
-                    <label for="chip-number" class="form__label">Número de Chip:</label>
-                    <input type="text" id="chip-number" class="form__input" maxlength="15" />
-                </div>
-                <div class="form__group">
-                    <label for="admission-date" class="form__label">Fecha de Ingreso:</label>
-                    <input type="date" id="admission-date" class="form__input" />
-                </div>
-                <div class="form__group">
-                    <label for="surgery-date" class="form__label">Fecha de Intervención Quirúrgica:</label>
-                    <input type="date" id="surgery-date" class="form__input" />
-                </div>
-                <div class="form__group">
-                    <label for="species" class="form__label">Especie:</label>
-                    <select id="species" class="form__select"></select>
-                </div>
-                <div class="form__group">
-                    <label for="breed" class="form__label">Raza:</label>
-                    <select id="breed" class="form__select"></select>
-                </div>
-                <div class="form__group">
-                    <label for="vaccination" class="form__label">Vacunación:</label>
-                    <select id="vaccination" class="form__select"></select>
-                </div>
-                <div class="form__group">
-                    <label for="vaccination-date" class="form__label">Fecha de Vacunación:</label>
-                    <input type="date" id="vaccination-date" class="form__input" />
-                </div>
-                <div class="form__buttons">
-                    <button type="button" id="submit-button" class="form__button">
-                        Aceptar
-                    </button>
-                    <button type="button" id="cancel-button" class="form__button btn-cancel">
-                        Cancelar
-                    </button>
-                    <button type="button" id="view-records-button" class="form__button btn-view-records">
-                        Ver Registros
-                    </button>
-                    <button type="button" id="end-program-button" class="form__button btn-end-program">
-                        Finalizar Programa
-                    </button>
-                </div>
-            </form>
-            <section id="records-view" class="records-view" style="display: none">
-                <div class="records-header">
-                    <img src="./assets/logo/LOGO_COLVET_web.png" alt="Logo" class="records-logo" />
-                </div>
-                <div id="record-details" class="record-details"></div>
-                <img id="breed-image-preview" class="breed-image-preview" alt="Vista previa de la raza" />
-                <!-- Vista previa de la raza -->
-                <div class="records-navigation">
-                    <button id="prev-record" class="records-navigation__button btn-nav">
-                        Anterior
-                    </button>
-                    <span id="record-number" class="records-navigation__number"></span>
-                    <button id="next-record" class="records-navigation__button btn-nav">
-                        Siguiente
-                    </button>
-                    <button id="delete-record" class="records-navigation__button btn-delete">
-                        Eliminar
-                    </button>
-                </div>
-            </section>
-        </div>
-    </main>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
+    <!-- Modal para seleccionar el tipo de cita -->
+    <div id="modal-seleccionar-cita" class="modal">
         <div class="modal-content">
-            <p id="modal-message"></p>
-            <button id="modal-confirm" class="modal-button">Confirmar</button>
-            <button id="modal-cancel" class="modal-button">Cancelar</button>
+            <span id="close-seleccionar-cita-modal" class="modal-close">&times;</span>
+            <h2>Elija el tipo de cita</h2>
+            <button id="btn-open-new-appointment" class="form__button">Nueva Cita</button>
+            <button id="btn-open-revision" class="form__button">Revisión</button>
         </div>
     </div>
-</body>
+
+    <!-- Modal de Nueva Cita -->
+    <div id="new-appointment-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-new-appointment-modal" class="modal-close">&times;</span>
+            <h2>Nueva Cita</h2>
+            <form id="nueva-cita-form" class="form">
+                <div class="form__group">
+                    <label for="chip-number-new" class="form__label">Número de Chip:</label>
+                    <input type="text" id="chip-number-new" class="form__input" maxlength="15">
+                </div>
+                <div class="form__group">
+                    <label for="nombre-mascota-new" class="form__label">Nombre de la Mascota:</label>
+                    <input type="text" id="nombre-mascota-new" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="fecha-nacimiento-new" class="form__label">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha-nacimiento-new" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="species-new" class="form__label">Especie:</label>
+                    <select id="species-new" class="form__select"></select>
+                </div>
+                <div class="form__group">
+                    <label for="breed-new" class="form__label">Raza:</label>
+                    <select id="breed-new" class="form__select"></select>
+                </div>
+                <div class="form__group">
+                    <label for="symptoms" class="form__label">Síntomas:</label>
+                    <input type="text" id="symptoms" class="form__input">
+                </div>
+                <div class="form__group">
+                    <input type="checkbox" id="antecedentes-checkbox">
+                    <label for="antecedentes-checkbox" class="form__label">Antecedentes</label>
+                </div>
+                <div class="form__group" id="antecedentes" style="display: none;">
+                    <label for="antecedentes-text" class="form__label">Escriba los antecedentes:</label>
+                    <textarea id="antecedentes-text" class="form__input"></textarea>
+                </div>
+                <div class="form__group">
+                    <label for="appointment-date-new" class="form__label">Fecha de Cita:</label>
+                    <input type="date" id="appointment-date-new" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="appointment-time-new" class="form__label">Hora de Cita:</label>
+                    <input type="time" id="appointment-time-new" class="form__input">
+                </div>
+
+                <div class="form__buttons">
+                    <button type="button" id="submit-new-appointment" class="form__button">Aceptar</button>
+                    <button type="button" id="cancel-new-appointment" class="form__button btn-cancel">Cancelar</button>
+                    <button id="btn-view-citas" class="form__button">Ver Citas Guardadas</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Revisión -->
+    <div id="revision-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-revision-modal" class="modal-close">&times;</span>
+            <h2>Revisión</h2>
+            <form id="revision-form" class="form">
+                <div class="form__group">
+                    <label for="chip-number-revision" class="form__label">Número de Chip:</label>
+                    <input type="text" id="chip-number-revision" class="form__input" maxlength="15">
+                </div>
+                <div class="form__group">
+                    <label for="nombre-mascota-revision" class="form__label">Nombre de la Mascota:</label>
+                    <input type="text" id="nombre-mascota-revision" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="fecha-nacimiento-revision" class="form__label">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha-nacimiento-revision" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="species-revision" class="form__label">Especie:</label>
+                    <select id="species-revision" class="form__select"></select>
+                </div>
+                <div class="form__group">
+                    <label for="breed-revision" class="form__label">Raza:</label>
+                    <select id="breed-revision" class="form__select"></select>
+                </div>
+                <div class="form__group">
+                    <label for="history" class="form__label">Antecedentes:</label>
+                    <textarea id="history" class="form__input"></textarea>
+                </div>
+                <div class="form__group">
+                    <label for="appointment-date-revision" class="form__label">Fecha de Revisión:</label>
+                    <input type="date" id="appointment-date-revision" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="appointment-time-revision" class="form__label">Hora de Revisión:</label>
+                    <input type="time" id="appointment-time-revision" class="form__input">
+                </div>
+
+                <div class="form__buttons">
+                    <button type="button" id="submit-revision" class="form__button">Aceptar</button>
+                    <button type="button" id="cancel-revision" class="form__button btn-cancel">Cancelar</button>
+                    <button id="btn-view-citas" class="form__button">Ver Citas Guardadas</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Ver Citas Guardadas -->
+    <div id="appointments-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-appointments-modal" class="modal-close">&times;</span>
+            <h2>Citas Guardadas</h2>
+            <ul id="appointments-list"></ul>
+        </div>
+    </div>    
+
+        <!--Carrusel-->
+        <section class="carousel">
+            <div class="carousel__container">
+                <div class="carousel__wrapper"></div>
+            </div>
+        </section>
+        <main class="main-content">
+            <h1>Formulario de Admisión Veterinaria</h1>
+            <div class="form-and-records">
+                <form id="admission-form" class="form">
+                    <!-- Formulario de admisión -->
+                    <div class="form__group">
+                        <label for="owner-name" class="form__label">Nombre del Dueño:</label>
+                        <input type="text" id="owner-name" class="form__input" maxlength="25" />
+                    </div>
+                    <div class="form__group">
+                        <label for="dni" class="form__label">DNI:</label>
+                        <input type="text" id="dni" class="form__input" />
+                    </div>
+                    <div class="form__group">
+                        <label for="address" class="form__label">Dirección:</label>
+                        <input type="text" id="address" class="form__input" maxlength="40" />
+                    </div>
+                    <div class="form__group">
+                        <label for="province" class="form__label">Provincia:</label>
+                        <select id="province" class="form__select"></select>
+                    </div>
+                    <div class="form__group">
+                        <label for="locality" class="form__label">Localidad:</label>
+                        <select id="locality" class="form__select"></select>
+                    </div>
+                    <div class="form__group">
+                        <label for="postal-code" class="form__label">Código Postal:</label>
+                        <input type="text" id="postal-code" class="form__input" />
+                    </div>
+                    <div class="form__group">
+                        <label for="phone" class="form__label">Teléfono:</label>
+                        <input type="text" id="phone" class="form__input" />
+                    </div>
+                    <div class="form__group">
+                        <label for="animal-name" class="form__label">Nombre del Animal:</label>
+                        <input type="text" id="animal-name" class="form__input" />
+                    </div>
+                    <div class="form__group">
+                        <label for="chip-number" class="form__label">Número de Chip:</label>
+                        <input type="text" id="chip-number" class="form__input" maxlength="15" />
+                    </div>
+                    <div class="form__group">
+                        <label for="admission-date" class="form__label">Fecha de Ingreso:</label>
+                        <input type="date" id="admission-date" class="form__input" />
+                    </div>
+                    <div class="form__group">
+                        <label for="surgery-date" class="form__label">Fecha de Intervención Quirúrgica:</label>
+                        <input type="date" id="surgery-date" class="form__input" />
+                    </div>
+                    <div class="form__group">
+                        <label for="species" class="form__label">Especie:</label>
+                        <select id="species" class="form__select"></select>
+                    </div>
+                    <div class="form__group">
+                        <label for="breed" class="form__label">Raza:</label>
+                        <select id="breed" class="form__select"></select>
+                    </div>
+                    <div class="form__group">
+                        <label for="vaccination" class="form__label">Vacunación:</label>
+                        <select id="vaccination" class="form__select"></select>
+                    </div>
+                    <div class="form__group">
+                        <label for="vaccination-date" class="form__label">Fecha de Vacunación:</label>
+                        <input type="date" id="vaccination-date" class="form__input" />
+                    </div>
+                    <div class="form__buttons">
+                        <button type="button" id="submit-button" class="form__button">
+                            Aceptar
+                        </button>
+                        <button type="button" id="cancel-button" class="form__button btn-cancel">
+                            Cancelar
+                        </button>
+                        <button type="button" id="view-records-button" class="form__button btn-view-records">
+                            Ver Registros
+                        </button>
+                        <button type="button" id="end-program-button" class="form__button btn-end-program">
+                            Finalizar Programa
+                        </button>
+                    </div>
+                </form>
+                <section id="records-view" class="records-view" style="display: none">
+                    <div class="records-header">
+                        <img src="./assets/logo/LOGO_COLVET_web.png" alt="Logo" class="records-logo" />
+                    </div>
+                    <div id="record-details" class="record-details"></div>
+                    <img id="breed-image-preview" class="breed-image-preview" alt="Vista previa de la raza" />
+                    <!-- Vista previa de la raza -->
+                    <div class="records-navigation">
+                        <button id="prev-record" class="records-navigation__button btn-nav">
+                            Anterior
+                        </button>
+                        <span id="record-number" class="records-navigation__number"></span>
+                        <button id="next-record" class="records-navigation__button btn-nav">
+                            Siguiente
+                        </button>
+                        <button id="delete-record" class="records-navigation__button btn-delete">
+                            Eliminar
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <p id="modal-message"></p>
+                <button id="modal-confirm" class="modal-button">Confirmar</button>
+                <button id="modal-cancel" class="modal-button">Cancelar</button>
+            </div>
+        </div>
+    </body>
 
 </html>
