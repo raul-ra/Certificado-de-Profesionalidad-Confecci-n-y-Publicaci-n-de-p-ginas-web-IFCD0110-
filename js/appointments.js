@@ -1,7 +1,6 @@
 // Importar especies desde storage.js
 import { especies } from './storage.js';
 
-// Esperar a que el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function () {
     console.log("El DOM está completamente cargado");
 
@@ -10,6 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Cargar las especies y razas en los formularios de Nueva Cita y Revisión
     cargarEspeciesYRazas();
+
+    // Configurar eventos para checkbox de antecedentes
+    configurarCheckboxAntecedentes();
+
+    // Autocompletar los datos en Revisión según el número de chip
+    document.getElementById("chip-number-revision").addEventListener("blur", buscarPorChip);
 
     // Validar y guardar la Nueva Cita
     document.getElementById("submit-new-appointment").addEventListener("click", function (event) {
@@ -28,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Mostrar las citas guardadas
-    document.getElementById("btn-view-citas").addEventListener("click", function () {
-        mostrarCitasGuardadas();
+    document.querySelectorAll('.btn-view-citas').forEach(button => {
+        button.addEventListener('click', mostrarCitasGuardadas);
     });
 
     // Cancelar Nueva Cita
@@ -51,11 +56,8 @@ function configurarModalesDeCitas() {
 
     if (btnSolicitarCita) {
         btnSolicitarCita.addEventListener("click", () => {
-            console.log("Botón 'Citas' clicado");
             mostrarModal("modal-seleccionar-cita");
         });
-    } else {
-        console.error("Botón 'Citas' no encontrado en el DOM");
     }
 
     // Configurar los eventos de cierre de las modales
@@ -77,6 +79,24 @@ function configurarModalesDeCitas() {
     });
 }
 
+// Función para buscar por número de chip en Revisión y autocompletar los campos
+function buscarPorChip() {
+    const chipNumber = document.getElementById("chip-number-revision").value;
+    const citasGuardadas = JSON.parse(localStorage.getItem("citas")) || [];
+
+    const cita = citasGuardadas.find(cita => cita.chipNumber === chipNumber);
+
+    if (cita) {
+        document.getElementById("nombre-mascota-revision").value = cita.nombre;
+        document.getElementById("fecha-nacimiento-revision").value = cita.fechaNacimiento;
+        document.getElementById("species-revision").value = cita.especie;
+        document.getElementById("breed-revision").value = cita.raza;
+        document.getElementById("symptoms-revision").value = cita.sintomas || ''; // Opcional
+    } else {
+        alert("No se encontraron coincidencias para este número de chip.");
+    }
+}
+
 // Función para cargar las especies y razas en los selectores
 function cargarEspeciesYRazas() {
     const speciesSelectNew = document.getElementById("species-new");
@@ -84,7 +104,6 @@ function cargarEspeciesYRazas() {
     const speciesSelectRevision = document.getElementById("species-revision");
     const breedSelectRevision = document.getElementById("breed-revision");
 
-    // Utilizamos el valor de 'especies' importado desde storage.js
     if (speciesSelectNew && breedSelectNew && speciesSelectRevision && breedSelectRevision) {
         cargarEspecies(speciesSelectNew);
         cargarEspecies(speciesSelectRevision);
@@ -123,6 +142,23 @@ function cargarRazas(especie, selectElement) {
     }
 }
 
+// Configurar el checkbox de antecedentes en Nueva Cita y Revisión
+function configurarCheckboxAntecedentes() {
+    const antecedentesCheckboxNew = document.getElementById("antecedentes-checkbox");
+    const antecedentesCampoNew = document.getElementById("antecedentes");
+
+    const antecedentesCheckboxRevision = document.getElementById("antecedentes-checkbox-revision");
+    const antecedentesCampoRevision = document.getElementById("antecedentes-revision");
+
+    antecedentesCheckboxNew?.addEventListener("change", function () {
+        antecedentesCampoNew.style.display = antecedentesCheckboxNew.checked ? "block" : "none";
+    });
+
+    antecedentesCheckboxRevision?.addEventListener("change", function () {
+        antecedentesCampoRevision.style.display = antecedentesCheckboxRevision.checked ? "block" : "none";
+    });
+}
+
 // Función para validar el formulario de Nueva Cita
 function validarFormularioNuevaCita() {
     const camposRequeridos = ['chip-number-new', 'nombre-mascota-new', 'fecha-nacimiento-new', 'species-new', 'breed-new', 'appointment-date-new', 'appointment-time-new'];
@@ -137,30 +173,31 @@ function validarFormularioRevision() {
 
 // Función genérica para validar campos requeridos
 function validarCampos(campos) {
-    let valid = true;
+    let valido = true;
     campos.forEach(function (campo) {
         const input = document.getElementById(campo);
         if (!input.value) {
-            valid = false;
+            valido = false;
             input.classList.add("error");
         } else {
             input.classList.remove("error");
         }
     });
-    return valid;
+    return valido;
 }
 
 // Función para guardar una nueva cita en el almacenamiento local
 function guardarNuevaCita() {
     const nuevaCita = {
         chipNumber: document.getElementById("chip-number-new").value,
-        name: document.getElementById("nombre-mascota-new").value,
-        dateOfBirth: document.getElementById("fecha-nacimiento-new").value,
-        species: document.getElementById("species-new").value,
-        breed: document.getElementById("breed-new").value,
-        symptoms: document.getElementById("symptoms").value,
-        appointmentDate: document.getElementById("appointment-date-new").value,
-        appointmentTime: document.getElementById("appointment-time-new").value,
+        tipo: 'nueva',
+        nombre: document.getElementById("nombre-mascota-new").value,
+        fechaNacimiento: document.getElementById("fecha-nacimiento-new").value,
+        especie: document.getElementById("species-new").value,
+        raza: document.getElementById("breed-new").value,
+        sintomas: document.getElementById("symptoms").value,
+        fechaCita: document.getElementById("appointment-date-new").value,
+        horaCita: document.getElementById("appointment-time-new").value,
     };
     guardarCitaEnLocalStorage(nuevaCita);
     ocultarModal("new-appointment-modal");
@@ -170,13 +207,14 @@ function guardarNuevaCita() {
 function guardarRevision() {
     const revision = {
         chipNumber: document.getElementById("chip-number-revision").value,
-        name: document.getElementById("nombre-mascota-revision").value,
-        dateOfBirth: document.getElementById("fecha-nacimiento-revision").value,
-        species: document.getElementById("species-revision").value,
-        breed: document.getElementById("breed-revision").value,
-        history: document.getElementById("history").value,
-        appointmentDate: document.getElementById("appointment-date-revision").value,
-        appointmentTime: document.getElementById("appointment-time-revision").value,
+        tipo: 'revision',
+        nombre: document.getElementById("nombre-mascota-revision").value,
+        fechaNacimiento: document.getElementById("fecha-nacimiento-revision").value,
+        especie: document.getElementById("species-revision").value,
+        raza: document.getElementById("breed-revision").value,
+        sintomas: document.getElementById("symptoms-revision").value,
+        fechaCita: document.getElementById("appointment-date-revision").value,
+        horaCita: document.getElementById("appointment-time-revision").value,
     };
     guardarCitaEnLocalStorage(revision);
     ocultarModal("revision-modal");
@@ -198,7 +236,10 @@ function mostrarCitasGuardadas() {
     if (citasGuardadas.length > 0) {
         citasGuardadas.forEach(cita => {
             const listItem = document.createElement("li");
-            listItem.textContent = `Cita: ${cita.chipNumber} - ${cita.appointmentDate}`;
+            listItem.textContent = `Cita: ${cita.chipNumber} - ${cita.appointmentDate} a las ${cita.appointmentTime}`;
+            
+            // Asignar color dependiendo de si es una nueva cita o revisión
+            listItem.classList.add(cita.tipo === 'nueva' ? 'cita-nueva' : 'cita-revision');
             appointmentsList.appendChild(listItem);
         });
         mostrarModal("appointments-modal");
@@ -212,8 +253,8 @@ function mostrarModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = "block";
-    } else {
-        console.error(`Modal con ID ${modalId} no encontrado.`);
+        modal.querySelector('.modal-content').addEventListener('click', event => event.stopPropagation());
+        modal.addEventListener('click', () => ocultarModal(modalId));
     }
 }
 
@@ -222,8 +263,6 @@ function ocultarModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = "none";
-    } else {
-        console.error(`Modal con ID ${modalId} no encontrado.`);
     }
 }
 
@@ -231,10 +270,6 @@ function ocultarModal(modalId) {
 function configurarCierreDeModal(botonCerrarId, modalId) {
     const botonCerrar = document.getElementById(botonCerrarId);
     if (botonCerrar) {
-        botonCerrar.addEventListener("click", function () {
-            ocultarModal(modalId);
-        });
-    } else {
-        console.error(`Botón de cierre con ID ${botonCerrarId} no encontrado.`);
+        botonCerrar.addEventListener("click", () => ocultarModal(modalId));
     }
 }
